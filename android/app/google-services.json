@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1053907455233",
+    "project_id": "pubsconnect-thesis",
+    "storage_bucket": "pubsconnect-thesis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053907455233:android:4cfa9eb3d521057986df00",
+        "android_client_info": {
+          "package_name": "com.example.thesis_pubsconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053907455233-ejf27cc3s9dpht3f9548v4nffir02a1a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.thesis_pubsconnect",
+            "certificate_hash": "ec4404c342ebd52dac2134eedb08a14934b3848b"
+          }
+        },
+        {
+          "client_id": "1053907455233-17vs9csalfoc902laphqb26q2jo0brcm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCInL8mlcLw2BBcG6R81tBNFffZJrqw1_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053907455233-17vs9csalfoc902laphqb26q2jo0brcm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
