@@ -48,6 +48,7 @@ class DialogAlert extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(7.w),
               ),
+              backgroundColor: Theme.of(context).colorScheme.error,
             ),
             onPressed: () {
               Navigator.pop(ctx);

@@ -58,7 +58,7 @@ class _SidebarrState extends State<Sidebarr> {
     SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
     print('Logout');
     sessionProvider.clearSession();
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const SignIn()),
     );

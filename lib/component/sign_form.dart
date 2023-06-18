@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:thesis_pubsconnect/auth/forgot_password.dart';
 import 'package:thesis_pubsconnect/auth/signin.dart';
 import 'package:thesis_pubsconnect/auth/signup.dart';
 import 'package:thesis_pubsconnect/component/dialog_alert.dart';
@@ -44,25 +45,39 @@ class _SignFormState extends State<SignForm> {
     String phoneText = phone.getText();
     bool checkError = false;
 
-    String placeholder = 'Please make sure you enter a valid';
+    String placeholder = 'Please make sure you enter all fields available';
 
     if (emailText.trim().isEmpty) {
       checkError = true;
-      placeholder += ' email';
+      // placeholder += ' email';
     }
     if (nameText.trim().isEmpty) {
-      if (checkError == true) {
-        placeholder += ',';
-      }
+      // if (checkError == true) {
+      //   placeholder += ',';
+      // }
       checkError = true;
-      placeholder += ' name';
+      // placeholder += ' name';
     }
     if (passwordText.trim().isEmpty) {
-      if (checkError == true) {
-        placeholder += ',';
-      }
+      // if (checkError == true) {
+      //   placeholder += ',';
+      // }
       checkError = true;
-      placeholder += ' password';
+      // placeholder += ' password';
+    }
+    if (genderText.trim().isEmpty) {
+      // if (checkError == true) {
+      //   placeholder += ',';
+      // }
+      checkError = true;
+      // placeholder += ' password';
+    }
+    if (phoneText.trim().isEmpty) {
+      // if (checkError == true) {
+      //   placeholder += ',';
+      // }
+      checkError = true;
+      // placeholder += ' password';
     }
 
     if (checkError) {
@@ -106,12 +121,12 @@ class _SignFormState extends State<SignForm> {
         sessionProvider.setUser(userModels);
         Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
       }
-    } catch (error) {
+    } on FirebaseAuthException catch (error) {
       showDialog(
         context: context,
         builder: (ctx) => DialogAlert(
           ctx: ctx,
-          placeholder: error,
+          placeholder: error.message.toString(),
           imagePath: 'assets/images/exit.png',
         ),
       );
@@ -347,12 +362,18 @@ class _SignFormState extends State<SignForm> {
         email,
         password,
         Container(
-          margin: EdgeInsets.only(top: 16.w, bottom: 24.w),
+          margin: EdgeInsets.only(bottom: 10.w),
           width: double.infinity,
           alignment: Alignment.centerRight,
-          child: Text(
-            'Forgot Password?',
-            style: Theme.of(context).textTheme.headlineSmall,
+          child: TextButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => ForgotPassword()));
+            },
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              textStyle: Theme.of(context).textTheme.headlineSmall,
+            ),
+            child: const Text('Forgot Password?'),
           ),
         ),
         Container(
@@ -385,7 +406,6 @@ class _SignFormState extends State<SignForm> {
                   ),
                   TextButton(
                     onPressed: () {
-                      // Navigator.of(context).pop();
                       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) => const SignUp()));
                     },
                     child: Text(
