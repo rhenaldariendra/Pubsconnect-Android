@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:thesis_pubsconnect/auth/change_password.dart';
+import 'package:thesis_pubsconnect/component/dialog_success.dart';
 import 'package:thesis_pubsconnect/component/text_field_underlined.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
@@ -73,6 +75,61 @@ class _ProfileState extends State<Profile> {
       phone!.value = phoneText;
       _isLoading = false;
     });
+    // ignore: use_build_context_synchronously
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.w),
+          ),
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+          contentPadding: EdgeInsets.fromLTRB(20.w, 40.w, 20.w, 10.w),
+          actionsPadding: EdgeInsets.only(top: 8.w, bottom: 28.w),
+          content: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 16.w),
+                  width: 125.w,
+                  child: Image.asset('assets/images/image_5.png'),
+                ),
+                Text(
+                  'Profile updated successfully',
+                  style: Theme.of(context).textTheme.labelMedium,
+                  textAlign: TextAlign.center,
+                )
+              ],
+            ),
+          ),
+          actions: [
+            Center(
+              child: SizedBox(
+                width: 110.w,
+                height: 40.w,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7.w),
+                    ),
+                    textStyle: Theme.of(context).textTheme.headlineMedium,
+                    backgroundColor: const Color.fromRGBO(26, 171, 97, 1),
+                  ),
+                  child: const Text('Done'),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -106,7 +163,7 @@ class _ProfileState extends State<Profile> {
         ),
       ),
       body: _isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : ListView(
@@ -136,7 +193,9 @@ class _ProfileState extends State<Profile> {
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.zero,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const ChangePassword()));
+                          },
                           child: Center(
                             child: Text(
                               'Change Password',

@@ -16,7 +16,11 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  CustomTextFieldLogo email = CustomTextFieldLogo(iconPath: Icons.alternate_email_rounded);
+  CustomTextFieldLogo email = CustomTextFieldLogo(
+    iconPath: Icons.alternate_email_rounded,
+    placeholder: 'Email Address',
+    isPassword: false,
+  );
 
   Future submitPasswordChange() async {
     try {
@@ -29,11 +33,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             destination: const SignIn(),
             imagePath: 'assets/images/image_5.png',
             message: 'Password reset request has been sent to email ${email.getText().trim()}',
+            redirect: true,
           );
         },
       );
     } on FirebaseAuthException catch (e) {
-      print(e);
       showDialog(
         context: context,
         builder: (context) {
@@ -114,7 +118,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             height: 30.w,
           ),
           Center(
-            child: Container(
+            child: SizedBox(
               width: 260.w,
               height: 40.w,
               child: ElevatedButton(
@@ -122,7 +126,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.zero,
                 ),
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ),
           ),

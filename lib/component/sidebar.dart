@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:thesis_pubsconnect/auth/signin.dart';
+import 'package:thesis_pubsconnect/component/dialog_confirmation.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
 import 'package:thesis_pubsconnect/pages/home.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
@@ -23,29 +24,29 @@ class _SidebarrState extends State<Sidebarr> {
   late String userPhoneNumber;
   UserModel? users;
 
-  void getCurrentUserInfo() async {
-    user = _auth.currentUser;
+  // void getCurrentUserInfo() async {
+  //   user = _auth.currentUser;
 
-    userEmail = user.email;
-    await FirebaseFirestore.instance.collection('users').where('uid', isEqualTo: user.uid).get().then((QuerySnapshot querySnapshot) {
-      if (querySnapshot.size > 0) {
-        QueryDocumentSnapshot documentSnapshot = querySnapshot.docs[0];
-        Map<String, dynamic> userData = documentSnapshot.data() as Map<String, dynamic>;
+  //   userEmail = user.email;
+  //   await FirebaseFirestore.instance.collection('users').where('uid', isEqualTo: user.uid).get().then((QuerySnapshot querySnapshot) {
+  //     if (querySnapshot.size > 0) {
+  //       QueryDocumentSnapshot documentSnapshot = querySnapshot.docs[0];
+  //       Map<String, dynamic> userData = documentSnapshot.data() as Map<String, dynamic>;
 
-        setState(() {
-          userName = userData['name'];
-        });
-      } else {
-        setState(() {
-          userName = 'Users';
-        });
-      }
-    }).catchError((error) {
-      setState(() {
-        userName = 'Users';
-      });
-    });
-  }
+  //       setState(() {
+  //         userName = userData['name'];
+  //       });
+  //     } else {
+  //       setState(() {
+  //         userName = 'Users';
+  //       });
+  //     }
+  //   }).catchError((error) {
+  //     setState(() {
+  //       userName = 'Users';
+  //     });
+  //   });
+  // }
 
   @override
   void initState() {
@@ -56,12 +57,16 @@ class _SidebarrState extends State<Sidebarr> {
 
   void logout() {
     SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
-    print('Logout');
-    sessionProvider.clearSession();
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const SignIn()),
-    );
+    FirebaseAuth.instance.signOut().then(
+          (value) => {
+            print('Logout'),
+            sessionProvider.clearSession(),
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const SignIn()),
+            ),
+          },
+        );
   }
 
   @override
@@ -81,11 +86,14 @@ class _SidebarrState extends State<Sidebarr> {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                FirebaseAuth.instance.signOut().then(
-                      (value) => {
-                        logout()
-                      },
-                    );
+                showDialog(
+                  context: context,
+                  builder: (context) => DialogConfirmation(
+                    yesFunction: logout,
+                    imagePath: 'assets/images/exit.png',
+                    message: 'Are you sure to exit',
+                  ),
+                );
               },
               style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -129,7 +137,7 @@ class _SidebarrState extends State<Sidebarr> {
         ),
         SizedBox(
           width: 131.w,
-          child: Image.asset('assets/images/male.png'),
+          child: users!.gender == 'Male' ? Image.asset('assets/images/male.png') : Image.asset('assets/images/female.png'),
         ),
         SizedBox(
           height: 8.w,

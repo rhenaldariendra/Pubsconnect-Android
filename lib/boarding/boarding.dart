@@ -59,6 +59,5 @@ class Boarding extends StatelessWidget {
         ],
       ),
     );
-    // );
   }
 }

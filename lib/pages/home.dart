@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:thesis_pubsconnect/component/search_field.dart';
 import 'package:thesis_pubsconnect/component/sidebar.dart';
+import 'package:thesis_pubsconnect/model/user_model.dart';
 import 'package:thesis_pubsconnect/pages/profile.dart';
+import 'package:thesis_pubsconnect/utils/session_provider.dart';
 import 'package:thesis_pubsconnect/view/places.dart';
 import 'package:thesis_pubsconnect/view/transport.dart';
 import 'package:thesis_pubsconnect/view/weather.dart';
@@ -15,6 +18,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomeScreen> {
+  UserModel? users;
+
   Future<void> _refreshData() async {
     await Future.delayed(const Duration(seconds: 2));
 
@@ -22,6 +27,13 @@ class _HomePageState extends State<HomeScreen> {
       _weather = new Weather();
       _place = new Places();
     });
+  }
+
+  @override
+  void initState() {
+    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    users = sessionProvider.getUser();
+    super.initState();
   }
 
   Weather _weather = Weather();
@@ -63,10 +75,15 @@ class _HomePageState extends State<HomeScreen> {
                     ),
                   );
                 },
-                child: Image.asset(
-                  'assets/images/male.png',
-                  width: 32.w,
-                ),
+                child: users?.gender == 'Male'
+                    ? Image.asset(
+                        'assets/images/male.png',
+                        width: 32.w,
+                      )
+                    : Image.asset(
+                        'assets/images/female.png',
+                        width: 32.w,
+                      ),
               ),
             ],
           ),

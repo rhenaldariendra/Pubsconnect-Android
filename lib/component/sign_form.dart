@@ -6,6 +6,7 @@ import 'package:thesis_pubsconnect/auth/forgot_password.dart';
 import 'package:thesis_pubsconnect/auth/signin.dart';
 import 'package:thesis_pubsconnect/auth/signup.dart';
 import 'package:thesis_pubsconnect/component/dialog_alert.dart';
+import 'package:thesis_pubsconnect/component/dialog_success.dart';
 import 'package:thesis_pubsconnect/component/text_field.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
 import 'package:thesis_pubsconnect/pages/home.dart';
@@ -14,19 +15,26 @@ import 'package:thesis_pubsconnect/utils/session_provider.dart';
 
 class SignForm extends StatefulWidget {
   final String checkForm;
+  final VoidCallback formFunction;
+  final email;
+  final name;
+  final password;
+  final gender;
+  final phone;
 
-  const SignForm({super.key, required this.checkForm});
+  const SignForm({super.key, required this.checkForm, required this.formFunction, this.email, this.name, this.password, this.gender, this.phone});
 
   @override
   State<SignForm> createState() => _SignFormState();
 }
 
 class _SignFormState extends State<SignForm> {
-  CustomTextField email = CustomTextField(name: 'Email');
-  CustomTextField name = CustomTextField(name: 'Name');
-  CustomTextField password = CustomTextField(name: 'Password');
-  CustomTextField gender = CustomTextField(name: 'Gender');
-  CustomTextField phone = CustomTextField(name: 'Phone');
+  // CustomTextField email = CustomTextField(name: 'Email');
+  // CustomTextField name = CustomTextField(name: 'Name');
+  // CustomTextField password = CustomTextField(name: 'Password');
+  // CustomTextField gender = CustomTextField(name: 'Gender');
+  // CustomTextField phone = CustomTextField(name: 'Phone');
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +46,14 @@ class _SignFormState extends State<SignForm> {
   }
 
   void _submitDataSignUp() async {
-    String nameText = name.getText();
-    String emailText = email.getText();
-    String passwordText = password.getText();
-    String genderText = gender.getGender();
-    String phoneText = phone.getText();
+    setState(() {
+      _isLoading = true;
+    });
+    String nameText = widget.name.getText();
+    String emailText = widget.email.getText();
+    String passwordText = widget.password.getText();
+    String genderText = widget.gender.getGender();
+    String phoneText = widget.phone.getText();
     bool checkError = false;
 
     String placeholder = 'Please make sure you enter all fields available';
@@ -81,6 +92,11 @@ class _SignFormState extends State<SignForm> {
     }
 
     if (checkError) {
+      await Future.delayed(const Duration(seconds: 2));
+      setState(() {
+        _isLoading = false;
+      });
+      // ignore: use_build_context_synchronously
       showDialog(
         context: context,
         builder: (ctx) => DialogAlert(
@@ -92,6 +108,7 @@ class _SignFormState extends State<SignForm> {
       return;
     }
 
+    await Future.delayed(const Duration(seconds: 2));
     try {
       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailText,
@@ -119,9 +136,25 @@ class _SignFormState extends State<SignForm> {
           phoneNumber: phoneText,
         );
         sessionProvider.setUser(userModels);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+        setState(() {
+          _isLoading = false;
+        });
+        // ignore: use_build_context_synchronously
+        showDialog(
+          context: context,
+          builder: (ctx) => const DialogSuccess(
+            destination: HomeScreen(),
+            imagePath: 'assets/images/image_5.png',
+            message: 'Account created successfully',
+            redirect: true,
+          ),
+        );
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
       }
     } on FirebaseAuthException catch (error) {
+      setState(() {
+        _isLoading = false;
+      });
       showDialog(
         context: context,
         builder: (ctx) => DialogAlert(
@@ -131,23 +164,14 @@ class _SignFormState extends State<SignForm> {
         ),
       );
     }
-
-    // await FirebaseAuth.instance
-    //     .createUserWithEmailAndPassword(
-    //       email: emailText,
-    //       password: passwordText,
-    //     )
-    //     .then(
-    //       (value) => {
-    //         print('Account Created!'),
-    //         Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen())),
-    //       },
-    //     );
   }
 
   void _submitDataSignIn() async {
-    String emailText = email.getText();
-    String passwordText = password.getText();
+    setState(() {
+      _isLoading = true;
+    });
+    String emailText = widget.email.getText();
+    String passwordText = widget.password.getText();
     bool checkError = false;
 
     String placeholder = 'Please make sure you enter a valid';
@@ -164,6 +188,7 @@ class _SignFormState extends State<SignForm> {
       placeholder += ' password';
     }
 
+    await Future.delayed(const Duration(seconds: 2));
     if (!checkError) {
       QueryDocumentSnapshot<Object?> docSnapshot;
       Map<String, dynamic> userDatas;
@@ -178,7 +203,6 @@ class _SignFormState extends State<SignForm> {
           .then(
             (value) async => {
               print('Logged in'),
-              // print(value.user?.uid),
               await FirebaseFirestore.instance.collection('users').where('uid', isEqualTo: value.user?.uid).get().then((QuerySnapshot querySnapshot) => {
                     if (querySnapshot.size > 0)
                       {
@@ -203,6 +227,18 @@ class _SignFormState extends State<SignForm> {
               )
             },
           );
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+      showDialog(
+        context: context,
+        builder: (context) => DialogAlert(
+          ctx: context,
+          placeholder: 'Incorrect email or password',
+          imagePath: 'assets/images/exit.png',
+        ),
+      );
     }
   }
 
@@ -227,11 +263,11 @@ class _SignFormState extends State<SignForm> {
           'Sign Up',
           style: Theme.of(context).textTheme.titleSmall,
         ),
-        email,
-        name,
-        gender,
-        phone,
-        password,
+        widget.email,
+        widget.name,
+        widget.gender,
+        widget.phone,
+        widget.password,
         Row(
           children: [
             SizedBox(
@@ -274,7 +310,7 @@ class _SignFormState extends State<SignForm> {
                   backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primary),
                   foregroundColor: MaterialStateProperty.all(Colors.white),
                 ),
-                onPressed: _submitDataSignUp,
+                onPressed: widget.formFunction,
                 child: Text(
                   'Sign Up',
                   style: Theme.of(context).textTheme.headlineMedium,
@@ -359,8 +395,8 @@ class _SignFormState extends State<SignForm> {
           'Sign In',
           style: Theme.of(context).textTheme.titleSmall,
         ),
-        email,
-        password,
+        widget.email,
+        widget.password,
         Container(
           margin: EdgeInsets.only(bottom: 10.w),
           width: double.infinity,
@@ -388,7 +424,7 @@ class _SignFormState extends State<SignForm> {
                   backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.primary),
                   foregroundColor: MaterialStateProperty.all(Colors.white),
                 ),
-                onPressed: _submitDataSignIn,
+                onPressed: widget.formFunction,
                 child: Text(
                   'Sign In',
                   style: Theme.of(context).textTheme.headlineMedium,
@@ -406,7 +442,7 @@ class _SignFormState extends State<SignForm> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) => const SignUp()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) => SignUp()));
                     },
                     child: Text(
                       'Sign Up',

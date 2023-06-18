@@ -5,7 +5,8 @@ class DialogSuccess extends StatelessWidget {
   final Widget destination;
   final String imagePath;
   final String message;
-  const DialogSuccess({super.key, required this.destination, required this.imagePath, required this.message});
+  final bool redirect;
+  const DialogSuccess({super.key, required this.destination, required this.imagePath, required this.message, required this.redirect});
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +43,13 @@ class DialogSuccess extends StatelessWidget {
             height: 40.w,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => destination,
-                  ),
-                );
+                redirect
+                    ? Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => destination,
+                        ),
+                      )
+                    : Navigator.of(context).pop();
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.zero,
