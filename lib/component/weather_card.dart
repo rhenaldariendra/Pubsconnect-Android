@@ -79,7 +79,7 @@ class _WeatherCardState extends State<WeatherCard> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                data['current']['weather'][0]['description'],
+                data['current']['weather'][0]['main'],
                 style: TextStyle(
                   fontFamily: 'Nunito',
                   fontWeight: FontWeight.w700,

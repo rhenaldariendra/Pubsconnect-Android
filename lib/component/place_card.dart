@@ -24,10 +24,8 @@ class PlaceCard extends StatelessWidget {
         );
       },
       child: Container(
-        // height: 300.w,
-        // color: Colors.blue,
+        width: 160.w,
         decoration: BoxDecoration(
-          // shape:
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(8.w)),
           boxShadow: [
@@ -39,7 +37,7 @@ class PlaceCard extends StatelessWidget {
             ),
           ],
         ),
-        padding: EdgeInsets.all(5.w),
+        padding: EdgeInsets.all(10.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -50,7 +48,7 @@ class PlaceCard extends StatelessWidget {
             SizedBox(
               width: 135.w,
               child: Text(
-                data['name'],
+                data['name'] != null ? data['name'] : 'No Data',
                 style: TextStyle(
                   fontFamily: 'Nunito',
                   fontWeight: FontWeight.w700,
@@ -60,17 +58,14 @@ class PlaceCard extends StatelessWidget {
               ),
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Icon(
                   Icons.location_on_outlined,
                 ),
-                SizedBox(
-                  width: 8.w,
-                ),
-                SizedBox(
-                  width: 110.w,
+                Flexible(
                   child: Text(
-                    data['address_obj']['street1'],
+                    data['address_obj']['street1'] != null ? data['address_obj']['street1'] : 'No Data',
                     style: TextStyle(
                       fontFamily: 'Nunito',
                       fontWeight: FontWeight.normal,
@@ -126,7 +121,7 @@ class PlaceCard extends StatelessWidget {
           photos = null;
           return SizedBox(
             width: 135.w,
-            height: 200.w,
+            height: 180.w,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(6.w),
               child: Image.asset(

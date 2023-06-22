@@ -83,6 +83,7 @@ class _SignUpState extends State<SignUp> {
         builder: (ctx) => DialogAlert(
           ctx: ctx,
           placeholder: placeholder,
+          titleMessage: 'Error',
           imagePath: 'assets/images/exit.png',
         ),
       );
@@ -125,8 +126,11 @@ class _SignUpState extends State<SignUp> {
           context: context,
           builder: (ctx) => const DialogSuccess(
             destination: HomeScreen(),
-            imagePath: 'assets/images/image_5.png',
-            message: 'Account created successfully',
+            imagePath: 'assets/images/dialog_images/dialog_4.png',
+            titleMessage: 'Good job!',
+            message: 'Your account is set up and ready to explore the city',
+            buttonMessage: 'Start Explore',
+            isPrimary: true,
             redirect: true,
           ),
         );
@@ -140,6 +144,7 @@ class _SignUpState extends State<SignUp> {
         context: context,
         builder: (ctx) => DialogAlert(
           ctx: ctx,
+          titleMessage: 'Error',
           placeholder: error.message.toString(),
           imagePath: 'assets/images/exit.png',
         ),

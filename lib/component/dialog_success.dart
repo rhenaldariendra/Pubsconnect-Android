@@ -5,8 +5,11 @@ class DialogSuccess extends StatelessWidget {
   final Widget destination;
   final String imagePath;
   final String message;
+  final String buttonMessage;
+  final String titleMessage;
   final bool redirect;
-  const DialogSuccess({super.key, required this.destination, required this.imagePath, required this.message, required this.redirect});
+  final bool isPrimary;
+  const DialogSuccess({super.key, required this.destination, required this.imagePath, required this.message, required this.redirect, required this.isPrimary, required this.buttonMessage, required this.titleMessage});
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +30,18 @@ class DialogSuccess extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 16.w),
               width: 125.w,
               child: Image.asset(imagePath),
+            ),
+            Text(
+              titleMessage,
+              style: TextStyle(
+                fontFamily: 'Nunito',
+                fontWeight: FontWeight.w700,
+                fontSize: 24.sp,
+                color: isPrimary ? const Color.fromRGBO(61, 76, 94, 1) : const Color.fromRGBO(26, 171, 97, 1),
+              ),
+            ),
+            SizedBox(
+              height: 16.w,
             ),
             Text(
               message,
@@ -54,10 +69,10 @@ class DialogSuccess extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.zero,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7.w),
+                  borderRadius: BorderRadius.circular(23.w),
                 ),
                 textStyle: Theme.of(context).textTheme.headlineMedium,
-                backgroundColor: const Color.fromRGBO(26, 171, 97, 1),
+                backgroundColor: isPrimary ? const Color.fromRGBO(0, 118, 253, 1) : const Color.fromRGBO(26, 171, 97, 1),
               ),
               child: const Text('Done'),
             ),

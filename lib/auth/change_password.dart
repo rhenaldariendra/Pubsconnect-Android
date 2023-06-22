@@ -57,6 +57,7 @@ class _ChangePasswordState extends State<ChangePassword> {
             return DialogAlert(
               ctx: context,
               placeholder: "New password & confirmation password didn't match",
+              titleMessage: 'Error',
               imagePath: 'assets/images/exit.png',
             );
           },
@@ -71,8 +72,11 @@ class _ChangePasswordState extends State<ChangePassword> {
           builder: (context) {
             return const DialogSuccess(
               destination: Profile(),
-              imagePath: 'assets/images/image_5.png',
+              imagePath: 'assets/images/dialog_images/dialog_2.png',
+              titleMessage: 'Success !',
               message: 'Password has been changed successfully',
+              buttonMessage: 'Okay',
+              isPrimary: false,
               redirect: false,
             );
           },
@@ -86,6 +90,7 @@ class _ChangePasswordState extends State<ChangePassword> {
           return DialogAlert(
             ctx: context,
             placeholder: 'Invalid current password',
+            titleMessage: 'Error',
             imagePath: 'assets/images/exit.png',
           );
         },

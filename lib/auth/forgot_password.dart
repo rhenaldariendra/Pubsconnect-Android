@@ -31,8 +31,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         builder: (context) {
           return DialogSuccess(
             destination: const SignIn(),
-            imagePath: 'assets/images/image_5.png',
+            imagePath: 'assets/images/dialog_images/dialog_8.png',
             message: 'Password reset request has been sent to email ${email.getText().trim()}',
+            titleMessage: 'Success !',
+            buttonMessage: 'Okay',
+            isPrimary: false,
             redirect: true,
           );
         },
@@ -43,7 +46,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         builder: (context) {
           return DialogAlert(
             ctx: context,
-            placeholder: 'Invalid email, no user record with email ${email.getText().trim()}',
+            titleMessage: 'Error',
+            // placeholder: 'Invalid email, no user record with email ${email.getText().trim()}',
+            placeholder: 'Oops, your data is invalid',
             imagePath: 'assets/images/exit.png',
           );
         },

@@ -22,10 +22,12 @@ class _HomePageState extends State<HomeScreen> {
 
   Future<void> _refreshData() async {
     await Future.delayed(const Duration(seconds: 2));
+    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
 
     setState(() {
-      _weather = new Weather();
-      _place = new Places();
+      _weather = const Weather();
+      _place = const Places();
+      users = sessionProvider.getUser();
     });
   }
 
@@ -36,9 +38,9 @@ class _HomePageState extends State<HomeScreen> {
     super.initState();
   }
 
-  Weather _weather = Weather();
-  Transport _transport = Transport();
-  Places _place = Places();
+  Weather _weather = const Weather();
+  final Transport _transport = const Transport();
+  Places _place = const Places();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,7 @@ class _HomePageState extends State<HomeScreen> {
         ),
         automaticallyImplyLeading: false,
         title: Padding(
-          padding: EdgeInsets.only(left: 24.w, right: 24.w),
+          padding: EdgeInsets.only(left: 16.w, right: 16.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -92,7 +94,7 @@ class _HomePageState extends State<HomeScreen> {
       body: RefreshIndicator(
         onRefresh: _refreshData,
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
           children: <Widget>[
             Text(
               'Let\'s find your best Route',

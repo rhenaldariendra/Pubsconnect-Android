@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:thesis_pubsconnect/auth/signin.dart';
 import 'package:thesis_pubsconnect/component/dialog_confirmation.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
+import 'package:thesis_pubsconnect/pages/explore.dart';
 import 'package:thesis_pubsconnect/pages/home.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
 
@@ -150,6 +151,7 @@ class _SidebarrState extends State<Sidebarr> {
             fontSize: 20.sp,
             color: Colors.black,
           ),
+          textAlign: TextAlign.center,
         ),
         Text(
           users!.email,
@@ -194,7 +196,7 @@ class _SidebarrState extends State<Sidebarr> {
               color: Colors.black54,
             ),
             title: Text('Destination', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
           ),
           ListTile(
             dense: true,
@@ -207,7 +209,7 @@ class _SidebarrState extends State<Sidebarr> {
               color: Colors.black54,
             ),
             title: Text('Explorer', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const ExploreCities()))),
           ),
           ListTile(
             dense: true,
@@ -220,7 +222,7 @@ class _SidebarrState extends State<Sidebarr> {
               color: Colors.black54,
             ),
             title: Text('Save Place', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
           ),
           ListTile(
             dense: true,
@@ -233,7 +235,7 @@ class _SidebarrState extends State<Sidebarr> {
               color: Colors.black54,
             ),
             title: Text('History', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
           ),
         ],
       ),

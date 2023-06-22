@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +80,7 @@ class _SignInState extends State<SignIn> {
                 setState(() {
                   _isLoading = false;
                 }),
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const HomeScreen(),
@@ -94,7 +96,8 @@ class _SignInState extends State<SignIn> {
           context: context,
           builder: (context) => DialogAlert(
             ctx: context,
-            placeholder: 'Incorrect email or password',
+            titleMessage: 'Error',
+            placeholder: 'Oops, please check email or password',
             imagePath: 'assets/images/exit.png',
           ),
         );
@@ -107,7 +110,8 @@ class _SignInState extends State<SignIn> {
         context: context,
         builder: (context) => DialogAlert(
           ctx: context,
-          placeholder: 'Incorrect email or password',
+            titleMessage: 'Error',
+            placeholder: 'Oops, please check email or password',
           imagePath: 'assets/images/exit.png',
         ),
       );

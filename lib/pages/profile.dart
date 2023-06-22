@@ -6,6 +6,7 @@ import 'package:thesis_pubsconnect/auth/change_password.dart';
 import 'package:thesis_pubsconnect/component/dialog_success.dart';
 import 'package:thesis_pubsconnect/component/text_field_underlined.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
+import 'package:thesis_pubsconnect/pages/home.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
 
 class Profile extends StatefulWidget {
@@ -79,55 +80,64 @@ class _ProfileState extends State<Profile> {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.w),
-          ),
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.white,
-          contentPadding: EdgeInsets.fromLTRB(20.w, 40.w, 20.w, 10.w),
-          actionsPadding: EdgeInsets.only(top: 8.w, bottom: 28.w),
-          content: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(bottom: 16.w),
-                  width: 125.w,
-                  child: Image.asset('assets/images/image_5.png'),
-                ),
-                Text(
-                  'Profile updated successfully',
-                  style: Theme.of(context).textTheme.labelMedium,
-                  textAlign: TextAlign.center,
-                )
-              ],
-            ),
-          ),
-          actions: [
-            Center(
-              child: SizedBox(
-                width: 110.w,
-                height: 40.w,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7.w),
-                    ),
-                    textStyle: Theme.of(context).textTheme.headlineMedium,
-                    backgroundColor: const Color.fromRGBO(26, 171, 97, 1),
-                  ),
-                  child: const Text('Done'),
-                ),
-              ),
-            ),
-          ],
+        return const DialogSuccess(
+          destination: HomeScreen(),
+          imagePath: 'assets/images/dialog_images/dialog_5.png',
+          message: 'Your profile has been update successfully',
+          titleMessage: 'Success !',
+          buttonMessage: 'Okay',
+          redirect: false,
+          isPrimary: false,
         );
+        // return AlertDialog(
+        //   shape: RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.circular(20.w),
+        //   ),
+        //   backgroundColor: Colors.white,
+        //   surfaceTintColor: Colors.white,
+        //   contentPadding: EdgeInsets.fromLTRB(20.w, 40.w, 20.w, 10.w),
+        //   actionsPadding: EdgeInsets.only(top: 8.w, bottom: 28.w),
+        //   content: SingleChildScrollView(
+        //     child: Column(
+        //       crossAxisAlignment: CrossAxisAlignment.center,
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Container(
+        //           margin: EdgeInsets.only(bottom: 16.w),
+        //           width: 125.w,
+        //           child: Image.asset('assets/images/dialog_images/image_2.png'),
+        //         ),
+        //         Text(
+        //           'Profile updated successfully',
+        //           style: Theme.of(context).textTheme.labelMedium,
+        //           textAlign: TextAlign.center,
+        //         )
+        //       ],
+        //     ),
+        //   ),
+        //   actions: [
+        //     Center(
+        //       child: SizedBox(
+        //         width: 110.w,
+        //         height: 40.w,
+        //         child: ElevatedButton(
+        //           onPressed: () {
+        //             Navigator.of(context).pop();
+        //           },
+        //           style: ElevatedButton.styleFrom(
+        //             padding: EdgeInsets.zero,
+        //             shape: RoundedRectangleBorder(
+        //               borderRadius: BorderRadius.circular(7.w),
+        //             ),
+        //             textStyle: Theme.of(context).textTheme.headlineMedium,
+        //             backgroundColor: const Color.fromRGBO(26, 171, 97, 1),
+        //           ),
+        //           child: const Text('Okay'),
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // );
       },
     );
   }

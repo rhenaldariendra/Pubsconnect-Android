@@ -1,7 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:thesis_pubsconnect/api/place_api.dart';
+import 'package:thesis_pubsconnect/component/dialog_success.dart';
 import 'package:thesis_pubsconnect/component/loading.dart';
+import 'package:thesis_pubsconnect/pages/home.dart';
+import 'package:thesis_pubsconnect/utils/session_provider.dart';
 
 class PlaceDetail extends StatefulWidget {
   final dynamic detailId;
@@ -13,6 +20,148 @@ class PlaceDetail extends StatefulWidget {
 }
 
 class _PlaceDetailState extends State<PlaceDetail> {
+  bool _isFavorite = false;
+  bool _isLoading = false;
+
+  void _removeSavePlace() async {
+    setState(() {
+      _isLoading = true;
+    });
+    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    String? userId = sessionProvider.getUser()?.uid;
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('save_place').where('user id', isEqualTo: userId).get();
+    for (var data in querySnapshot.docs) {
+      Map<String, dynamic> datas = data.data() as Map<String, dynamic>;
+      if (datas['place_id'] == widget.detailId) {
+        // print(data.id);
+        await FirebaseFirestore.instance.collection('save_place').doc(data.id).delete();
+      }
+    }
+    setState(() {
+      _isFavorite = false;
+      _isLoading = false;
+    });
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const DialogSuccess(
+          destination: HomeScreen(),
+          imagePath: 'assets/images/dialog_images/dialog_6.png',
+          message: 'So sad, there is a missing place',
+          redirect: false,
+          isPrimary: true,
+          buttonMessage: 'Okay',
+          titleMessage: 'Oh, no...',
+        );
+      },
+    );
+  }
+
+  void _addSavePlace() async {
+    setState(() {
+      _isLoading = true;
+    });
+    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    String? userId = sessionProvider.getUser()?.uid;
+
+    // DocumentReference newDocumentRef = await FirebaseFirestore.instance.collection('save_place').add({
+    await FirebaseFirestore.instance.collection('save_place').add({
+      'user id': userId,
+      'place_id': widget.detailId,
+    });
+    setState(() {
+      _isFavorite = true;
+      _isLoading = false;
+    });
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const DialogSuccess(
+          destination: HomeScreen(),
+          imagePath: 'assets/images/dialog_images/dialog_7.png',
+          message: 'Your favorite place has been saved',
+          redirect: false,
+          isPrimary: true,
+          buttonMessage: 'Done',
+          titleMessage: 'Nice!',
+        );
+        // return AlertDialog(
+        //   shape: RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.circular(20.w),
+        //   ),
+        //   backgroundColor: Colors.white,
+        //   surfaceTintColor: Colors.white,
+        //   contentPadding: EdgeInsets.fromLTRB(20.w, 40.w, 20.w, 10.w),
+        //   actionsPadding: EdgeInsets.only(top: 8.w, bottom: 28.w),
+        //   content: SingleChildScrollView(
+        //     child: Column(
+        //       crossAxisAlignment: CrossAxisAlignment.center,
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Container(
+        //           margin: EdgeInsets.only(bottom: 16.w),
+        //           width: 125.w,
+        //           child: Image.asset('assets/images/image_5.png'),
+        //         ),
+        //         Text(
+        //           'Profile updated successfully',
+        //           style: Theme.of(context).textTheme.labelMedium,
+        //           textAlign: TextAlign.center,
+        //         )
+        //       ],
+        //     ),
+        //   ),
+        //   actions: [
+        //     Center(
+        //       child: SizedBox(
+        //         width: 110.w,
+        //         height: 40.w,
+        //         child: ElevatedButton(
+        //           onPressed: () {
+        //             Navigator.of(context).pop();
+        //           },
+        //           style: ElevatedButton.styleFrom(
+        //             padding: EdgeInsets.zero,
+        //             shape: RoundedRectangleBorder(
+        //               borderRadius: BorderRadius.circular(7.w),
+        //             ),
+        //             textStyle: Theme.of(context).textTheme.headlineMedium,
+        //             backgroundColor: const Color.fromRGBO(26, 171, 97, 1),
+        //           ),
+        //           child: const Text('Done'),
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // );
+      },
+    );
+  }
+
+  void _checkedSavePlace() async {
+    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    String? userId = sessionProvider.getUser()?.uid;
+
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('save_place').where('user id', isEqualTo: userId).get();
+
+    for (var data in querySnapshot.docs) {
+      Map<String, dynamic> datas = data.data() as Map<String, dynamic>;
+      if (datas['place_id'] == widget.detailId) {
+        setState(() {
+          _isFavorite = true;
+        });
+      }
+    }
+    print(_isFavorite);
+    // for
+  }
+
+  @override
+  void initState() {
+    _checkedSavePlace();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,11 +186,14 @@ class _PlaceDetailState extends State<PlaceDetail> {
       body: FutureBuilder(
         future: PlaceAPI.getDetail(widget.detailId),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
+          print(widget.detailId);
           if (snapshot.hasData) {
             final data = snapshot.data;
-            return _buildPlaceDetail(data);
+            print('ada');
+            return _isLoading ? const Loading(height: double.infinity) : _buildPlaceDetail(data);
           } else {
             // return _buildPlaceDetail('data');
+            print('gaada');
             return const Loading(height: double.infinity);
           }
         },
@@ -136,7 +288,7 @@ class _PlaceDetailState extends State<PlaceDetail> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: _isFavorite ? _removeSavePlace : _addSavePlace,
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.w)),
                             padding: EdgeInsets.zero,
@@ -145,7 +297,7 @@ class _PlaceDetailState extends State<PlaceDetail> {
                             maximumSize: Size(50.w, double.infinity),
                           ),
                           child: Icon(
-                            Icons.bookmark_add_outlined,
+                            _isFavorite ? Icons.bookmark_remove : Icons.bookmark_add_outlined,
                             size: 25.w,
                             color: Colors.white,
                           ),

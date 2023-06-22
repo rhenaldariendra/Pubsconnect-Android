@@ -5,8 +5,9 @@ class DialogAlert extends StatelessWidget {
   final BuildContext ctx;
   final dynamic placeholder;
   final String imagePath;
+  final String titleMessage;
 
-  const DialogAlert({super.key, required this.ctx, required this.placeholder, required this.imagePath});
+  const DialogAlert({super.key, required this.ctx, required this.placeholder, required this.imagePath, required this.titleMessage});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,18 @@ class DialogAlert extends StatelessWidget {
               height: 20.w,
             ),
             Text(
+              titleMessage,
+              style: TextStyle(
+                fontFamily: 'Nunito',
+                fontWeight: FontWeight.w700,
+                fontSize: 24.sp,
+                color: Theme.of(context).colorScheme.error,
+              ),
+            ),
+            SizedBox(
+              height: 16.w,
+            ),
+            Text(
               placeholder,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.labelMedium,
@@ -39,28 +52,30 @@ class DialogAlert extends StatelessWidget {
         ),
       ),
       actions: [
-        SizedBox(
-          width: 92.w,
-          height: 40.w,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.zero,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(7.w),
+        Center(
+          child: SizedBox(
+            width: 92.w,
+            height: 40.w,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.zero,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(21.w),
+                ),
+                backgroundColor: Theme.of(context).colorScheme.error,
               ),
-              backgroundColor: Theme.of(context).colorScheme.error,
-            ),
-            onPressed: () {
-              Navigator.pop(ctx);
-            },
-            child: Center(
-              child: Text(
-                'Okay',
-                style: TextStyle(
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16.sp,
-                  color: Colors.white,
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: Center(
+                child: Text(
+                  'Okay',
+                  style: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
