@@ -76,6 +76,7 @@ flutter:
     - assets/images/image_4.png
     - assets/images/image_5.png
     - assets/images/image_6.png
+    - assets/images/image_7.png
     - assets/images/male.png
     - assets/images/female.png
     - assets/images/mrt.png
@@ -87,6 +88,8 @@ flutter:
     - assets/images/imagePlace.png
     - assets/images/image_not_found.png
     - assets/images/exit.png
+    - assets/images/maps.png
+    - assets/images/dot.png
     - assets/images/dialog_images/dialog_1.png
     - assets/images/dialog_images/dialog_2.png
     - assets/images/dialog_images/dialog_3.png
@@ -102,6 +105,12 @@ flutter:
     - assets/images/background_weather/sunny_cloudy.png
     - assets/images/background_weather/sunny.png
     - assets/images/background_weather/thunderstorm.png
+    - assets/images/transport/angkutan_kaicommuter.png
+    - assets/images/transport/angkutan_lrt.png
+    - assets/images/transport/angkutan_mikrotrans.png
+    - assets/images/transport/angkutan_mrt.png
+    - assets/images/transport/angkutan_railink.png
+    - assets/images/transport/angkutan_tj.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

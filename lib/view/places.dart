@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thesis_pubsconnect/api/place_api.dart';
 import 'package:thesis_pubsconnect/component/place_card.dart';
+import 'package:thesis_pubsconnect/pages/explore.dart';
 
 class Places extends StatelessWidget {
   const Places({super.key});
@@ -9,18 +10,46 @@ class Places extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(
-          'Explore Cities',
-          style: TextStyle(
-            fontFamily: 'Nunito',
-            fontSize: 21.sp,
-            fontWeight: FontWeight.w600,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text(
+              'Explore Cities',
+              style: TextStyle(
+                fontFamily: 'Nunito',
+                fontSize: 21.sp,
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.left,
+            ),
+            GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const ExploreCities()))),
+              child: Text(
+                'View All',
+                style: TextStyle(
+                  fontFamily: 'Nunito',
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ),
+          ],
         ),
+        // Text(
+        //   'View All',
+        //   style: TextStyle(
+        //     fontFamily: 'Nunito',
+        //     fontSize: 13.sp,
+        //     fontWeight: FontWeight.w600,
+        //     color: Theme.of(context).colorScheme.primary,
+        //   ),
+        // ),
         SizedBox(
-          height: 24.w,
+          height: 16.w,
         ),
         FutureBuilder(
           future: PlaceAPI.getLocation(),

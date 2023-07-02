@@ -165,7 +165,7 @@ class _PlaceDetailState extends State<PlaceDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(252, 251, 252, 1),
+      backgroundColor: Colors.white,
       floatingActionButton: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20.w),
@@ -189,11 +189,11 @@ class _PlaceDetailState extends State<PlaceDetail> {
           print(widget.detailId);
           if (snapshot.hasData) {
             final data = snapshot.data;
-            print('ada');
+            // print('ada');
             return _isLoading ? const Loading(height: double.infinity) : _buildPlaceDetail(data);
           } else {
             // return _buildPlaceDetail('data');
-            print('gaada');
+            // print('gaada');
             return const Loading(height: double.infinity);
           }
         },
@@ -219,7 +219,10 @@ class _PlaceDetailState extends State<PlaceDetail> {
         ListView(
           children: [
             Container(
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(18.w), topRight: Radius.circular(18.w))),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(18.w), topRight: Radius.circular(18.w)),
+              ),
               margin: EdgeInsets.only(top: 420.w),
               padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 16.w, bottom: 30.w),
               child: Column(

@@ -6,7 +6,9 @@ import 'package:provider/provider.dart';
 import 'package:thesis_pubsconnect/auth/signin.dart';
 import 'package:thesis_pubsconnect/boarding/boarding.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
+import 'package:thesis_pubsconnect/pages/destination.dart';
 import 'package:thesis_pubsconnect/pages/home.dart';
+import 'package:thesis_pubsconnect/pages/journey.dart';
 import 'package:thesis_pubsconnect/pages/place_detail.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
 
@@ -78,71 +80,72 @@ class MainApp extends StatelessWidget {
             useMaterial3: true,
             colorScheme: kColorScheme,
             textTheme: ThemeData().textTheme.copyWith(
-                titleLarge: TextStyle(
-                  fontFamily: 'Geoma',
-                  fontSize: 51.sp,
-                  color: kColorScheme.primary,
+                  titleLarge: TextStyle(
+                    fontFamily: 'Geoma',
+                    fontSize: 50.sp, //51
+                    color: kColorScheme.primary,
+                  ),
+                  titleMedium: TextStyle(
+                    fontFamily: 'Geoma',
+                    fontSize: 32.sp,
+                    color: kColorScheme.primary,
+                  ),
+                  titleSmall: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 24.sp,
+                    color: kColorScheme.primary,
+                  ),
+                  bodyLarge: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 32.sp,
+                    color: Colors.black,
+                  ),
+                  bodyMedium: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.normal,
+                    fontSize: 25.sp,
+                    color: Colors.black,
+                  ),
+                  bodySmall: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.normal,
+                    fontSize: 16.sp,
+                    color: Colors.black,
+                  ),
+                  labelMedium: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    color: const Color.fromRGBO(44, 44, 44, 1),
+                  ),
+                  labelSmall: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14.sp,
+                    letterSpacing: 0,
+                    color: Colors.black,
+                  ),
+                  headlineSmall: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 12.sp,
+                    color: kColorScheme.primary,
+                  ),
+                  headlineMedium: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16.sp,
+                    color: Colors.white,
+                  ),
+                  displaySmall: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18.sp,
+                    color: Colors.black54,
+                  ),
                 ),
-                titleMedium: TextStyle(
-                  fontFamily: 'Geoma',
-                  fontSize: 32.sp,
-                  color: kColorScheme.primary,
-                ),
-                titleSmall: TextStyle(
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.w700,
-                  fontSize: 24.sp,
-                  color: kColorScheme.primary,
-                ),
-                bodyLarge: TextStyle(
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.w700,
-                  fontSize: 32.sp,
-                  color: Colors.black,
-                ),
-                bodyMedium: TextStyle(
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.normal,
-                  fontSize: 25.sp,
-                  color: Colors.black,
-                ),
-                bodySmall: TextStyle(
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.normal,
-                  fontSize: 16.sp,
-                  color: Colors.black,
-                ),
-                labelMedium: TextStyle(
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16.sp,
-                  color: const Color.fromRGBO(44, 44, 44, 1),
-                ),
-                labelSmall: TextStyle(
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14.sp,
-                  letterSpacing: 0,
-                  color: Colors.black,
-                ),
-                headlineSmall: TextStyle(
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.w700,
-                  fontSize: 12.sp,
-                  color: kColorScheme.primary,
-                ),
-                headlineMedium: TextStyle(
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16.sp,
-                  color: Colors.white,
-                ),
-                displaySmall: TextStyle(
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18.sp,
-                  color: Colors.black54,
-                )),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
                 backgroundColor: kColorScheme.primary,

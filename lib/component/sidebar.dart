@@ -6,8 +6,10 @@ import 'package:provider/provider.dart';
 import 'package:thesis_pubsconnect/auth/signin.dart';
 import 'package:thesis_pubsconnect/component/dialog_confirmation.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
+import 'package:thesis_pubsconnect/pages/destination.dart';
 import 'package:thesis_pubsconnect/pages/explore.dart';
 import 'package:thesis_pubsconnect/pages/home.dart';
+import 'package:thesis_pubsconnect/pages/save_place.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
 
 class Sidebarr extends StatefulWidget {
@@ -196,7 +198,7 @@ class _SidebarrState extends State<Sidebarr> {
               color: Colors.black54,
             ),
             title: Text('Destination', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const Destination()))),
           ),
           ListTile(
             dense: true,
@@ -222,7 +224,7 @@ class _SidebarrState extends State<Sidebarr> {
               color: Colors.black54,
             ),
             title: Text('Save Place', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const SavePlace()))),
           ),
           ListTile(
             dense: true,

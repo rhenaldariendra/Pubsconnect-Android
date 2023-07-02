@@ -32,6 +32,17 @@ class PlaceAPI {
       throw Exception('Failed to load data');
     }
   }
+  static Future<Map<String, dynamic>> getLocationbyId(id) async {
+    // final url = Uri.parse('$_baseUrlOthers/$id/photos?key=$_apiKey&language=en');
+    final url = Uri.parse('$_baseUrlOthers$id/details?key=$_apiKey&language=en&currency=IDR');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      final result = jsonDecode(response.body);
+      return result;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
 
   static Future<Map<String, dynamic>> getLocation() async {
     Position position = await Geolocator.getCurrentPosition(

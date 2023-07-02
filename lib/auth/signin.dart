@@ -32,18 +32,12 @@ class _SignInState extends State<SignIn> {
     String passwordText = password.getText();
     bool checkError = false;
 
-    String placeholder = 'Please make sure you enter a valid';
 
     if (emailText.trim().isEmpty) {
       checkError = true;
-      placeholder += ' email';
     }
     if (passwordText.trim().isEmpty) {
-      if (checkError == true) {
-        placeholder += ',';
-      }
       checkError = true;
-      placeholder += ' password';
     }
 
     await Future.delayed(const Duration(seconds: 2));

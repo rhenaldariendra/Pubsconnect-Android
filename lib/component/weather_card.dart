@@ -129,15 +129,15 @@ class _WeatherCardState extends State<WeatherCard> {
                   ),
                 ],
               ),
-              // Text(
-              //   data.cityName,
-              //   style: TextStyle(
-              //     fontFamily: 'Nunito',
-              //     fontWeight: FontWeight.w700,
-              //     fontSize: 13.sp,
-              //     color: Colors.white,
-              //   ),
-              // ),
+              Text(
+                data['cityName'],
+                style: TextStyle(
+                  fontFamily: 'Nunito',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 13.sp,
+                  color: Colors.white,
+                ),
+              ),
             ],
           ),
         ],

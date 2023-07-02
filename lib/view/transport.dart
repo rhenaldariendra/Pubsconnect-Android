@@ -24,11 +24,11 @@ class Transport extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [
-            TransportBox(imagePath: 'assets/images/bus.png'),
-            TransportBox(imagePath: 'assets/images/subway.png'),
-            TransportBox(imagePath: 'assets/images/shuttle.png'),
-            TransportBox(imagePath: 'assets/images/train.png'),
-            TransportBox(imagePath: 'assets/images/mrt.png'),
+            TransportBox(imagePath: 'assets/images/transport/angkutan_tj.png'),
+            TransportBox(imagePath: 'assets/images/transport/angkutan_mrt.png'),
+            TransportBox(imagePath: 'assets/images/transport/angkutan_mikrotrans.png'),
+            TransportBox(imagePath: 'assets/images/transport/angkutan_kaicommuter.png'),
+            TransportBox(imagePath: 'assets/images/transport/angkutan_lrt.png'),
           ],
         ),
         SizedBox(
