@@ -7,7 +7,9 @@ import 'package:thesis_pubsconnect/auth/signin.dart';
 import 'package:thesis_pubsconnect/boarding/boarding.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
 import 'package:thesis_pubsconnect/pages/destination.dart';
+import 'package:thesis_pubsconnect/pages/detail_route.dart';
 import 'package:thesis_pubsconnect/pages/home.dart';
+import 'package:thesis_pubsconnect/pages/information_route.dart';
 import 'package:thesis_pubsconnect/pages/journey.dart';
 import 'package:thesis_pubsconnect/pages/place_detail.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
@@ -157,7 +159,7 @@ class MainApp extends StatelessWidget {
           themeMode: ThemeMode.light,
         );
       },
-      child: checkLoginStatus(context) ? const HomeScreen() : const Boarding(),
+      child: checkLoginStatus(context) ? const DetailRoute() : const Boarding(),
     );
   }
 }

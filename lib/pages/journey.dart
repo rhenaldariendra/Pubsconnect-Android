@@ -6,7 +6,11 @@ class Journey extends StatefulWidget {
   final Map<String, dynamic>? dataTransport;
   final String startName;
   final String endName;
-  const Journey({super.key, this.dataTransport, required this.startName, required this.endName});
+  const Journey(
+      {super.key,
+      this.dataTransport,
+      required this.startName,
+      required this.endName});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -33,7 +37,9 @@ class _JourneyState extends State<Journey> {
                     height: 149.w,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20.w), bottomRight: Radius.circular(20.w)),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20.w),
+                          bottomRight: Radius.circular(20.w)),
                       gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -107,7 +113,8 @@ class _JourneyState extends State<Journey> {
                                 width: 200.w,
                                 child: Text(
                                   widget.endName,
-                                  style: Theme.of(context).textTheme.labelMedium,
+                                  style:
+                                      Theme.of(context).textTheme.labelMedium,
                                   softWrap: true,
                                 ),
                               ),
@@ -133,7 +140,9 @@ class _JourneyState extends State<Journey> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  for (int i = 0; i < widget.dataTransport?['routes'].length; i++)
+                  for (int i = 0;
+                      i < widget.dataTransport?['routes'].length;
+                      i++)
                     Ticket(
                       startName: widget.startName,
                       endName: widget.endName,
