@@ -35,17 +35,6 @@ class _SavePlaceState extends State<SavePlace> {
     List<QueryDocumentSnapshot<Object?>> docSnapshot;
     Map<String, dynamic> item = {};
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('save_place').where('user id', isEqualTo: users!.uid).get();
-    // .then(
-    //       (QuerySnapshot querySnapshot) => {
-    //         docSnapshot = querySnapshot.docs,
-    //         for (var data in docSnapshot)
-    //           {
-    //             item = data.data() as Map<String, dynamic>,
-    //             tes!.add(item['place_id']),
-    //           }
-    //       },
-    //     );
-
     dynamic listItem;
     for (var data in querySnapshot.docs) {
       var place_ids = data.data() as Map<String, dynamic>;
@@ -56,13 +45,11 @@ class _SavePlaceState extends State<SavePlace> {
         arrayOfMaps.add(listItem);
       }
     }
-
     var dataLen = arrayOfMaps.length;
     if (dataLen > 10) dataLen = 10;
     for (var v = 1; v < dataLen; v++) arrRow.add(auto);
     // ignore: avoid_print, prefer_interpolation_to_compose_strings
     print('object' + dataLen.toString());
-
     print(arrRow.length);
     return arrayOfMaps;
   }

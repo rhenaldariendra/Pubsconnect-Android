@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thesis_pubsconnect/component/transport_box.dart';
+import 'package:thesis_pubsconnect/pages/information_route.dart';
 
 class Transport extends StatelessWidget {
   const Transport({super.key});
@@ -23,12 +24,32 @@ class Transport extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            TransportBox(imagePath: 'assets/images/transport/angkutan_tj.png'),
-            TransportBox(imagePath: 'assets/images/transport/angkutan_mrt.png'),
-            TransportBox(imagePath: 'assets/images/transport/angkutan_mikrotrans.png'),
-            TransportBox(imagePath: 'assets/images/transport/angkutan_kaicommuter.png'),
-            TransportBox(imagePath: 'assets/images/transport/angkutan_lrt.png'),
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => const InformationRoute(id: 1)),
+              )),
+              child: TransportBox(
+                imagePath: 'assets/images/transport/angkutan_tj.png',
+                transportName: 'Transjakarta',
+              ),
+            ),
+            TransportBox(
+              imagePath: 'assets/images/transport/angkutan_mrt.png',
+              transportName: 'MRT',
+            ),
+            TransportBox(
+              imagePath: 'assets/images/transport/angkutan_mikrotrans.png',
+              transportName: 'Mikrotrans',
+            ),
+            TransportBox(
+              imagePath: 'assets/images/transport/angkutan_kaicommuter.png',
+              transportName: 'KRL',
+            ),
+            TransportBox(
+              imagePath: 'assets/images/transport/angkutan_lrt.png',
+              transportName: 'LRT',
+            ),
           ],
         ),
         SizedBox(

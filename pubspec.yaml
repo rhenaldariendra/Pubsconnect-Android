@@ -79,9 +79,6 @@ flutter:
     - assets/images/image_7.png
     - assets/images/male.png
     - assets/images/female.png
-    - assets/images/SunnyCloudy.png
-    - assets/images/sunCloud.png
-    - assets/images/imagePlace.png
     - assets/images/image_not_found.png
     - assets/images/exit.png
     - assets/images/maps.png

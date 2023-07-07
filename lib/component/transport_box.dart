@@ -3,13 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TransportBox extends StatelessWidget {
   final String imagePath;
-  const TransportBox({super.key, required this.imagePath});
+  final String transportName;
+
+  const TransportBox({super.key, required this.imagePath, required this.transportName});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 47.w,
-      height: 47.w,
+      width: 60.w,
+      height: 60.w,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(8.w)),
@@ -21,11 +23,26 @@ class TransportBox extends StatelessWidget {
           ),
         ],
       ),
-      child: Center(
-        child: Image.asset(
-          imagePath,
-          width: 30.w,
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            imagePath,
+            width: 30.w,
+          ),
+          SizedBox(
+            height: 4.w,
+          ),
+          Text(
+            transportName,
+            style: TextStyle(
+              fontFamily: 'Nunito',
+              fontWeight: FontWeight.normal,
+              fontSize: 10.sp,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
     );
   }

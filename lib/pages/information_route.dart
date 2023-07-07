@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thesis_pubsconnect/pages/detail_route.dart';
 
 class InformationRoute extends StatefulWidget {
-  const InformationRoute({super.key});
+  final int id;
+  const InformationRoute({super.key, required this.id});
 
   @override
   State<InformationRoute> createState() => _InformationRouteState();
@@ -46,7 +48,11 @@ class _InformationRouteState extends State<InformationRoute> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GestureDetector(
-              onTap: () => print('hjhj'),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => DetailRoute(
+                      id: widget.id,
+                    )),
+              )),
               child: Row(
                 children: [
                   Container(
@@ -90,4 +96,3 @@ class _InformationRouteState extends State<InformationRoute> {
     );
   }
 }
-

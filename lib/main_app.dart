@@ -44,23 +44,28 @@ class MainApp extends StatelessWidget {
     UserModel userModels;
 
     if (user != null) {
-      SessionProvider sessionProvider = Provider.of<SessionProvider>(ctx, listen: false);
-      FirebaseFirestore.instance.collection('users').where('uid', isEqualTo: user.uid).get().then((QuerySnapshot querySnapshot) => {
-            if (querySnapshot.size > 0)
-              {
-                docSnapshot = querySnapshot.docs[0],
-                userDatas = docSnapshot.data() as Map<String, dynamic>,
-                userModels = UserModel(
-                  docId: docSnapshot.id,
-                  uid: userDatas['uid'],
-                  name: userDatas['name'],
-                  email: userDatas['email'],
-                  gender: userDatas['gender'],
-                  phoneNumber: userDatas['phone number'],
-                ),
-                sessionProvider.setUser(userModels),
-              }
-          });
+      SessionProvider sessionProvider =
+          Provider.of<SessionProvider>(ctx, listen: false);
+      FirebaseFirestore.instance
+          .collection('users')
+          .where('uid', isEqualTo: user.uid)
+          .get()
+          .then((QuerySnapshot querySnapshot) => {
+                if (querySnapshot.size > 0)
+                  {
+                    docSnapshot = querySnapshot.docs[0],
+                    userDatas = docSnapshot.data() as Map<String, dynamic>,
+                    userModels = UserModel(
+                      docId: docSnapshot.id,
+                      uid: userDatas['uid'],
+                      name: userDatas['name'],
+                      email: userDatas['email'],
+                      gender: userDatas['gender'],
+                      phoneNumber: userDatas['phone number'],
+                    ),
+                    sessionProvider.setUser(userModels),
+                  }
+              });
       return true;
     } else {
       return false;
@@ -159,7 +164,7 @@ class MainApp extends StatelessWidget {
           themeMode: ThemeMode.light,
         );
       },
-      child: checkLoginStatus(context) ? const DetailRoute() : const Boarding(),
+      child: checkLoginStatus(context) ? const HomeScreen() : const Boarding(),
     );
   }
 }

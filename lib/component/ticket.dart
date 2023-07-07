@@ -23,9 +23,6 @@ class _TicketState extends State<Ticket> {
   String btnColor = '';
   List<Map<String, dynamic>> detailTransit = []; //[ {'kode': 'asdasd', 'provider': ''}]
   void checkProvider(String check) {
-    // Firebas
-    // steps -> transitdetails -> line -> agencies
-
     // PT. Transportasi Jakarta - TJ -> me
     // PT. MRT Jakarta - MRT -> ji
     // PT. JakLingko Indonesia - Mikrolet -> ku

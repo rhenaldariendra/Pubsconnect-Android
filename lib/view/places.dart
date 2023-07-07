@@ -39,15 +39,6 @@ class Places extends StatelessWidget {
             ),
           ],
         ),
-        // Text(
-        //   'View All',
-        //   style: TextStyle(
-        //     fontFamily: 'Nunito',
-        //     fontSize: 13.sp,
-        //     fontWeight: FontWeight.w600,
-        //     color: Theme.of(context).colorScheme.primary,
-        //   ),
-        // ),
         SizedBox(
           height: 16.w,
         ),

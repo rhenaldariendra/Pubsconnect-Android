@@ -10,8 +10,6 @@ class PlaceAPI {
   // static const _apiKey = 'DB85B3E868C74B918818EB3503DC6FFA'; old
 
   static Future<Map<String, dynamic>> getDetail(id) async {
-    
-    // final url = Uri.parse('$_baseUrlOthers/$id/photos?key=$_apiKey&language=en');
     final url = Uri.parse('$_baseUrlOthers$id/details?key=$_apiKey&language=en&currency=IDR');
     final response = await http.get(url);
     if (response.statusCode == 200) {
@@ -34,7 +32,6 @@ class PlaceAPI {
     }
   }
   static Future<Map<String, dynamic>> getLocationbyId(id) async {
-    // final url = Uri.parse('$_baseUrlOthers/$id/photos?key=$_apiKey&language=en');
     final url = Uri.parse('$_baseUrlOthers$id/details?key=$_apiKey&language=en&currency=IDR');
     final response = await http.get(url);
     if (response.statusCode == 200) {

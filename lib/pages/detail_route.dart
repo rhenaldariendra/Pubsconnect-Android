@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thesis_pubsconnect/api/image_route_api.dart';
+import 'package:thesis_pubsconnect/component/loading.dart';
 
 class DetailRoute extends StatelessWidget {
-  const DetailRoute({super.key});
+  final int id;
+  const DetailRoute({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +37,25 @@ class DetailRoute extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(24.w, 20.w, 24, 0),
-        child: Image.asset('assets/images/transport/TransJakarta/1.jpg'),
+      body: FutureBuilder(
+        future: ImageRouteApi.getPhoto(id),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            final data = snapshot.data;
+            print(data);
+            return SingleChildScrollView(
+              padding: EdgeInsets.fromLTRB(24.w, 20.w, 24, 0),
+              // child: Image.asset('assets/images/transport/TransJakarta/1.jpg'),
+              child: Image.network(data),
+            );
+          }
+          else if(snapshot.hasError){
+            throw Exception('error');
+          }
+          else {
+            return const Loading(height: double.infinity,);
+          }
+        },
       ),
     );
   }

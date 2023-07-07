@@ -21,7 +21,6 @@ class WeatherApi {
 
     final response = await http.get(Uri.parse('$_baseUrl?lat=$lat&lon=$lon&appid=$_apiKey'));
     final response2 = await http.get(Uri.parse('$_locationUrl$lat,$lon&key=AIzaSyBscF7jto3agk8vn5CjvSdNkMigQ2KMnh8'));
-    // final response2 = await http.get(Uri.parse('$_locationUrl-6.1483285,106.892449&key=AIzaSyBscF7jto3agk8vn5CjvSdNkMigQ2KMnh8'));
 
     String temp = '';
     if (response.statusCode == 200) {
