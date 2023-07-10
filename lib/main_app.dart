@@ -144,7 +144,7 @@ class MainApp extends StatelessWidget {
                     fontFamily: 'Nunito',
                     fontWeight: FontWeight.w600,
                     fontSize: 16.sp,
-                    color: Colors.white,
+                    color: Colors.white, 
                   ),
                   displaySmall: TextStyle(
                     fontFamily: 'Nunito',
@@ -155,7 +155,7 @@ class MainApp extends StatelessWidget {
                 ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                backgroundColor: kColorScheme.primary,
+                backgroundColor: kColorScheme.primary, 
                 foregroundColor: kColorScheme.onPrimary,
                 padding: EdgeInsets.fromLTRB(90.w, 14.w, 90.w, 14.w),
               ),

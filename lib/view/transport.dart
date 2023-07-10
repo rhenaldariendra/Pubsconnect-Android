@@ -29,26 +29,51 @@ class Transport extends StatelessWidget {
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
                 builder: ((context) => const InformationRoute(id: 1)),
               )),
-              child: TransportBox(
+              child: const TransportBox(
                 imagePath: 'assets/images/transport/angkutan_tj.png',
                 transportName: 'Transjakarta',
+                id: 1,
               ),
             ),
-            TransportBox(
-              imagePath: 'assets/images/transport/angkutan_mrt.png',
-              transportName: 'MRT',
+            GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => const InformationRoute(id: 2)),
+              )),
+              child: const TransportBox(
+                imagePath: 'assets/images/transport/angkutan_mrt.png',
+                transportName: 'MRT',
+                id: 2,
+              ),
             ),
-            TransportBox(
-              imagePath: 'assets/images/transport/angkutan_mikrotrans.png',
-              transportName: 'Mikrotrans',
+            GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => const InformationRoute(id: 3)),
+              )),
+              child: const TransportBox(
+                imagePath: 'assets/images/transport/angkutan_mikrotrans.png',
+                transportName: 'Mikrotrans',
+                id: 3,
+              ),
             ),
-            TransportBox(
-              imagePath: 'assets/images/transport/angkutan_kaicommuter.png',
-              transportName: 'KRL',
+            GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => const InformationRoute(id: 5)),
+              )),
+              child: const TransportBox(
+                imagePath: 'assets/images/transport/angkutan_kaicommuter.png',
+                transportName: 'KRL',
+                id: 5,
+              ),
             ),
-            TransportBox(
-              imagePath: 'assets/images/transport/angkutan_lrt.png',
-              transportName: 'LRT',
+            GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => const InformationRoute(id: 4)),
+              )),
+              child: const TransportBox(
+                imagePath: 'assets/images/transport/angkutan_lrt.png',
+                transportName: 'LRT',
+                id: 4,
+              ),
             ),
           ],
         ),

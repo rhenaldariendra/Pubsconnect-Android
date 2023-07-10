@@ -7,7 +7,8 @@ import 'package:thesis_pubsconnect/component/loading.dart';
 
 class DetailRoute extends StatelessWidget {
   final int id;
-  const DetailRoute({super.key, required this.id});
+  final String rute;
+  const DetailRoute({super.key, required this.id, required this.rute});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class DetailRoute extends StatelessWidget {
         ),
       ),
       body: FutureBuilder(
-        future: ImageRouteApi.getPhoto(id),
+        future: ImageRouteApi.getPhoto(id, rute),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             final data = snapshot.data;

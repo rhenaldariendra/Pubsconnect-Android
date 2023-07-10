@@ -4,8 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class TransportBox extends StatelessWidget {
   final String imagePath;
   final String transportName;
+  final int id;
 
-  const TransportBox({super.key, required this.imagePath, required this.transportName});
+  const TransportBox({super.key, required this.imagePath, required this.transportName, required this.id});
 
   @override
   Widget build(BuildContext context) {
