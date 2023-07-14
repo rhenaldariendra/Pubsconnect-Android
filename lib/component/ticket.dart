@@ -9,7 +9,11 @@ class Ticket extends StatefulWidget {
   final Map<String, dynamic> transportData;
   final String startName;
   final String endName;
-  const Ticket({super.key, required this.transportData, required this.startName, required this.endName});
+  const Ticket(
+      {super.key,
+      required this.transportData,
+      required this.startName,
+      required this.endName});
 
   @override
   State<Ticket> createState() => _TicketState();
@@ -21,7 +25,8 @@ class _TicketState extends State<Ticket> {
   Color buttonColor = const Color.fromRGBO(50, 128, 195, 1);
 
   String btnColor = '';
-  List<Map<String, dynamic>> detailTransit = []; //[ {'kode': 'asdasd', 'provider': ''}]
+  List<Map<String, dynamic>> detailTransit =
+      []; //[ {'kode': 'asdasd', 'provider': ''}]
   void checkProvider(String check) {
     // PT. Transportasi Jakarta - TJ -> me
     // PT. MRT Jakarta - MRT -> ji
@@ -83,9 +88,12 @@ class _TicketState extends State<Ticket> {
       if (element['travel_mode'] != 'WALKING') {
         Map<String, dynamic> temp = {
           // element.con
-          'kode': element['transit_details']['line'].containsKey('short_name') ? element['transit_details']['line']['short_name'] : element['transit_details']['line']['name'],
+          'kode': element['transit_details']['line'].containsKey('short_name')
+              ? element['transit_details']['line']['short_name']
+              : element['transit_details']['line']['name'],
           'provider': element['transit_details']['line']['agencies'][0]['name'],
-          'color': colorCheck(element['transit_details']['line']['agencies'][0]['name']),
+          'color': colorCheck(
+              element['transit_details']['line']['agencies'][0]['name']),
         };
         detailTransit.add(temp);
       }
@@ -255,7 +263,9 @@ class _TicketState extends State<Ticket> {
                       ),
                     ),
                     Text(
-                      widget.transportData.containsKey('fare') ? widget.transportData['fare']['text'] : '-',
+                      widget.transportData.containsKey('fare')
+                          ? widget.transportData['fare']['text']
+                          : '-',
                       style: TextStyle(
                         fontFamily: 'Nunito',
                         fontWeight: FontWeight.w700,

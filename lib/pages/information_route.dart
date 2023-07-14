@@ -71,8 +71,9 @@ class _InformationRouteState extends State<InformationRoute> {
                       child: Row(
                         children: [
                           Container(
-                            width: 38.sp,
-                            height: 23.sp,
+                            margin: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                            padding: EdgeInsets.all(10.w),
+                            // height: 23.sp,
                             decoration: BoxDecoration(
                                 color: Colors.amber,
                                 borderRadius:
@@ -93,28 +94,70 @@ class _InformationRouteState extends State<InformationRoute> {
                           SizedBox(
                             width: 12.w,
                           ),
-                          Text(
-                            item.containsKey('rute')
-                                ? item['rute']
-                                : 'Transjakarta',
-                            // 'asdasd',
-                            style: TextStyle(
-                              fontFamily: 'Nunito',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15.sp,
-                              letterSpacing: 0,
-                              color: Colors.black,
+                          Expanded(
+                            child: Text(
+                              item.containsKey('rute')
+                                  ? item['rute']
+                                  : 'Transjakarta',
+                              style: TextStyle(
+                                fontFamily: 'Nunito',
+                                fontWeight: FontWeight.w600,
+                                fontSize: 15.sp,
+                                letterSpacing: 0,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ],
                       ),
+                      // child: Row(
+                      //   children: [
+                      //     Container(
+                      //       width: 38.sp,
+                      //       height: 23.sp,
+                      //       decoration: BoxDecoration(
+                      //           color: Colors.amber,
+                      //           borderRadius:
+                      //               BorderRadius.all(Radius.circular(6.w))),
+                      //       child: Center(
+                      //         child: Text(
+                      //           item['kode'],
+                      //           style: TextStyle(
+                      //             fontFamily: 'Nunito',
+                      //             fontWeight: FontWeight.w600,
+                      //             fontSize: 13.sp,
+                      //             letterSpacing: 0,
+                      //             color: Colors.black,
+                      //           ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //     SizedBox(
+                      //       width: 12.w,
+                      //     ),
+                      //     Expanded(
+                      //       child: Text(
+                      //         item.containsKey('rute')
+                      //             ? item['rute']
+                      //             : 'Transjakarta',
+                      //         style: TextStyle(
+                      //           fontFamily: 'Nunito',
+                      //           fontWeight: FontWeight.w600,
+                      //           fontSize: 15.sp,
+                      //           letterSpacing: 0,
+                      //           color: Colors.black,
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                     )
                 ],
               );
             } else if (snapshot.hasError) {
               throw Exception(snapshot.error);
             } else {
-              return  Loading(height: 300.w);
+              return Loading(height: 300.w);
             }
           },
         ),
