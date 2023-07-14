@@ -4,7 +4,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 class ImageRouteApi {
   // static const _baseUrl = 'https://maps.googleapis.com/maps/api';
   // static const _apiKey = 'AIzaSyBscF7jto3agk8vn5CjvSdNkMigQ2KMnh8';
-
   // 1 - Tj
   // 2 - Mikrotrans
   // 3 - MRT
@@ -14,6 +13,7 @@ class ImageRouteApi {
   static Future<String> getPhoto(id, kode) async {
     final storage = FirebaseStorage.instance;
     String basePath = '';
+
     switch (id) {
       case 1:
         basePath = 'transjakarta/';
@@ -45,7 +45,6 @@ class ImageRouteApi {
         .collection('transport')
         .where('id', isEqualTo: id)
         .get();
-    print(data.docs);
     List<Map<String, dynamic>> dataset = [];
     int length = data.docs.length;
 

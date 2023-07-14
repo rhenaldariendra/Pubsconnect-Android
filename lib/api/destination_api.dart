@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:thesis_pubsconnect/model/autocomplete_prediction.dart';
-import 'package:geolocator/geolocator.dart';
 
 class DestinationAPI {
   static const _baseUrl = 'https://maps.googleapis.com/maps/api';
@@ -23,7 +22,6 @@ class DestinationAPI {
       url = '$url$endLat,$endLon&mode=transit&alternatives=true&key=$_apiKey&region=id';
     }
 
-    print(url);
 
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {

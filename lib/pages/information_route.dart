@@ -56,7 +56,6 @@ class _InformationRouteState extends State<InformationRoute> {
         child: FutureBuilder(
           future: ImageRouteApi.getList(widget.id),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
-            // print(data);
             if (snapshot.hasData) {
               final data = snapshot.data;
               return Column(
@@ -67,7 +66,7 @@ class _InformationRouteState extends State<InformationRoute> {
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: ((context) => DetailRoute(
-                                id: item['id'], rute: item['kode']))),
+                                id: item['id'], rute: item['kode'].toString().toLowerCase()))),
                       ),
                       child: Row(
                         children: [
