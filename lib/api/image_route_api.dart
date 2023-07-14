@@ -41,10 +41,15 @@ class ImageRouteApi {
   }
 
   static Future<List<Map<String, dynamic>>> getList(id) async {
+    // QuerySnapshot<Map<String, dynamic>> data = await FirebaseFirestore.instance
+    //     .collection('transport')
+    //     .where('id', isEqualTo: id)
+    //     .get();
     QuerySnapshot<Map<String, dynamic>> data = await FirebaseFirestore.instance
         .collection('transport')
         // .orderBy('kode', descending: false)
         .where('id', isEqualTo: id)
+        .orderBy("kode", descending: false)
         .get();
     List<Map<String, dynamic>> dataset = [];
     int length = data.docs.length;
@@ -52,6 +57,30 @@ class ImageRouteApi {
     for (int i = 0; i < length; i++) {
       dataset.add(data.docs[i].data());
     }
+
+    // dataset.sort((a, b) {
+    //   final String idA = a['kode'];
+    //   final String idB = b['kode'];
+
+    //   final RegExp numRegex = RegExp(r'\d+');
+    //   final RegExp alphaRegex = RegExp(r'[a-zA-Z]+');
+
+    //   final int numA = int.parse(numRegex.stringMatch(idA ?? '') ?? '');
+    //   final int numB = int.parse(numRegex.stringMatch(idB ?? '') ?? '');
+
+    //   final String alphaA = alphaRegex.stringMatch(idA ?? '') ?? '';
+    //   final String alphaB = alphaRegex.stringMatch(idB ?? '') ?? '';
+
+    //   if (numA == numB) {
+    //     return alphaA.compareTo(alphaB);
+    //   } else {
+    //     return numA.compareTo(numB);
+    //   }
+    // });
+
+    // dataset.forEach((map) {
+    //   print("id: ${map['kode']}");
+    // });
 
     return dataset;
   }
