@@ -41,12 +41,11 @@ class DetailRoute extends StatelessWidget {
       body: FutureBuilder(
         future: ImageRouteApi.getPhoto(id, rute),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
+            print(rute);
           if (snapshot.hasData) {
             final data = snapshot.data;
-            print(data);
             return SingleChildScrollView(
               padding: EdgeInsets.fromLTRB(24.w, 20.w, 24, 0),
-              // child: Image.asset('assets/images/transport/TransJakarta/1.jpg'),
               child: Image.network(data),
             );
           }

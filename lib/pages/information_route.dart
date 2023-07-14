@@ -65,8 +65,14 @@ class _InformationRouteState extends State<InformationRoute> {
                     GestureDetector(
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: ((context) => DetailRoute(
-                                id: item['id'], rute: item['kode'].toString().toLowerCase()))),
+                          builder: (context) => DetailRoute(
+                            id: item['id'],
+                            rute: item['kode']
+                                .toString()
+                                .toLowerCase()
+                                .replaceAll(RegExp(r'[^a-zA-Z0-9\s]'), ''),
+                          ),
+                        ),
                       ),
                       child: Row(
                         children: [
