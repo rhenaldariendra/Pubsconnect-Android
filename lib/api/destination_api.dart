@@ -48,6 +48,11 @@ class DestinationAPI {
       throw Exception('Failed to load data');
     }
   }
+
+
+  static void getTripDetail() async {
+    
+  }
 }
 
 class AutoCompleteResponse {

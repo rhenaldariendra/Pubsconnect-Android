@@ -140,7 +140,11 @@ class _TicketState extends State<Ticket> {
               child: Container(
                 height: 1,
                 child: CustomPaint(
-                  painter: DashedLinePainter(),
+                  painter: DashedLinePainter(
+                    isVertical: false,
+                    stroke: 1,
+                    color: Color.fromRGBO(0, 0, 0, 1)
+                  ),
                 ),
               ),
             ),

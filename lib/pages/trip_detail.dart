@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thesis_pubsconnect/component/dashed_line_painter.dart';
 
 class TripDetail extends StatefulWidget {
   final String startName;
@@ -108,7 +107,9 @@ class _TripDetailState extends State<TripDetail> {
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(30.w), topRight: Radius.circular(30.w)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30.w),
+                      topRight: Radius.circular(30.w)),
                 ),
                 margin: EdgeInsets.only(top: 190.w),
                 padding: EdgeInsets.only(top: 36.w, bottom: 36.w),
@@ -116,7 +117,9 @@ class _TripDetailState extends State<TripDetail> {
                   children: [
                     Container(
                       width: double.infinity,
+                      height: 90.w,
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                             width: 65.w,
@@ -125,7 +128,237 @@ class _TripDetailState extends State<TripDetail> {
                               size: 24.w,
                             ),
                           ),
-                          Text('Duren Tiga'),
+                          Container(
+                            width: 14.w,
+                            height: double.infinity,
+                            // color: Colors.black,
+                            child: Stack(
+                              fit: StackFit.passthrough,
+                              children: [
+                                Positioned(
+                                  top: 7.w,
+                                  bottom: 7.w,
+                                  left: 0,
+                                  right: 0,
+                                  child: Container(
+                                    child: CustomPaint(
+                                      painter: DashedLinePainter(
+                                        isVertical: true,
+                                        stroke: 3,
+                                        color: Color.fromRGBO(222, 222, 222, 1)
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 0,
+                                  child: Container(
+                                    width: 14.w,
+                                    height: 14.w,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.green,
+                                    ),
+                                    child: Center(
+                                      child: Container(
+                                        width: 8.w,
+                                        height: 8.w,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 18.w),
+                            width: 210.w,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Duren Tiga',
+                                  style: TextStyle(
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18.sp,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Text(
+                                  '6 Stops',
+                                  style: TextStyle(
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13.sp,
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              '12:21',
+                              style: TextStyle(
+                                fontFamily: 'Nunito',
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18.sp,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 90.w,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(
+                              left: 10.w,
+                              right: 10.w,
+                            ),
+                            width: 65.w,
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.train,
+                                  size: 24.w,
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(top: 3.w),
+                                  padding:
+                                      EdgeInsets.only(top: 2.w, bottom: 2.w),
+                                  width: double.infinity,
+                                  // color: Colors.blue,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8.w)),
+                                    color: Colors.blue,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      '1',
+                                      style: TextStyle(
+                                        fontFamily: 'Nunito',
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 10.sp,
+                                        letterSpacing: 0,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 14.w,
+                            height: double.infinity,
+                            // color: Colors.black,
+                            child: Stack(
+                              fit: StackFit.passthrough,
+                              children: [
+                                Positioned(
+                                  top: 7.w,
+                                  bottom: 7.w,
+                                  left: 0,
+                                  right: 0,
+                                  child: Container(
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 0,
+                                  child: Container(
+                                    width: 14.w,
+                                    height: 14.w,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.blue,
+                                    ),
+                                    child: Center(
+                                      child: Container(
+                                        width: 8.w,
+                                        height: 8.w,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: 0,
+                                  child: Container(
+                                    width: 14.w,
+                                    height: 14.w,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.blue,
+                                    ),
+                                    child: Center(
+                                      child: Container(
+                                        width: 8.w,
+                                        height: 8.w,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 18.w),
+                            width: 210.w,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Duren Tiga',
+                                  style: TextStyle(
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18.sp,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Text(
+                                  '6 Stops',
+                                  style: TextStyle(
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13.sp,
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              '12:21',
+                              style: TextStyle(
+                                fontFamily: 'Nunito',
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18.sp,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),

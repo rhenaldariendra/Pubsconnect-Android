@@ -58,30 +58,6 @@ class ImageRouteApi {
       dataset.add(data.docs[i].data());
     }
 
-    // dataset.sort((a, b) {
-    //   final String idA = a['kode'];
-    //   final String idB = b['kode'];
-
-    //   final RegExp numRegex = RegExp(r'\d+');
-    //   final RegExp alphaRegex = RegExp(r'[a-zA-Z]+');
-
-    //   final int numA = int.parse(numRegex.stringMatch(idA ?? '') ?? '');
-    //   final int numB = int.parse(numRegex.stringMatch(idB ?? '') ?? '');
-
-    //   final String alphaA = alphaRegex.stringMatch(idA ?? '') ?? '';
-    //   final String alphaB = alphaRegex.stringMatch(idB ?? '') ?? '';
-
-    //   if (numA == numB) {
-    //     return alphaA.compareTo(alphaB);
-    //   } else {
-    //     return numA.compareTo(numB);
-    //   }
-    // });
-
-    // dataset.forEach((map) {
-    //   print("id: ${map['kode']}");
-    // });
-
     return dataset;
   }
 }
