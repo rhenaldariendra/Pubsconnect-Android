@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thesis_pubsconnect/api/image_route_api.dart';
 import 'package:thesis_pubsconnect/component/loading.dart';
@@ -17,8 +15,6 @@ class InformationRoute extends StatefulWidget {
 class _InformationRouteState extends State<InformationRoute> {
   @override
   void initState() {
-    // ImageRouteApi.getList(widget.id);
-    // TODO: implement initState
     super.initState();
   }
 
@@ -33,7 +29,7 @@ class _InformationRouteState extends State<InformationRoute> {
           builder: (context) => IconButton(
               onPressed: () => Navigator.of(context).pop(),
               icon: Container(
-                margin: EdgeInsets.only(left: 17.2),
+                margin: EdgeInsets.only(left: 17.w),
                 child: Icon(
                   Icons.arrow_back_ios_new_rounded,
                   size: 20.w,
@@ -77,7 +73,7 @@ class _InformationRouteState extends State<InformationRoute> {
                       child: Row(
                         children: [
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                            margin: EdgeInsets.fromLTRB(0, 8.w, 0, 8.w),
                             padding: EdgeInsets.all(10.w),
                             // height: 23.sp,
                             decoration: BoxDecoration(

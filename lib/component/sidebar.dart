@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +19,7 @@ class Sidebarr extends StatefulWidget {
 }
 
 class _SidebarrState extends State<Sidebarr> {
-  final _auth = FirebaseAuth.instance;
+  // final _auth = FirebaseAuth.instance;
   late dynamic user;
   late String userEmail;
   late String userName;
@@ -62,7 +61,7 @@ class _SidebarrState extends State<Sidebarr> {
     SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
     FirebaseAuth.instance.signOut().then(
           (value) => {
-            print('Logout'),
+            // print('Logout'),
             sessionProvider.clearSession(),
             Navigator.pushReplacement(
               context,

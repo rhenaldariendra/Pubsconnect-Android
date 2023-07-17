@@ -29,6 +29,7 @@ ColorScheme kColorScheme = const ColorScheme(
 );
 
 class MainApp extends StatelessWidget {
+
   const MainApp({super.key});
 
   User? getCurrentUser() {
@@ -54,6 +55,7 @@ class MainApp extends StatelessWidget {
                 if (querySnapshot.size > 0)
                   {
                     docSnapshot = querySnapshot.docs[0],
+                    
                     userDatas = docSnapshot.data() as Map<String, dynamic>,
                     userModels = UserModel(
                       docId: docSnapshot.id,

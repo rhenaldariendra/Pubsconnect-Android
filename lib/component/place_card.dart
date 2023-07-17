@@ -48,7 +48,8 @@ class PlaceCard extends StatelessWidget {
             SizedBox(
               width: 135.w,
               child: Text(
-                data['name'] != null ? data['name'] : 'No Data',
+                // data['name'] != null ? data['name'] : 'No Data',
+                data['name'] ?? 'No Data',
                 style: TextStyle(
                   fontFamily: 'Nunito',
                   fontWeight: FontWeight.w700,
@@ -65,7 +66,8 @@ class PlaceCard extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    data['address_obj']['street1'] != null ? data['address_obj']['street1'] : 'No Data',
+                    // data['address_obj']['street1'] != null ? data['address_obj']['street1'] : 'No Data',
+                    data['address_obj']['street1'] ?? 'No Data',
                     style: TextStyle(
                       fontFamily: 'Nunito',
                       fontWeight: FontWeight.normal,

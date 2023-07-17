@@ -80,7 +80,7 @@ class _ChangePasswordState extends State<ChangePassword> {
           },
         );
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       // ignore: use_build_context_synchronously
       showDialog(
         context: context,

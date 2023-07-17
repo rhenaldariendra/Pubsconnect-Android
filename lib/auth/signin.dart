@@ -54,7 +54,7 @@ class _SignInState extends State<SignIn> {
             )
             .then(
               (value) async => {
-                print('Logged in'),
+                // print('Logged in'),
                 await FirebaseFirestore.instance.collection('users').where('uid', isEqualTo: value.user?.uid).get().then((QuerySnapshot querySnapshot) => {
                       if (querySnapshot.size > 0)
                         {
@@ -82,7 +82,7 @@ class _SignInState extends State<SignIn> {
                 )
               },
             );
-      } on FirebaseAuthException catch (e) {
+      } on FirebaseAuthException {
         setState(() {
           _isLoading = false;
         });

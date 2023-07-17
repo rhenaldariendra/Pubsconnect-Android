@@ -13,7 +13,7 @@ class LocationListTile extends StatelessWidget {
         ListTile(
           onTap: press,
           horizontalTitleGap: 0,
-          leading: Icon(Icons.my_location_outlined),
+          leading: const Icon(Icons.my_location_outlined),
           title: Text(
             location,
             maxLines: 2,

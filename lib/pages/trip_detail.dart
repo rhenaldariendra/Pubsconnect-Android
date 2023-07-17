@@ -14,8 +14,8 @@ class _TripDetailState extends State<TripDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Container(
-        margin: EdgeInsets.only(top: 16.w),
+      floatingActionButton: SizedBox(
+        // margin: EdgeInsets.only(top: 10.w),
         child: IconButton(
           style: IconButton.styleFrom(
             foregroundColor: Colors.white,
@@ -35,9 +35,9 @@ class _TripDetailState extends State<TripDetail> {
         children: [
           Container(
             alignment: Alignment.topCenter,
-            padding: EdgeInsets.only(top: 20.w),
-            margin: EdgeInsets.only(top: 24.w),
-            height: 220.84.w,
+            padding: EdgeInsets.only(top: 50.w),
+            // margin: EdgeInsets.only(top: 24.w),
+            height: 280.84.w,
             width: double.infinity,
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -115,20 +115,20 @@ class _TripDetailState extends State<TripDetail> {
                 padding: EdgeInsets.only(top: 36.w, bottom: 36.w),
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       height: 90.w,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 65.w,
                             child: Icon(
                               Icons.directions_walk_outlined,
                               size: 24.w,
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             width: 14.w,
                             height: double.infinity,
                             // color: Colors.black,
@@ -140,12 +140,12 @@ class _TripDetailState extends State<TripDetail> {
                                   bottom: 7.w,
                                   left: 0,
                                   right: 0,
-                                  child: Container(
+                                  child: SizedBox(
                                     child: CustomPaint(
                                       painter: DashedLinePainter(
                                         isVertical: true,
                                         stroke: 3,
-                                        color: Color.fromRGBO(222, 222, 222, 1)
+                                        color: const Color.fromRGBO(222, 222, 222, 1)
                                       ),
                                     ),
                                   ),
@@ -215,7 +215,7 @@ class _TripDetailState extends State<TripDetail> {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: double.infinity,
                       height: 90.w,
                       child: Row(
@@ -260,7 +260,7 @@ class _TripDetailState extends State<TripDetail> {
                               ],
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             width: 14.w,
                             height: double.infinity,
                             // color: Colors.black,
@@ -364,7 +364,7 @@ class _TripDetailState extends State<TripDetail> {
                     ),
                     ElevatedButton(
                       onPressed: () {},
-                      child: Text('Save Trip'),
+                      child: const Text('Save Trip'),
                     ),
                   ],
                 ),

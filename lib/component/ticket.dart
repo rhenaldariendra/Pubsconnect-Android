@@ -137,13 +137,13 @@ class _TicketState extends State<Ticket> {
               left: 0,
               right: 0,
               top: 84.w,
-              child: Container(
+              child: SizedBox(
                 height: 1,
                 child: CustomPaint(
                   painter: DashedLinePainter(
                     isVertical: false,
                     stroke: 1,
-                    color: Color.fromRGBO(0, 0, 0, 1)
+                    color: const Color.fromRGBO(0, 0, 0, 1)
                   ),
                 ),
               ),
@@ -153,7 +153,7 @@ class _TicketState extends State<Ticket> {
               right: -9.w,
               child: Transform.rotate(
                 angle: -math.pi / 2,
-                child: Container(
+                child: SizedBox(
                   width: 18.w,
                   height: 18.w,
                   child: CustomPaint(
@@ -168,7 +168,7 @@ class _TicketState extends State<Ticket> {
               left: -9.w,
               child: Transform.rotate(
                 angle: math.pi / 2,
-                child: Container(
+                child: SizedBox(
                   width: 18.w,
                   height: 18.w,
                   child: CustomPaint(
@@ -182,7 +182,7 @@ class _TicketState extends State<Ticket> {
               top: 16.w,
               left: 16.w,
               right: 16.w,
-              child: Container(
+              child: SizedBox(
                 width: 152.w,
                 height: 36.w,
                 child: Row(

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextFieldWithoutLabel extends StatefulWidget {
-  final hintText;
+  final String hintText;
   final _fieldController = TextEditingController();
   final VoidCallback onChangedValue;
-  CustomTextFieldWithoutLabel({super.key, this.hintText, required this.onChangedValue});
+  CustomTextFieldWithoutLabel({super.key, required this.hintText, required this.onChangedValue});
 
   @override
   State<CustomTextFieldWithoutLabel> createState() => _CustomTextFieldWithoutLabelState();

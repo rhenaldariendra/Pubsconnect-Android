@@ -152,7 +152,7 @@ class _PlaceDetailState extends State<PlaceDetail> {
         });
       }
     }
-    print(_isFavorite);
+    // print(_isFavorite);
     // for
   }
 
@@ -186,7 +186,7 @@ class _PlaceDetailState extends State<PlaceDetail> {
       body: FutureBuilder(
         future: PlaceAPI.getDetail(widget.detailId),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          print(widget.detailId);
+          // print(widget.detailId);
           if (snapshot.hasData) {
             final data = snapshot.data;
             // print('ada');

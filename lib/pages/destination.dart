@@ -1,12 +1,10 @@
-import 'dart:convert';
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:thesis_pubsconnect/api/destination_api.dart';
 import 'package:thesis_pubsconnect/component/loading.dart';
-import 'package:thesis_pubsconnect/component/text_field.dart';
-import 'package:thesis_pubsconnect/component/text_field_without_label.dart';
 import 'package:thesis_pubsconnect/component/location_list.dart';
 import 'package:thesis_pubsconnect/pages/journey.dart';
 import 'package:thesis_pubsconnect/model/autocomplete_prediction.dart';
@@ -73,7 +71,6 @@ class _DestinationState extends State<Destination> {
     } else {
       snapshot = {};
     }
-    print(snapshot);
     setState(() {
       _isLoading = false;
     });

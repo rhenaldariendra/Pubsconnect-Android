@@ -1,17 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import 'package:thesis_pubsconnect/auth/forgot_password.dart';
 import 'package:thesis_pubsconnect/auth/signin.dart';
 import 'package:thesis_pubsconnect/auth/signup.dart';
-import 'package:thesis_pubsconnect/component/dialog_alert.dart';
-import 'package:thesis_pubsconnect/component/dialog_success.dart';
-import 'package:thesis_pubsconnect/component/text_field.dart';
-import 'package:thesis_pubsconnect/model/user_model.dart';
-import 'package:thesis_pubsconnect/pages/home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:thesis_pubsconnect/utils/session_provider.dart';
 
 class SignForm extends StatefulWidget {
   final String checkForm;
@@ -34,7 +28,6 @@ class _SignFormState extends State<SignForm> {
   // CustomTextField password = CustomTextField(name: 'Password');
   // CustomTextField gender = CustomTextField(name: 'Gender');
   // CustomTextField phone = CustomTextField(name: 'Phone');
-  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -206,7 +199,7 @@ class _SignFormState extends State<SignForm> {
           alignment: Alignment.centerRight,
           child: TextButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => ForgotPassword()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const ForgotPassword()));
             },
             style: TextButton.styleFrom(
               padding: EdgeInsets.zero,
@@ -245,7 +238,7 @@ class _SignFormState extends State<SignForm> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) => SignUp()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) => const SignUp()));
                     },
                     child: Text(
                       'Sign Up',

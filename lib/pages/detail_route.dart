@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thesis_pubsconnect/api/image_route_api.dart';
 import 'package:thesis_pubsconnect/component/loading.dart';
@@ -41,7 +39,7 @@ class DetailRoute extends StatelessWidget {
       body: FutureBuilder(
         future: ImageRouteApi.getPhoto(id, rute),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-            print(rute);
+            // print(rute);
           if (snapshot.hasData) {
             final data = snapshot.data;
             return SingleChildScrollView(

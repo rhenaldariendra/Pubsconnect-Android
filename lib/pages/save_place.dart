@@ -1,10 +1,5 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -23,34 +18,33 @@ class SavePlace extends StatefulWidget {
 
 class _SavePlaceState extends State<SavePlace> {
   List<Map<String, dynamic>> savedPlaces = [];
-  List<TrackSize> arrRow = [
-    auto
-  ];
+  List<TrackSize> arrRow = [auto];
 
   Future<List<Map<String, dynamic>>> _getSavedPlace() async {
-    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    SessionProvider sessionProvider =
+        Provider.of<SessionProvider>(context, listen: false);
     UserModel? users = sessionProvider.getUser();
     List<Map<String, dynamic>> arrayOfMaps = [];
-    print(users?.uid);
-    List<QueryDocumentSnapshot<Object?>> docSnapshot;
-    Map<String, dynamic> item = {};
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('save_place').where('user id', isEqualTo: users!.uid).get();
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('save_place')
+        .where('user id', isEqualTo: users!.uid)
+        .get();
     dynamic listItem;
     for (var data in querySnapshot.docs) {
-      var place_ids = data.data() as Map<String, dynamic>;
-      if (place_ids['user id'] == users.uid) {
+      var placeIds = data.data() as Map<String, dynamic>;
+      if (placeIds['user id'] == users.uid) {
         listItem = {
-          'place_id': place_ids['place_id'],
+          'place_id': placeIds['place_id'],
         };
         arrayOfMaps.add(listItem);
       }
     }
     var dataLen = arrayOfMaps.length;
     if (dataLen > 10) dataLen = 10;
-    for (var v = 1; v < dataLen; v++) arrRow.add(auto);
-    // ignore: avoid_print, prefer_interpolation_to_compose_strings
-    print('object' + dataLen.toString());
-    print(arrRow.length);
+    for (var v = 1; v < dataLen; v++) {
+      arrRow.add(auto);
+    }
+    
     return arrayOfMaps;
   }
 
@@ -101,10 +95,7 @@ class _SavePlaceState extends State<SavePlace> {
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(10.w, 20.w, 10.w, 0),
         child: LayoutGrid(
-          columnSizes: [
-            1.fr,
-            1.fr
-          ],
+          columnSizes: [1.fr, 1.fr],
           rowSizes: arrRow,
           rowGap: 16.w,
           columnGap: 24.w,

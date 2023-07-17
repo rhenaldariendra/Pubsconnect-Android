@@ -1,0 +1,1178 @@
+{
+    "geocoded_waypoints": [
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJOUCuHcuKaS4RGc2IL_gHxbs",
+            "types": [
+                "establishment",
+                "point_of_interest",
+                "subway_station",
+                "transit_station"
+            ]
+        },
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJBZO1W8D0aS4R_2WkkKbZfjg",
+            "types": [
+                "establishment",
+                "point_of_interest",
+                "transit_station"
+            ]
+        }
+    ],
+    "routes": [
+        {
+            "bounds": {
+                "northeast": {
+                    "lat": -6.15456,
+                    "lng": 106.91413
+                },
+                "southwest": {
+                    "lat": -6.192419999999999,
+                    "lng": 106.89112
+                }
+            },
+            "copyrights": "Map data ©2023",
+            "legs": [
+                {
+                    "arrival_time": {
+                        "text": "3:33 PM",
+                        "time_zone": "Asia/Jakarta",
+                        "value": 1689582780
+                    },
+                    "departure_time": {
+                        "text": "3:15 PM",
+                        "time_zone": "Asia/Jakarta",
+                        "value": 1689581725
+                    },
+                    "distance": {
+                        "text": "5.9 km",
+                        "value": 5894
+                    },
+                    "duration": {
+                        "text": "18 mins",
+                        "value": 1055
+                    },
+                    "end_address": "St. LRT Velodrome 2, Rawamangun, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta, Indonesia",
+                    "end_location": {
+                        "lat": -6.192419999999999,
+                        "lng": 106.89112
+                    },
+                    "start_address": "Pegangsaan Dua, Pegangsaan Dua, Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta, Indonesia",
+                    "start_location": {
+                        "lat": -6.1561029,
+                        "lng": 106.9140062
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 220
+                            },
+                            "duration": {
+                                "text": "5 mins",
+                                "value": 274
+                            },
+                            "end_location": {
+                                "lat": -6.15785,
+                                "lng": 106.91413
+                            },
+                            "html_instructions": "Walk to Pegangsaan Dua",
+                            "polyline": {
+                                "points": "rjqd@qspkSF@r@JXBXD`@FLDHR^?b@Ch@CAKfA}@"
+                            },
+                            "start_location": {
+                                "lat": -6.1561029,
+                                "lng": 106.9140062
+                            },
+                            "steps": [
+                                {
+                                    "distance": {
+                                        "text": "92 m",
+                                        "value": 92
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 64
+                                    },
+                                    "end_location": {
+                                        "lat": -6.156904300000001,
+                                        "lng": 106.9138238
+                                    },
+                                    "html_instructions": "Head <b>south</b>",
+                                    "polyline": {
+                                        "points": "rjqd@qspkSF@r@JXBXD`@FLD"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.1561029,
+                                        "lng": 106.9140062
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "16 m",
+                                        "value": 16
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 13
+                                    },
+                                    "end_location": {
+                                        "lat": -6.156945599999999,
+                                        "lng": 106.9137212
+                                    },
+                                    "html_instructions": "Turn <b>right</b> toward <b>Jl. Gading Grande</b>",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "roqd@krpkSHR"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.156904300000001,
+                                        "lng": 106.9138238
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "60 m",
+                                        "value": 60
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 44
+                                    },
+                                    "end_location": {
+                                        "lat": -6.157496399999999,
+                                        "lng": 106.9137558
+                                    },
+                                    "html_instructions": "Turn <b>left</b> onto <b>Jl. Gading Grande</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "|oqd@wqpkS^?b@Ch@C"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.156945599999999,
+                                        "lng": 106.9137212
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "1 m",
+                                        "value": 0
+                                    },
+                                    "duration": {
+                                        "text": "2 mins",
+                                        "value": 110
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "html_instructions": "Take entrance <span class=\"location\">Pegangsaan Dua-Entrance/Exit A</span>",
+                                    "polyline": {
+                                        "points": "hsqd@krpkS"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "1 m",
+                                        "value": 0
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 10
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "polyline": {
+                                        "points": "hsqd@krpkS"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "52 m",
+                                        "value": 52
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 33
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15785,
+                                        "lng": 106.91413
+                                    },
+                                    "polyline": {
+                                        "points": "hsqd@krpkSfA}@"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                }
+                            ],
+                            "travel_mode": "WALKING"
+                        },
+                        {
+                            "distance": {
+                                "text": "5.7 km",
+                                "value": 5674
+                            },
+                            "duration": {
+                                "text": "13 mins",
+                                "value": 780
+                            },
+                            "end_location": {
+                                "lat": -6.192419999999999,
+                                "lng": 106.89112
+                            },
+                            "html_instructions": "Tram towards Velodrome",
+                            "polyline": {
+                                "points": "puqd@itpkSEJcMGa@?_@DOHQLILKREPCVOnEGnEIbDOdCMzACZ?PDTL\\NPTLhB`A|Az@dCtA~Av@pBhAxBlAhB`AbCnAVN|A|@jDfBxC`BxBnAdDlBfDfBjDlBxBjAnCxAzBlAjE~BpDlB`Bz@b@TvBjAbCrAvDpBtC|A`CpA`DhB`B`Av@d@n@`@h@Z^V^\\TTNRRZ\\l@N^dAdCN^NTLNRRNNXTb@T`@\\\\XbBr@|@j@n@Zh@R`A\\vBp@vBj@tBf@pATlB\\~ATfALj@FfAJZ@p@F@?vCL|BL|BH|BBxC@lC?pCBlCAnCEbDEhD@tCAxAP"
+                            },
+                            "start_location": {
+                                "lat": -6.15785,
+                                "lng": 106.91413
+                            },
+                            "transit_details": {
+                                "arrival_stop": {
+                                    "location": {
+                                        "lat": -6.192419999999999,
+                                        "lng": 106.89112
+                                    },
+                                    "name": "Velodrome"
+                                },
+                                "arrival_time": {
+                                    "text": "3:33 PM",
+                                    "time_zone": "Asia/Jakarta",
+                                    "value": 1689582780
+                                },
+                                "departure_stop": {
+                                    "location": {
+                                        "lat": -6.15785,
+                                        "lng": 106.91413
+                                    },
+                                    "name": "Pegangsaan Dua"
+                                },
+                                "departure_time": {
+                                    "text": "3:20 PM",
+                                    "time_zone": "Asia/Jakarta",
+                                    "value": 1689582000
+                                },
+                                "headsign": "Velodrome",
+                                "line": {
+                                    "agencies": [
+                                        {
+                                            "name": "PT. LRT Jakarta",
+                                            "phone": "011 62 21 50899909",
+                                            "url": "https://www.lrtjakarta.co.id/"
+                                        }
+                                    ],
+                                    "color": "#f27a45",
+                                    "name": "Velodrome - Pegangsaan",
+                                    "text_color": "#ffffff",
+                                    "vehicle": {
+                                        "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/tram2.png",
+                                        "name": "Tram",
+                                        "type": "TRAM"
+                                    }
+                                },
+                                "num_stops": 5
+                            },
+                            "travel_mode": "TRANSIT"
+                        }
+                    ],
+                    "traffic_speed_entry": [],
+                    "via_waypoint": []
+                }
+            ],
+            "overview_polyline": {
+                "points": "rjqd@qspkSnBVn@LHR^?lAGAKfA}@EJcMGaADa@VU`@Ih@OnEGnEIbDOdCQvBDf@L\\NP~BnAbFpCpE`CbFnCzC~A|A|@dIhE~G|D|QzJzQvJ~GtDlInEbHzDrFdD~@t@d@h@p@hAtAdD^t@`@b@h@d@b@T`@\\\\XbBr@|@j@xAn@xDnAlFrA~Dr@fDb@rBRlAHxCLzFVvGD~GB|GGbDEhD@tCAxAP"
+            },
+            "summary": "",
+            "warnings": [
+                "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+            ],
+            "waypoint_order": []
+        },
+        {
+            "bounds": {
+                "northeast": {
+                    "lat": -6.15456,
+                    "lng": 106.91413
+                },
+                "southwest": {
+                    "lat": -6.192419999999999,
+                    "lng": 106.89112
+                }
+            },
+            "copyrights": "Map data ©2023",
+            "legs": [
+                {
+                    "arrival_time": {
+                        "text": "3:43 PM",
+                        "time_zone": "Asia/Jakarta",
+                        "value": 1689583380
+                    },
+                    "departure_time": {
+                        "text": "3:25 PM",
+                        "time_zone": "Asia/Jakarta",
+                        "value": 1689582325
+                    },
+                    "distance": {
+                        "text": "5.9 km",
+                        "value": 5894
+                    },
+                    "duration": {
+                        "text": "18 mins",
+                        "value": 1055
+                    },
+                    "end_address": "St. LRT Velodrome 2, Rawamangun, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta, Indonesia",
+                    "end_location": {
+                        "lat": -6.192419999999999,
+                        "lng": 106.89112
+                    },
+                    "start_address": "Pegangsaan Dua, Pegangsaan Dua, Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta, Indonesia",
+                    "start_location": {
+                        "lat": -6.1561029,
+                        "lng": 106.9140062
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 220
+                            },
+                            "duration": {
+                                "text": "5 mins",
+                                "value": 274
+                            },
+                            "end_location": {
+                                "lat": -6.15785,
+                                "lng": 106.91413
+                            },
+                            "html_instructions": "Walk to Pegangsaan Dua",
+                            "polyline": {
+                                "points": "rjqd@qspkSF@r@JXBXD`@FLDHR^?b@Ch@CAKfA}@"
+                            },
+                            "start_location": {
+                                "lat": -6.1561029,
+                                "lng": 106.9140062
+                            },
+                            "steps": [
+                                {
+                                    "distance": {
+                                        "text": "92 m",
+                                        "value": 92
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 64
+                                    },
+                                    "end_location": {
+                                        "lat": -6.156904300000001,
+                                        "lng": 106.9138238
+                                    },
+                                    "html_instructions": "Head <b>south</b>",
+                                    "polyline": {
+                                        "points": "rjqd@qspkSF@r@JXBXD`@FLD"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.1561029,
+                                        "lng": 106.9140062
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "16 m",
+                                        "value": 16
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 13
+                                    },
+                                    "end_location": {
+                                        "lat": -6.156945599999999,
+                                        "lng": 106.9137212
+                                    },
+                                    "html_instructions": "Turn <b>right</b> toward <b>Jl. Gading Grande</b>",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "roqd@krpkSHR"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.156904300000001,
+                                        "lng": 106.9138238
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "60 m",
+                                        "value": 60
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 44
+                                    },
+                                    "end_location": {
+                                        "lat": -6.157496399999999,
+                                        "lng": 106.9137558
+                                    },
+                                    "html_instructions": "Turn <b>left</b> onto <b>Jl. Gading Grande</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "|oqd@wqpkS^?b@Ch@C"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.156945599999999,
+                                        "lng": 106.9137212
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "1 m",
+                                        "value": 0
+                                    },
+                                    "duration": {
+                                        "text": "2 mins",
+                                        "value": 110
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "html_instructions": "Take entrance <span class=\"location\">Pegangsaan Dua-Entrance/Exit A</span>",
+                                    "polyline": {
+                                        "points": "hsqd@krpkS"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "1 m",
+                                        "value": 0
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 10
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "polyline": {
+                                        "points": "hsqd@krpkS"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "52 m",
+                                        "value": 52
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 33
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15785,
+                                        "lng": 106.91413
+                                    },
+                                    "polyline": {
+                                        "points": "hsqd@krpkSfA}@"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                }
+                            ],
+                            "travel_mode": "WALKING"
+                        },
+                        {
+                            "distance": {
+                                "text": "5.7 km",
+                                "value": 5674
+                            },
+                            "duration": {
+                                "text": "13 mins",
+                                "value": 780
+                            },
+                            "end_location": {
+                                "lat": -6.192419999999999,
+                                "lng": 106.89112
+                            },
+                            "html_instructions": "Tram towards Velodrome",
+                            "polyline": {
+                                "points": "puqd@itpkSEJcMGa@?_@DOHQLILKREPCVOnEGnEIbDOdCMzACZ?PDTL\\NPTLhB`A|Az@dCtA~Av@pBhAxBlAhB`AbCnAVN|A|@jDfBxC`BxBnAdDlBfDfBjDlBxBjAnCxAzBlAjE~BpDlB`Bz@b@TvBjAbCrAvDpBtC|A`CpA`DhB`B`Av@d@n@`@h@Z^V^\\TTNRRZ\\l@N^dAdCN^NTLNRRNNXTb@T`@\\\\XbBr@|@j@n@Zh@R`A\\vBp@vBj@tBf@pATlB\\~ATfALj@FfAJZ@p@F@?vCL|BL|BH|BBxC@lC?pCBlCAnCEbDEhD@tCAxAP"
+                            },
+                            "start_location": {
+                                "lat": -6.15785,
+                                "lng": 106.91413
+                            },
+                            "transit_details": {
+                                "arrival_stop": {
+                                    "location": {
+                                        "lat": -6.192419999999999,
+                                        "lng": 106.89112
+                                    },
+                                    "name": "Velodrome"
+                                },
+                                "arrival_time": {
+                                    "text": "3:43 PM",
+                                    "time_zone": "Asia/Jakarta",
+                                    "value": 1689583380
+                                },
+                                "departure_stop": {
+                                    "location": {
+                                        "lat": -6.15785,
+                                        "lng": 106.91413
+                                    },
+                                    "name": "Pegangsaan Dua"
+                                },
+                                "departure_time": {
+                                    "text": "3:30 PM",
+                                    "time_zone": "Asia/Jakarta",
+                                    "value": 1689582600
+                                },
+                                "headsign": "Velodrome",
+                                "line": {
+                                    "agencies": [
+                                        {
+                                            "name": "PT. LRT Jakarta",
+                                            "phone": "011 62 21 50899909",
+                                            "url": "https://www.lrtjakarta.co.id/"
+                                        }
+                                    ],
+                                    "color": "#f27a45",
+                                    "name": "Velodrome - Pegangsaan",
+                                    "text_color": "#ffffff",
+                                    "vehicle": {
+                                        "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/tram2.png",
+                                        "name": "Tram",
+                                        "type": "TRAM"
+                                    }
+                                },
+                                "num_stops": 5
+                            },
+                            "travel_mode": "TRANSIT"
+                        }
+                    ],
+                    "traffic_speed_entry": [],
+                    "via_waypoint": []
+                }
+            ],
+            "overview_polyline": {
+                "points": "rjqd@qspkSnBVn@LHR^?lAGAKfA}@EJcMGaADa@VU`@Ih@OnEGnEIbDOdCQvBDf@L\\NP~BnAbFpCpE`CbFnCzC~A|A|@dIhE~G|D|QzJzQvJ~GtDlInEbHzDrFdD~@t@d@h@p@hAtAdD^t@`@b@h@d@b@T`@\\\\XbBr@|@j@xAn@xDnAlFrA~Dr@fDb@rBRlAHxCLzFVvGD~GB|GGbDEhD@tCAxAP"
+            },
+            "summary": "",
+            "warnings": [
+                "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+            ],
+            "waypoint_order": []
+        },
+        {
+            "bounds": {
+                "northeast": {
+                    "lat": -6.15456,
+                    "lng": 106.91413
+                },
+                "southwest": {
+                    "lat": -6.192419999999999,
+                    "lng": 106.89112
+                }
+            },
+            "copyrights": "Map data ©2023",
+            "legs": [
+                {
+                    "arrival_time": {
+                        "text": "3:53 PM",
+                        "time_zone": "Asia/Jakarta",
+                        "value": 1689583980
+                    },
+                    "departure_time": {
+                        "text": "3:35 PM",
+                        "time_zone": "Asia/Jakarta",
+                        "value": 1689582925
+                    },
+                    "distance": {
+                        "text": "5.9 km",
+                        "value": 5894
+                    },
+                    "duration": {
+                        "text": "18 mins",
+                        "value": 1055
+                    },
+                    "end_address": "St. LRT Velodrome 2, Rawamangun, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta, Indonesia",
+                    "end_location": {
+                        "lat": -6.192419999999999,
+                        "lng": 106.89112
+                    },
+                    "start_address": "Pegangsaan Dua, Pegangsaan Dua, Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta, Indonesia",
+                    "start_location": {
+                        "lat": -6.1561029,
+                        "lng": 106.9140062
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 220
+                            },
+                            "duration": {
+                                "text": "5 mins",
+                                "value": 274
+                            },
+                            "end_location": {
+                                "lat": -6.15785,
+                                "lng": 106.91413
+                            },
+                            "html_instructions": "Walk to Pegangsaan Dua",
+                            "polyline": {
+                                "points": "rjqd@qspkSF@r@JXBXD`@FLDHR^?b@Ch@CAKfA}@"
+                            },
+                            "start_location": {
+                                "lat": -6.1561029,
+                                "lng": 106.9140062
+                            },
+                            "steps": [
+                                {
+                                    "distance": {
+                                        "text": "92 m",
+                                        "value": 92
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 64
+                                    },
+                                    "end_location": {
+                                        "lat": -6.156904300000001,
+                                        "lng": 106.9138238
+                                    },
+                                    "html_instructions": "Head <b>south</b>",
+                                    "polyline": {
+                                        "points": "rjqd@qspkSF@r@JXBXD`@FLD"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.1561029,
+                                        "lng": 106.9140062
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "16 m",
+                                        "value": 16
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 13
+                                    },
+                                    "end_location": {
+                                        "lat": -6.156945599999999,
+                                        "lng": 106.9137212
+                                    },
+                                    "html_instructions": "Turn <b>right</b> toward <b>Jl. Gading Grande</b>",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "roqd@krpkSHR"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.156904300000001,
+                                        "lng": 106.9138238
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "60 m",
+                                        "value": 60
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 44
+                                    },
+                                    "end_location": {
+                                        "lat": -6.157496399999999,
+                                        "lng": 106.9137558
+                                    },
+                                    "html_instructions": "Turn <b>left</b> onto <b>Jl. Gading Grande</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "|oqd@wqpkS^?b@Ch@C"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.156945599999999,
+                                        "lng": 106.9137212
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "1 m",
+                                        "value": 0
+                                    },
+                                    "duration": {
+                                        "text": "2 mins",
+                                        "value": 110
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "html_instructions": "Take entrance <span class=\"location\">Pegangsaan Dua-Entrance/Exit A</span>",
+                                    "polyline": {
+                                        "points": "hsqd@krpkS"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "1 m",
+                                        "value": 0
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 10
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "polyline": {
+                                        "points": "hsqd@krpkS"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "52 m",
+                                        "value": 52
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 33
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15785,
+                                        "lng": 106.91413
+                                    },
+                                    "polyline": {
+                                        "points": "hsqd@krpkSfA}@"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                }
+                            ],
+                            "travel_mode": "WALKING"
+                        },
+                        {
+                            "distance": {
+                                "text": "5.7 km",
+                                "value": 5674
+                            },
+                            "duration": {
+                                "text": "13 mins",
+                                "value": 780
+                            },
+                            "end_location": {
+                                "lat": -6.192419999999999,
+                                "lng": 106.89112
+                            },
+                            "html_instructions": "Tram towards Velodrome",
+                            "polyline": {
+                                "points": "puqd@itpkSEJcMGa@?_@DOHQLILKREPCVOnEGnEIbDOdCMzACZ?PDTL\\NPTLhB`A|Az@dCtA~Av@pBhAxBlAhB`AbCnAVN|A|@jDfBxC`BxBnAdDlBfDfBjDlBxBjAnCxAzBlAjE~BpDlB`Bz@b@TvBjAbCrAvDpBtC|A`CpA`DhB`B`Av@d@n@`@h@Z^V^\\TTNRRZ\\l@N^dAdCN^NTLNRRNNXTb@T`@\\\\XbBr@|@j@n@Zh@R`A\\vBp@vBj@tBf@pATlB\\~ATfALj@FfAJZ@p@F@?vCL|BL|BH|BBxC@lC?pCBlCAnCEbDEhD@tCAxAP"
+                            },
+                            "start_location": {
+                                "lat": -6.15785,
+                                "lng": 106.91413
+                            },
+                            "transit_details": {
+                                "arrival_stop": {
+                                    "location": {
+                                        "lat": -6.192419999999999,
+                                        "lng": 106.89112
+                                    },
+                                    "name": "Velodrome"
+                                },
+                                "arrival_time": {
+                                    "text": "3:53 PM",
+                                    "time_zone": "Asia/Jakarta",
+                                    "value": 1689583980
+                                },
+                                "departure_stop": {
+                                    "location": {
+                                        "lat": -6.15785,
+                                        "lng": 106.91413
+                                    },
+                                    "name": "Pegangsaan Dua"
+                                },
+                                "departure_time": {
+                                    "text": "3:40 PM",
+                                    "time_zone": "Asia/Jakarta",
+                                    "value": 1689583200
+                                },
+                                "headsign": "Velodrome",
+                                "line": {
+                                    "agencies": [
+                                        {
+                                            "name": "PT. LRT Jakarta",
+                                            "phone": "011 62 21 50899909",
+                                            "url": "https://www.lrtjakarta.co.id/"
+                                        }
+                                    ],
+                                    "color": "#f27a45",
+                                    "name": "Velodrome - Pegangsaan",
+                                    "text_color": "#ffffff",
+                                    "vehicle": {
+                                        "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/tram2.png",
+                                        "name": "Tram",
+                                        "type": "TRAM"
+                                    }
+                                },
+                                "num_stops": 5
+                            },
+                            "travel_mode": "TRANSIT"
+                        }
+                    ],
+                    "traffic_speed_entry": [],
+                    "via_waypoint": []
+                }
+            ],
+            "overview_polyline": {
+                "points": "rjqd@qspkSnBVn@LHR^?lAGAKfA}@EJcMGaADa@VU`@Ih@OnEGnEIbDOdCQvBDf@L\\NP~BnAbFpCpE`CbFnCzC~A|A|@dIhE~G|D|QzJzQvJ~GtDlInEbHzDrFdD~@t@d@h@p@hAtAdD^t@`@b@h@d@b@T`@\\\\XbBr@|@j@xAn@xDnAlFrA~Dr@fDb@rBRlAHxCLzFVvGD~GB|GGbDEhD@tCAxAP"
+            },
+            "summary": "",
+            "warnings": [
+                "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+            ],
+            "waypoint_order": []
+        },
+        {
+            "bounds": {
+                "northeast": {
+                    "lat": -6.15456,
+                    "lng": 106.91413
+                },
+                "southwest": {
+                    "lat": -6.192419999999999,
+                    "lng": 106.89112
+                }
+            },
+            "copyrights": "Map data ©2023",
+            "legs": [
+                {
+                    "arrival_time": {
+                        "text": "4:03 PM",
+                        "time_zone": "Asia/Jakarta",
+                        "value": 1689584580
+                    },
+                    "departure_time": {
+                        "text": "3:45 PM",
+                        "time_zone": "Asia/Jakarta",
+                        "value": 1689583525
+                    },
+                    "distance": {
+                        "text": "5.9 km",
+                        "value": 5894
+                    },
+                    "duration": {
+                        "text": "18 mins",
+                        "value": 1055
+                    },
+                    "end_address": "St. LRT Velodrome 2, Rawamangun, Kec. Pulo Gadung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta, Indonesia",
+                    "end_location": {
+                        "lat": -6.192419999999999,
+                        "lng": 106.89112
+                    },
+                    "start_address": "Pegangsaan Dua, Pegangsaan Dua, Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta, Indonesia",
+                    "start_location": {
+                        "lat": -6.1561029,
+                        "lng": 106.9140062
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "0.2 km",
+                                "value": 220
+                            },
+                            "duration": {
+                                "text": "5 mins",
+                                "value": 274
+                            },
+                            "end_location": {
+                                "lat": -6.15785,
+                                "lng": 106.91413
+                            },
+                            "html_instructions": "Walk to Pegangsaan Dua",
+                            "polyline": {
+                                "points": "rjqd@qspkSF@r@JXBXD`@FLDHR^?b@Ch@CAKfA}@"
+                            },
+                            "start_location": {
+                                "lat": -6.1561029,
+                                "lng": 106.9140062
+                            },
+                            "steps": [
+                                {
+                                    "distance": {
+                                        "text": "92 m",
+                                        "value": 92
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 64
+                                    },
+                                    "end_location": {
+                                        "lat": -6.156904300000001,
+                                        "lng": 106.9138238
+                                    },
+                                    "html_instructions": "Head <b>south</b>",
+                                    "polyline": {
+                                        "points": "rjqd@qspkSF@r@JXBXD`@FLD"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.1561029,
+                                        "lng": 106.9140062
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "16 m",
+                                        "value": 16
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 13
+                                    },
+                                    "end_location": {
+                                        "lat": -6.156945599999999,
+                                        "lng": 106.9137212
+                                    },
+                                    "html_instructions": "Turn <b>right</b> toward <b>Jl. Gading Grande</b>",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "roqd@krpkSHR"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.156904300000001,
+                                        "lng": 106.9138238
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "60 m",
+                                        "value": 60
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 44
+                                    },
+                                    "end_location": {
+                                        "lat": -6.157496399999999,
+                                        "lng": 106.9137558
+                                    },
+                                    "html_instructions": "Turn <b>left</b> onto <b>Jl. Gading Grande</b><div style=\"font-size:0.9em\">Destination will be on the left</div>",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "|oqd@wqpkS^?b@Ch@C"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.156945599999999,
+                                        "lng": 106.9137212
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "1 m",
+                                        "value": 0
+                                    },
+                                    "duration": {
+                                        "text": "2 mins",
+                                        "value": 110
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "html_instructions": "Take entrance <span class=\"location\">Pegangsaan Dua-Entrance/Exit A</span>",
+                                    "polyline": {
+                                        "points": "hsqd@krpkS"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "1 m",
+                                        "value": 0
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 10
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "polyline": {
+                                        "points": "hsqd@krpkS"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "52 m",
+                                        "value": 52
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 33
+                                    },
+                                    "end_location": {
+                                        "lat": -6.15785,
+                                        "lng": 106.91413
+                                    },
+                                    "polyline": {
+                                        "points": "hsqd@krpkSfA}@"
+                                    },
+                                    "start_location": {
+                                        "lat": -6.15749,
+                                        "lng": 106.91382
+                                    },
+                                    "travel_mode": "WALKING"
+                                }
+                            ],
+                            "travel_mode": "WALKING"
+                        },
+                        {
+                            "distance": {
+                                "text": "5.7 km",
+                                "value": 5674
+                            },
+                            "duration": {
+                                "text": "13 mins",
+                                "value": 780
+                            },
+                            "end_location": {
+                                "lat": -6.192419999999999,
+                                "lng": 106.89112
+                            },
+                            "html_instructions": "Tram towards Velodrome",
+                            "polyline": {
+                                "points": "puqd@itpkSEJcMGa@?_@DOHQLILKREPCVOnEGnEIbDOdCMzACZ?PDTL\\NPTLhB`A|Az@dCtA~Av@pBhAxBlAhB`AbCnAVN|A|@jDfBxC`BxBnAdDlBfDfBjDlBxBjAnCxAzBlAjE~BpDlB`Bz@b@TvBjAbCrAvDpBtC|A`CpA`DhB`B`Av@d@n@`@h@Z^V^\\TTNRRZ\\l@N^dAdCN^NTLNRRNNXTb@T`@\\\\XbBr@|@j@n@Zh@R`A\\vBp@vBj@tBf@pATlB\\~ATfALj@FfAJZ@p@F@?vCL|BL|BH|BBxC@lC?pCBlCAnCEbDEhD@tCAxAP"
+                            },
+                            "start_location": {
+                                "lat": -6.15785,
+                                "lng": 106.91413
+                            },
+                            "transit_details": {
+                                "arrival_stop": {
+                                    "location": {
+                                        "lat": -6.192419999999999,
+                                        "lng": 106.89112
+                                    },
+                                    "name": "Velodrome"
+                                },
+                                "arrival_time": {
+                                    "text": "4:03 PM",
+                                    "time_zone": "Asia/Jakarta",
+                                    "value": 1689584580
+                                },
+                                "departure_stop": {
+                                    "location": {
+                                        "lat": -6.15785,
+                                        "lng": 106.91413
+                                    },
+                                    "name": "Pegangsaan Dua"
+                                },
+                                "departure_time": {
+                                    "text": "3:50 PM",
+                                    "time_zone": "Asia/Jakarta",
+                                    "value": 1689583800
+                                },
+                                "headsign": "Velodrome",
+                                "line": {
+                                    "agencies": [
+                                        {
+                                            "name": "PT. LRT Jakarta",
+                                            "phone": "011 62 21 50899909",
+                                            "url": "https://www.lrtjakarta.co.id/"
+                                        }
+                                    ],
+                                    "color": "#f27a45",
+                                    "name": "Velodrome - Pegangsaan",
+                                    "text_color": "#ffffff",
+                                    "vehicle": {
+                                        "icon": "//maps.gstatic.com/mapfiles/transit/iw2/6/tram2.png",
+                                        "name": "Tram",
+                                        "type": "TRAM"
+                                    }
+                                },
+                                "num_stops": 5
+                            },
+                            "travel_mode": "TRANSIT"
+                        }
+                    ],
+                    "traffic_speed_entry": [],
+                    "via_waypoint": []
+                }
+            ],
+            "overview_polyline": {
+                "points": "rjqd@qspkSnBVn@LHR^?lAGAKfA}@EJcMGaADa@VU`@Ih@OnEGnEIbDOdCQvBDf@L\\NP~BnAbFpCpE`CbFnCzC~A|A|@dIhE~G|D|QzJzQvJ~GtDlInEbHzDrFdD~@t@d@h@p@hAtAdD^t@`@b@h@d@b@T`@\\\\XbBr@|@j@xAn@xDnAlFrA~Dr@fDb@rBRlAHxCLzFVvGD~GB|GGbDEhD@tCAxAP"
+            },
+            "summary": "",
+            "warnings": [
+                "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+            ],
+            "waypoint_order": []
+        }
+    ],
+    "status": "OK"
+}
