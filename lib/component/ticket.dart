@@ -225,7 +225,6 @@ class _TicketState extends State<Ticket> {
                           child: ElevatedButton(
                             onPressed: () {
                               checkProvider(detailTransit[i]['provider']!);
-                              print(detailTransit[i]['provider']);
                             },
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.fromLTRB(5.w, 0, 5.w, 0),

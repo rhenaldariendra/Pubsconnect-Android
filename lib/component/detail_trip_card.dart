@@ -51,7 +51,7 @@ class _DetailTripCardState extends State<DetailTripCard> {
     // convertDateTime();
 
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       calculateTextHeight();
     });
   }
@@ -81,7 +81,7 @@ class _DetailTripCardState extends State<DetailTripCard> {
     int unixTimestamp = widget.unixDepart;
     DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(unixTimestamp * 1000);
     
-    DateTime gmtPlus7DateTime = dateTime.toUtc().add(Duration(hours: 7));
+    DateTime gmtPlus7DateTime = dateTime.toUtc().add(const Duration(hours: 7));
 
     String formattedTime = DateFormat('HH:mm').format(gmtPlus7DateTime);
 

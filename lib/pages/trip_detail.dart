@@ -1,6 +1,7 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:thesis_pubsconnect/component/dashed_line_painter.dart';
 import 'package:thesis_pubsconnect/component/detail_trip_card.dart';
 
 class TripDetail extends StatefulWidget {

@@ -3,16 +3,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:thesis_pubsconnect/auth/signin.dart';
 import 'package:thesis_pubsconnect/boarding/boarding.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
-import 'package:thesis_pubsconnect/pages/destination.dart';
-import 'package:thesis_pubsconnect/pages/detail_route.dart';
 import 'package:thesis_pubsconnect/pages/home.dart';
-import 'package:thesis_pubsconnect/pages/information_route.dart';
-import 'package:thesis_pubsconnect/pages/journey.dart';
-import 'package:thesis_pubsconnect/pages/place_detail.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
+
+
+// import 'package:thesis_pubsconnect/pages/destination.dart';
+// import 'package:thesis_pubsconnect/pages/detail_route.dart';
+// import 'package:thesis_pubsconnect/pages/information_route.dart';
+// import 'package:thesis_pubsconnect/pages/journey.dart';
+// import 'package:thesis_pubsconnect/pages/place_detail.dart';
 
 ColorScheme kColorScheme = const ColorScheme(
   brightness: Brightness.light,
