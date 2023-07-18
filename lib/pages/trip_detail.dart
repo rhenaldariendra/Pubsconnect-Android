@@ -1,16 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thesis_pubsconnect/component/dashed_line_painter.dart';
+import 'package:thesis_pubsconnect/component/detail_trip_card.dart';
 
 class TripDetail extends StatefulWidget {
   final String startName;
   final String endName;
-  const TripDetail({super.key, required this.startName, required this.endName});
+  int unixDepart;
+  final List<dynamic> steps;
+
+  TripDetail(
+      {super.key,
+      required this.startName,
+      required this.endName,
+      required this.steps, required this.unixDepart});
   @override
   State<TripDetail> createState() => _TripDetailState();
 }
 
 class _TripDetailState extends State<TripDetail> {
+  // int time = widget.unixDepart;
+
+  bool checkTransitMode(check) {
+    if (check == 'WALKING') {
+      return true;
+    }
+    return false;
+  }
+
+  Color colorCheck(check) {
+    if (!checkTransitMode(check['travel_mode'])) {
+      String checks = check['transit_details']['line']['agencies'][0]['name'];
+
+      if (checks.contains('Transportasi Jakarta')) {
+        return const Color.fromRGBO(50, 128, 195, 1);
+      } else if (checks.contains('MRT')) {
+        return const Color.fromRGBO(36, 44, 92, 1);
+      } else if (checks.contains('Angkot')) {
+        return const Color.fromRGBO(156, 208, 232, 1);
+      } else if (checks.contains('LRT')) {
+        return const Color.fromRGBO(230, 231, 232, 1);
+      } else {
+        return const Color.fromRGBO(236, 28, 36, 1);
+      }
+    } else {
+      // return const Color.fromRGBO(27, 172, 71, 1);
+      return const Color.fromRGBO(155, 155, 155, 1);
+    }
+  }
+
+  int getStatus(check) {
+    if (check == 0) {
+      return 0;
+    }
+    if (check + 1 == widget.steps.length) {
+      return 1;
+    }
+    return -1;
+  }
+
+  int calcTime(int val){
+    widget.unixDepart += val;
+    return widget.unixDepart;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +89,6 @@ class _TripDetailState extends State<TripDetail> {
           Container(
             alignment: Alignment.topCenter,
             padding: EdgeInsets.only(top: 50.w),
-            // margin: EdgeInsets.only(top: 24.w),
             height: 280.84.w,
             width: double.infinity,
             decoration: const BoxDecoration(
@@ -110,258 +162,28 @@ class _TripDetailState extends State<TripDetail> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30.w),
                       topRight: Radius.circular(30.w)),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color.fromRGBO(0, 0, 0, 0.3),
+                      blurRadius: 5.0,
+                      offset: Offset(0, -3.0),
+                    ),
+                  ],
                 ),
                 margin: EdgeInsets.only(top: 190.w),
                 padding: EdgeInsets.only(top: 36.w, bottom: 36.w),
                 child: Column(
                   children: [
-                    SizedBox(
-                      width: double.infinity,
-                      height: 90.w,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 65.w,
-                            child: Icon(
-                              Icons.directions_walk_outlined,
-                              size: 24.w,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 14.w,
-                            height: double.infinity,
-                            // color: Colors.black,
-                            child: Stack(
-                              fit: StackFit.passthrough,
-                              children: [
-                                Positioned(
-                                  top: 7.w,
-                                  bottom: 7.w,
-                                  left: 0,
-                                  right: 0,
-                                  child: SizedBox(
-                                    child: CustomPaint(
-                                      painter: DashedLinePainter(
-                                        isVertical: true,
-                                        stroke: 3,
-                                        color: const Color.fromRGBO(222, 222, 222, 1)
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 0,
-                                  child: Container(
-                                    width: 14.w,
-                                    height: 14.w,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.green,
-                                    ),
-                                    child: Center(
-                                      child: Container(
-                                        width: 8.w,
-                                        height: 8.w,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(left: 18.w),
-                            width: 210.w,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Duren Tiga',
-                                  style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18.sp,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                Text(
-                                  '6 Stops',
-                                  style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 13.sp,
-                                    color: Colors.black54,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              '12:21',
-                              style: TextStyle(
-                                fontFamily: 'Nunito',
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18.sp,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ],
+                    for (int i = 0; i < widget.steps.length; i++)
+                      DetailTripCard(
+                        isWalking:
+                            checkTransitMode(widget.steps[i]['travel_mode']),
+                        status: getStatus(i),
+                        widgetColor: colorCheck(widget.steps[i]),
+                        detail: widget.steps[i],
+                        unixDepart: calcTime(widget.steps[i]['duration']['value']),
                       ),
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 90.w,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(
-                              left: 10.w,
-                              right: 10.w,
-                            ),
-                            width: 65.w,
-                            child: Column(
-                              children: [
-                                Icon(
-                                  Icons.train,
-                                  size: 24.w,
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(top: 3.w),
-                                  padding:
-                                      EdgeInsets.only(top: 2.w, bottom: 2.w),
-                                  width: double.infinity,
-                                  // color: Colors.blue,
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8.w)),
-                                    color: Colors.blue,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      '1',
-                                      style: TextStyle(
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 10.sp,
-                                        letterSpacing: 0,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: 14.w,
-                            height: double.infinity,
-                            // color: Colors.black,
-                            child: Stack(
-                              fit: StackFit.passthrough,
-                              children: [
-                                Positioned(
-                                  top: 7.w,
-                                  bottom: 7.w,
-                                  left: 0,
-                                  right: 0,
-                                  child: Container(
-                                    color: Colors.blue,
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 0,
-                                  child: Container(
-                                    width: 14.w,
-                                    height: 14.w,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.blue,
-                                    ),
-                                    child: Center(
-                                      child: Container(
-                                        width: 8.w,
-                                        height: 8.w,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  bottom: 0,
-                                  child: Container(
-                                    width: 14.w,
-                                    height: 14.w,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.blue,
-                                    ),
-                                    child: Center(
-                                      child: Container(
-                                        width: 8.w,
-                                        height: 8.w,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(left: 18.w),
-                            width: 210.w,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Duren Tiga',
-                                  style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18.sp,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                Text(
-                                  '6 Stops',
-                                  style: TextStyle(
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 13.sp,
-                                    color: Colors.black54,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Text(
-                              '12:21',
-                              style: TextStyle(
-                                fontFamily: 'Nunito',
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18.sp,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+
                     ElevatedButton(
                       onPressed: () {},
                       child: const Text('Save Trip'),

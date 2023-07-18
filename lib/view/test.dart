@@ -11,8 +11,6 @@ class Tests extends StatelessWidget {
       future: PlaceAPI.getLocation(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
-          // final data = snapshot.data;
-          // return _weatherCard(data);
           return const Text('Hai');
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');

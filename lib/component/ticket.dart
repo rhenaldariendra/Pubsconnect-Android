@@ -92,6 +92,7 @@ class _TicketState extends State<Ticket> {
               ? element['transit_details']['line']['short_name']
               : element['transit_details']['line']['name'],
           'provider': element['transit_details']['line']['agencies'][0]['name'],
+          // 'provider': element['transit_details']['line']['vehicle']['name'],
           'color': colorCheck(
               element['transit_details']['line']['agencies'][0]['name']),
         };
@@ -118,6 +119,8 @@ class _TicketState extends State<Ticket> {
             builder: (builder) => TripDetail(
               startName: widget.startName,
               endName: widget.endName,
+              steps: widget.transportData['legs'][0]['steps'],
+              unixDepart: widget.transportData['legs'][0]['departure_time']['value'],
             ),
           ),
         );
@@ -222,6 +225,7 @@ class _TicketState extends State<Ticket> {
                           child: ElevatedButton(
                             onPressed: () {
                               checkProvider(detailTransit[i]['provider']!);
+                              print(detailTransit[i]['provider']);
                             },
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.fromLTRB(5.w, 0, 5.w, 0),
