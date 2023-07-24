@@ -17,6 +17,7 @@ class _WeatherCardState extends State<WeatherCard> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 7.w),
+      // foregroundDecoration: BoxDecoration,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(
           Radius.circular(20.w),

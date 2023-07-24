@@ -15,23 +15,4 @@ class UserModel {
     required this.phoneNumber,
   });
 
-  // factory UserModel.fromMap(Map<String, dynamic> map) {
-  //   return UserModel(
-  //     uid: map['uid'] ?? '',
-  //     name: map['name'] ?? '',
-  //     email: map['email'] ?? '',
-  //     gender: map['gender'] ?? '',
-  //     phoneNumber: map['phoneNumber'] ?? '',
-  //   );
-  // }
-
-  // Map<String, dynamic> toMap() {
-  //   return {
-  //     "uid": uid,
-  //     "name": name,
-  //     "email": email,
-  //     "gender": gender,
-  //     "phoneNumber": phoneNumber,
-  //   };
-  // }
 }

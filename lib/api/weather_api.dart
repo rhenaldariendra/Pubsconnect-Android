@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 
 class WeatherApi {
+  // openweather api
   static const _baseUrl = 'https://api.openweathermap.org/data/3.0/onecall';
   static const _locationUrl = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=';
 
@@ -40,7 +41,6 @@ class WeatherApi {
         temp = 'Jakarta';
       }
       result['cityName'] = temp;
-      // print(temp);
       return result;
     } else {
       throw Exception('Failed to load data');

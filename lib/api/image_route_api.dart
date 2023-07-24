@@ -41,13 +41,8 @@ class ImageRouteApi {
   }
 
   static Future<List<Map<String, dynamic>>> getList(id) async {
-    // QuerySnapshot<Map<String, dynamic>> data = await FirebaseFirestore.instance
-    //     .collection('transport')
-    //     .where('id', isEqualTo: id)
-    //     .get();
     QuerySnapshot<Map<String, dynamic>> data = await FirebaseFirestore.instance
         .collection('transport')
-        // .orderBy('kode', descending: false)
         .where('id', isEqualTo: id)
         .orderBy("kode", descending: false)
         .get();

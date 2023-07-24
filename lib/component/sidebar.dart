@@ -26,39 +26,17 @@ class _SidebarrState extends State<Sidebarr> {
   late String userPhoneNumber;
   UserModel? users;
 
-  // void getCurrentUserInfo() async {
-  //   user = _auth.currentUser;
-
-  //   userEmail = user.email;
-  //   await FirebaseFirestore.instance.collection('users').where('uid', isEqualTo: user.uid).get().then((QuerySnapshot querySnapshot) {
-  //     if (querySnapshot.size > 0) {
-  //       QueryDocumentSnapshot documentSnapshot = querySnapshot.docs[0];
-  //       Map<String, dynamic> userData = documentSnapshot.data() as Map<String, dynamic>;
-
-  //       setState(() {
-  //         userName = userData['name'];
-  //       });
-  //     } else {
-  //       setState(() {
-  //         userName = 'Users';
-  //       });
-  //     }
-  //   }).catchError((error) {
-  //     setState(() {
-  //       userName = 'Users';
-  //     });
-  //   });
-  // }
-
   @override
   void initState() {
-    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    SessionProvider sessionProvider =
+        Provider.of<SessionProvider>(context, listen: false);
     users = sessionProvider.getUser();
     super.initState();
   }
 
   void logout() {
-    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    SessionProvider sessionProvider =
+        Provider.of<SessionProvider>(context, listen: false);
     FirebaseAuth.instance.signOut().then(
           (value) => {
             // print('Logout'),
@@ -99,9 +77,15 @@ class _SidebarrState extends State<Sidebarr> {
               },
               style: ButtonStyle(
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomRight: Radius.circular(25.w), bottomLeft: const Radius.circular(0), topLeft: const Radius.circular(0), topRight: const Radius.circular(0))),
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(25.w),
+                          bottomLeft: const Radius.circular(0),
+                          topLeft: const Radius.circular(0),
+                          topRight: const Radius.circular(0))),
                 ),
-                backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(195, 29, 29, 1)),
+                backgroundColor: MaterialStateProperty.all(
+                    const Color.fromRGBO(195, 29, 29, 1)),
               ),
               child: Text(
                 'Logout',
@@ -139,7 +123,9 @@ class _SidebarrState extends State<Sidebarr> {
         ),
         SizedBox(
           width: 131.w,
-          child: users!.gender == 'Male' ? Image.asset('assets/images/male.png') : Image.asset('assets/images/female.png'),
+          child: users!.gender == 'Male'
+              ? Image.asset('assets/images/male.png')
+              : Image.asset('assets/images/female.png'),
         ),
         SizedBox(
           height: 8.w,
@@ -183,8 +169,10 @@ class _SidebarrState extends State<Sidebarr> {
               // weight: 1,
               color: Colors.black54,
             ),
-            title: Text('Home', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
+            title:
+                Text('Home', style: Theme.of(context).textTheme.displaySmall),
+            onTap: () => Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: ((context) => const HomeScreen()))),
           ),
           ListTile(
             dense: true,
@@ -196,8 +184,16 @@ class _SidebarrState extends State<Sidebarr> {
               // weight: 1,
               color: Colors.black54,
             ),
-            title: Text('Destination', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const Destination()))),
+            title: Text('Destination',
+                style: Theme.of(context).textTheme.displaySmall),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: ((context) => const Destination(
+                      lat: 0,
+                      lon: 0,
+                    )),
+              ),
+            ),
           ),
           ListTile(
             dense: true,
@@ -209,8 +205,10 @@ class _SidebarrState extends State<Sidebarr> {
               // weight: 1,
               color: Colors.black54,
             ),
-            title: Text('Explorer', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const ExploreCities()))),
+            title: Text('Explorer',
+                style: Theme.of(context).textTheme.displaySmall),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => const ExploreCities()))),
           ),
           ListTile(
             dense: true,
@@ -222,8 +220,10 @@ class _SidebarrState extends State<Sidebarr> {
               // weight: 1,
               color: Colors.black54,
             ),
-            title: Text('Save Place', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const SavePlace()))),
+            title: Text('Save Place',
+                style: Theme.of(context).textTheme.displaySmall),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: ((context) => const SavePlace()))),
           ),
           ListTile(
             dense: true,
@@ -235,8 +235,10 @@ class _SidebarrState extends State<Sidebarr> {
               // weight: 1,
               color: Colors.black54,
             ),
-            title: Text('History', style: Theme.of(context).textTheme.displaySmall),
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const HomeScreen()))),
+            title: Text('History',
+                style: Theme.of(context).textTheme.displaySmall),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: ((context) => const HomeScreen()))),
           ),
         ],
       ),

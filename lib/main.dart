@@ -24,9 +24,6 @@ void main() async {
   } else {
     await Firebase.initializeApp();
   }
-  
-
-  // await Firebase.initializeApp(options: firebaseConfig);
 
   runApp(
     ChangeNotifierProvider(

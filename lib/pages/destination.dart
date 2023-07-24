@@ -10,7 +10,12 @@ import 'package:thesis_pubsconnect/pages/journey.dart';
 import 'package:thesis_pubsconnect/model/autocomplete_prediction.dart';
 
 class Destination extends StatefulWidget {
-  const Destination({super.key});
+  final dynamic lat;
+  final dynamic lon;
+  final dynamic placeName;
+
+  const Destination({super.key, this.lat, this.lon, this.placeName});
+
 
   @override
   State<Destination> createState() => _DestinationState();
@@ -20,6 +25,7 @@ class _DestinationState extends State<Destination> {
   final _startController = TextEditingController();
   final _endController = TextEditingController();
   List<AutocompletePrediction> predList = [];
+  bool _isRedirect = false;
   bool _isLoading = false;
   bool _current = true;
   bool _isSearched = false;
@@ -30,6 +36,20 @@ class _DestinationState extends State<Destination> {
     'start': false,
     'end': false,
   };
+
+  @override
+  void initState() {
+    if(widget.lat != 0 && widget.lon != 0) {
+      currenLocationUsed['start'] = true;
+      currenLocationUsed['end'] = true;
+      _isRedirect=true;
+      setState(() {
+        _startController.text = 'Current Location';
+        _endController.text = widget.placeName;
+      });
+    }
+    super.initState();
+  }
 
   void _onChangedVall(value) async {
     predList = [];
@@ -60,8 +80,15 @@ class _DestinationState extends State<Destination> {
       }
 
       if (currenLocationUsed['end'] == true) {
-        endLat = position.latitude;
-        endLon = position.longitude;
+        if(_isRedirect){
+          endLat = widget.lat;
+          endLon = widget.lon;
+          print('Lat: $endLat, Lon: $endLon');
+        }
+        else {
+          endLat = position.latitude;
+          endLon = position.longitude;
+        }
       } else {
         endLat = _endId;
         endLon = 0;

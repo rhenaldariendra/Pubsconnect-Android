@@ -48,6 +48,7 @@ class _ExploreCitiesState extends State<ExploreCities> {
           if (snapshot.hasData) {
             final data = snapshot.data;
             dynamic dataLen = data['data'].length;
+            print(dataLen);
             List<TrackSize> arrRow = [];
             if (dataLen > 10) dataLen = 10;
             for (var v = 0; v < dataLen; v++) {

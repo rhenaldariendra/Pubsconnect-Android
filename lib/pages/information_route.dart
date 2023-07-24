@@ -6,7 +6,9 @@ import 'package:thesis_pubsconnect/pages/detail_route.dart';
 
 class InformationRoute extends StatefulWidget {
   final int id;
-  const InformationRoute({super.key, required this.id});
+  final Color color;
+  final Color colorText;
+  const InformationRoute({super.key, required this.id, required this.color, required this.colorText});
 
   @override
   State<InformationRoute> createState() => _InformationRouteState();
@@ -77,7 +79,7 @@ class _InformationRouteState extends State<InformationRoute> {
                             padding: EdgeInsets.all(10.w),
                             // height: 23.sp,
                             decoration: BoxDecoration(
-                                color: Colors.amber,
+                                color: widget.color,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(6.w))),
                             child: Center(
@@ -88,7 +90,7 @@ class _InformationRouteState extends State<InformationRoute> {
                                   fontWeight: FontWeight.w600,
                                   fontSize: 13.sp,
                                   letterSpacing: 0,
-                                  color: Colors.black,
+                                  color: widget.colorText,
                                 ),
                               ),
                             ),
@@ -112,47 +114,6 @@ class _InformationRouteState extends State<InformationRoute> {
                           ),
                         ],
                       ),
-                      // child: Row(
-                      //   children: [
-                      //     Container(
-                      //       width: 38.sp,
-                      //       height: 23.sp,
-                      //       decoration: BoxDecoration(
-                      //           color: Colors.amber,
-                      //           borderRadius:
-                      //               BorderRadius.all(Radius.circular(6.w))),
-                      //       child: Center(
-                      //         child: Text(
-                      //           item['kode'],
-                      //           style: TextStyle(
-                      //             fontFamily: 'Nunito',
-                      //             fontWeight: FontWeight.w600,
-                      //             fontSize: 13.sp,
-                      //             letterSpacing: 0,
-                      //             color: Colors.black,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     SizedBox(
-                      //       width: 12.w,
-                      //     ),
-                      //     Expanded(
-                      //       child: Text(
-                      //         item.containsKey('rute')
-                      //             ? item['rute']
-                      //             : 'Transjakarta',
-                      //         style: TextStyle(
-                      //           fontFamily: 'Nunito',
-                      //           fontWeight: FontWeight.w600,
-                      //           fontSize: 15.sp,
-                      //           letterSpacing: 0,
-                      //           color: Colors.black,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                     )
                 ],
               );

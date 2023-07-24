@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:thesis_pubsconnect/component/search_field.dart';
 import 'package:thesis_pubsconnect/component/sidebar.dart';
+import 'package:thesis_pubsconnect/component/ticket.dart';
+import 'package:thesis_pubsconnect/model/ticket_model.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
 import 'package:thesis_pubsconnect/pages/profile.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
@@ -21,10 +23,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomePageState extends State<HomeScreen> {
   UserModel? users;
+  TicketModel? ticket;
 
   Future<void> _refreshData() async {
     await Future.delayed(const Duration(seconds: 2));
-    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    SessionProvider sessionProvider =
+        Provider.of<SessionProvider>(context, listen: false);
 
     setState(() {
       _weather = const Weather();
@@ -35,8 +39,10 @@ class _HomePageState extends State<HomeScreen> {
 
   @override
   void initState() {
-    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    SessionProvider sessionProvider =
+        Provider.of<SessionProvider>(context, listen: false);
     users = sessionProvider.getUser();
+    ticket = sessionProvider.getTicket();
     super.initState();
   }
 
@@ -110,6 +116,32 @@ class _HomePageState extends State<HomeScreen> {
               height: 16.w,
             ),
             _weather,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ticket == null
+                    ? const SizedBox()
+                    : Text(
+                        'Active Trip',
+                        style: TextStyle(
+                          fontFamily: 'Nunito',
+                          fontSize: 21.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                ticket == null
+                    ? const SizedBox()
+                    :  Ticket(
+                        transportData: ticket!.detailRoute,
+                        startName: 'Velodrome',
+                        endName: 'endName',
+                        isHome: true,
+                      ),
+              ],
+            ),
+            SizedBox(
+              height: 16.w,
+            ),
             _transport,
             _place,
           ],

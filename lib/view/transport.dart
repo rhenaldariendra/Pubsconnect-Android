@@ -27,7 +27,11 @@ class Transport extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: ((context) => const InformationRoute(id: 1)),
+                builder: ((context) => const InformationRoute(
+                      id: 1,
+                      color: Color.fromRGBO(50, 128, 195, 1),
+                      colorText: Colors.white,
+                    )),
               )),
               child: const TransportBox(
                 imagePath: 'assets/images/transport/angkutan_tj.png',
@@ -37,7 +41,11 @@ class Transport extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: ((context) => const InformationRoute(id: 2)),
+                builder: ((context) => const InformationRoute(
+                      id: 2,
+                      color: Color.fromRGBO(36, 44, 92, 1),
+                      colorText: Colors.white,
+                    )),
               )),
               child: const TransportBox(
                 imagePath: 'assets/images/transport/angkutan_mrt.png',
@@ -47,7 +55,11 @@ class Transport extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: ((context) => const InformationRoute(id: 3)),
+                builder: ((context) => const InformationRoute(
+                      id: 3,
+                      color: Color.fromRGBO(156, 208, 232, 1),
+                      colorText: Colors.black,
+                    )),
               )),
               child: const TransportBox(
                 imagePath: 'assets/images/transport/angkutan_mikrotrans.png',
@@ -57,7 +69,11 @@ class Transport extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: ((context) => const InformationRoute(id: 5)),
+                builder: ((context) => const InformationRoute(
+                      id: 5,
+                      color: Color.fromRGBO(236, 28, 36, 1),
+                      colorText: Colors.white,
+                    )),
               )),
               child: const TransportBox(
                 imagePath: 'assets/images/transport/angkutan_kaicommuter.png',
@@ -67,7 +83,11 @@ class Transport extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: ((context) => const InformationRoute(id: 4)),
+                builder: ((context) => const InformationRoute(
+                      id: 4,
+                      color: Color.fromRGBO(230, 231, 232, 1),
+                      colorText: Colors.black,
+                    )),
               )),
               child: const TransportBox(
                 imagePath: 'assets/images/transport/angkutan_lrt.png',

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:thesis_pubsconnect/api/place_api.dart';
 import 'package:thesis_pubsconnect/component/dialog_success.dart';
 import 'package:thesis_pubsconnect/component/loading.dart';
+import 'package:thesis_pubsconnect/pages/destination.dart';
 import 'package:thesis_pubsconnect/pages/home.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
 
@@ -27,14 +28,21 @@ class _PlaceDetailState extends State<PlaceDetail> {
     setState(() {
       _isLoading = true;
     });
-    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    SessionProvider sessionProvider =
+        Provider.of<SessionProvider>(context, listen: false);
     String? userId = sessionProvider.getUser()?.uid;
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('save_place').where('user id', isEqualTo: userId).get();
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('save_place')
+        .where('user id', isEqualTo: userId)
+        .get();
     for (var data in querySnapshot.docs) {
       Map<String, dynamic> datas = data.data() as Map<String, dynamic>;
       if (datas['place_id'] == widget.detailId) {
         // print(data.id);
-        await FirebaseFirestore.instance.collection('save_place').doc(data.id).delete();
+        await FirebaseFirestore.instance
+            .collection('save_place')
+            .doc(data.id)
+            .delete();
       }
     }
     setState(() {
@@ -61,10 +69,10 @@ class _PlaceDetailState extends State<PlaceDetail> {
     setState(() {
       _isLoading = true;
     });
-    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    SessionProvider sessionProvider =
+        Provider.of<SessionProvider>(context, listen: false);
     String? userId = sessionProvider.getUser()?.uid;
 
-    // DocumentReference newDocumentRef = await FirebaseFirestore.instance.collection('save_place').add({
     await FirebaseFirestore.instance.collection('save_place').add({
       'user id': userId,
       'place_id': widget.detailId,
@@ -85,64 +93,19 @@ class _PlaceDetailState extends State<PlaceDetail> {
           buttonMessage: 'Done',
           titleMessage: 'Nice!',
         );
-        // return AlertDialog(
-        //   shape: RoundedRectangleBorder(
-        //     borderRadius: BorderRadius.circular(20.w),
-        //   ),
-        //   backgroundColor: Colors.white,
-        //   surfaceTintColor: Colors.white,
-        //   contentPadding: EdgeInsets.fromLTRB(20.w, 40.w, 20.w, 10.w),
-        //   actionsPadding: EdgeInsets.only(top: 8.w, bottom: 28.w),
-        //   content: SingleChildScrollView(
-        //     child: Column(
-        //       crossAxisAlignment: CrossAxisAlignment.center,
-        //       mainAxisAlignment: MainAxisAlignment.center,
-        //       children: [
-        //         Container(
-        //           margin: EdgeInsets.only(bottom: 16.w),
-        //           width: 125.w,
-        //           child: Image.asset('assets/images/image_5.png'),
-        //         ),
-        //         Text(
-        //           'Profile updated successfully',
-        //           style: Theme.of(context).textTheme.labelMedium,
-        //           textAlign: TextAlign.center,
-        //         )
-        //       ],
-        //     ),
-        //   ),
-        //   actions: [
-        //     Center(
-        //       child: SizedBox(
-        //         width: 110.w,
-        //         height: 40.w,
-        //         child: ElevatedButton(
-        //           onPressed: () {
-        //             Navigator.of(context).pop();
-        //           },
-        //           style: ElevatedButton.styleFrom(
-        //             padding: EdgeInsets.zero,
-        //             shape: RoundedRectangleBorder(
-        //               borderRadius: BorderRadius.circular(7.w),
-        //             ),
-        //             textStyle: Theme.of(context).textTheme.headlineMedium,
-        //             backgroundColor: const Color.fromRGBO(26, 171, 97, 1),
-        //           ),
-        //           child: const Text('Done'),
-        //         ),
-        //       ),
-        //     ),
-        //   ],
-        // );
       },
     );
   }
 
   void _checkedSavePlace() async {
-    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    SessionProvider sessionProvider =
+        Provider.of<SessionProvider>(context, listen: false);
     String? userId = sessionProvider.getUser()?.uid;
 
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('save_place').where('user id', isEqualTo: userId).get();
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection('save_place')
+        .where('user id', isEqualTo: userId)
+        .get();
 
     for (var data in querySnapshot.docs) {
       Map<String, dynamic> datas = data.data() as Map<String, dynamic>;
@@ -152,8 +115,6 @@ class _PlaceDetailState extends State<PlaceDetail> {
         });
       }
     }
-    // print(_isFavorite);
-    // for
   }
 
   @override
@@ -186,14 +147,14 @@ class _PlaceDetailState extends State<PlaceDetail> {
       body: FutureBuilder(
         future: PlaceAPI.getDetail(widget.detailId),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          // print(widget.detailId);
           if (snapshot.hasData) {
             final data = snapshot.data;
-            // print('ada');
-            return _isLoading ? const Loading(height: double.infinity) : _buildPlaceDetail(data);
+            // print(data);
+
+            return _isLoading
+                ? const Loading(height: double.infinity)
+                : _buildPlaceDetail(data);
           } else {
-            // return _buildPlaceDetail('data');
-            // print('gaada');
             return const Loading(height: double.infinity);
           }
         },
@@ -211,7 +172,13 @@ class _PlaceDetailState extends State<PlaceDetail> {
           width: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: widget.photo != null ? NetworkImage(widget.photo['data'][0]['images']['original'] != null ? widget.photo['data'][0]['images']['original']['url'] : widget.photo['data'][0]['images']['small']['url']) : const AssetImage('assets/images/image_not_found.png') as ImageProvider,
+              image: widget.photo != null
+                  ? NetworkImage(
+                      widget.photo['data'][0]['images']['original'] != null
+                          ? widget.photo['data'][0]['images']['original']['url']
+                          : widget.photo['data'][0]['images']['small']['url'])
+                  : const AssetImage('assets/images/image_not_found.png')
+                      as ImageProvider,
               fit: BoxFit.cover,
             ),
           ),
@@ -221,10 +188,13 @@ class _PlaceDetailState extends State<PlaceDetail> {
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(18.w), topRight: Radius.circular(18.w)),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(18.w),
+                    topRight: Radius.circular(18.w)),
               ),
               margin: EdgeInsets.only(top: 420.w),
-              padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 16.w, bottom: 30.w),
+              padding: EdgeInsets.only(
+                  left: 25.w, right: 25.w, top: 16.w, bottom: 30.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -273,7 +243,9 @@ class _PlaceDetailState extends State<PlaceDetail> {
                     ),
                   ),
                   Text(
-                    data.containsKey('description') ? data['description'] : "No Data",
+                    data.containsKey('description')
+                        ? data['description']
+                        : "No Data",
                     style: TextStyle(
                       fontFamily: 'Nunito',
                       fontWeight: FontWeight.normal,
@@ -291,29 +263,44 @@ class _PlaceDetailState extends State<PlaceDetail> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         ElevatedButton(
-                          onPressed: _isFavorite ? _removeSavePlace : _addSavePlace,
+                          onPressed:
+                              _isFavorite ? _removeSavePlace : _addSavePlace,
                           style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.w)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.w)),
                             padding: EdgeInsets.zero,
-                            backgroundColor: const Color.fromRGBO(0, 118, 253, 1),
+                            backgroundColor:
+                                const Color.fromRGBO(0, 118, 253, 1),
                             minimumSize: Size(50.w, double.infinity),
                             maximumSize: Size(50.w, double.infinity),
                           ),
                           child: Icon(
-                            _isFavorite ? Icons.bookmark_remove : Icons.bookmark_add_outlined,
+                            _isFavorite
+                                ? Icons.bookmark_remove
+                                : Icons.bookmark_add_outlined,
                             size: 25.w,
                             color: Colors.white,
                           ),
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.w)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.w)),
                             padding: EdgeInsets.zero,
-                            backgroundColor: const Color.fromRGBO(0, 118, 253, 1),
+                            backgroundColor:
+                                const Color.fromRGBO(0, 118, 253, 1),
                             minimumSize: Size(235.w, double.infinity),
                             maximumSize: Size(250.w, double.infinity),
                           ),
-                          onPressed: () {},
+                          onPressed: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: ((context) => Destination(
+                                    lat: data['latitude'],
+                                    lon: data['longitude'],
+                                    placeName: data['name'],
+                                  )),
+                            ),
+                          ),
                           child: const Text('Get Directions'),
                         ),
                       ],

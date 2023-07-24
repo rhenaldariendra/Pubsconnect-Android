@@ -7,10 +7,8 @@ class DestinationAPI {
   static const _apiKey = 'AIzaSyBscF7jto3agk8vn5CjvSdNkMigQ2KMnh8';
 
   static Future<Map<String, dynamic>> getTransportSuggestion(startLat, startLon, endLat, endLon) async {
-    // static void getTransportSuggestion(startLat, startLon, endLat, endLon) async {
     var url = '$_baseUrl/directions/json?origin=';
     if (startLon == 0) {
-      // url = Uri.parse('$_baseUrl/directions/json?origin=place_id:$startLat&destination=$endLat,$endLon&mode=transit&alternatives=true&key=$_apiKey&region=id');
       url = '${url}place_id:$startLat&destination=';
     } else {
       url = '$url$startLat,$startLon&destination=';
@@ -39,20 +37,14 @@ class DestinationAPI {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body).cast<String, dynamic>();
       AutoCompleteResponse resp = AutoCompleteResponse.fromJson(result);
-      // print(result);
-      // if(res)
-
       return resp;
     } else {
-      // return null;
       throw Exception('Failed to load data');
     }
   }
 
 
-  static void getTripDetail() async {
-    
-  }
+  
 }
 
 class AutoCompleteResponse {
@@ -64,8 +56,7 @@ class AutoCompleteResponse {
   factory AutoCompleteResponse.fromJson(Map<String, dynamic> json) {
     return AutoCompleteResponse(
       status: json['status'] as String?,
-      // predictions: json['predictions'] != null ? json['predictions'].map<AutocompletePrediction>((json) => AutocompletePrediction.fromJson(json)).toList() : null,
-      predictions: json['predictions'] ?? json['predictions'].map<AutocompletePrediction>((json) => AutocompletePrediction.fromJson(json)).toList(),
+      predictions: json['predictions'] != null ? json['predictions'].map<AutocompletePrediction>((json) => AutocompletePrediction.fromJson(json)).toList() : null,
     );
   }
 }

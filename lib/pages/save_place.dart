@@ -106,7 +106,6 @@ class _SavePlaceState extends State<SavePlace> {
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
                     final data = snapshot.data;
-                    // print(data);
                     return PlaceCard(
                       data: data,
                     );
@@ -119,45 +118,9 @@ class _SavePlaceState extends State<SavePlace> {
                   }
                 },
               ),
-            // PlaceCard(
-            //   data: data['data'][index],
-            // ),
           ],
         ),
       ),
     );
   }
 }
-
-// FutureBuilder(
-//         future: _getSavedPlace(),
-//         builder: (BuildContext context, AsyncSnapshot snapshot) {
-//           print(snapshot.data);
-//           return Text(snapshot.data[0]['place_id']);
-          // final data = snapshot.data;
-          // dynamic dataLen = data['data'].length;
-          // List<TrackSize> arrRow = [];
-          // if (dataLen > 10) dataLen = 10;
-          // for (var v = 0; v < dataLen; v++) {
-          //   arrRow.add(auto);
-          // }
-          // return SingleChildScrollView(
-          //   padding: EdgeInsets.fromLTRB(10.w, 20.w, 10.w, 0),
-          //   child: LayoutGrid(
-          //     columnSizes: [
-          //       1.fr,
-          //       1.fr
-          //     ],
-          //     rowSizes: arrRow,
-          //     rowGap: 16.w,
-          //     columnGap: 24.w,
-          //     children: [
-          //       for (var index = 0; index < data['data'].length; index++)
-          //         PlaceCard(
-          //           data: data['data'][index],
-          //         ),
-          //     ],
-          //   ),
-          // );
-      //   },
-      // ),

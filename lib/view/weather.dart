@@ -11,6 +11,7 @@ class Weather extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      // mainAxisAlignment: ,
       children: [
         Text(
           'Today\'s weather',
@@ -44,3 +45,13 @@ class Weather extends StatelessWidget {
     );
   }
 }
+
+
+/*
+  List<String> a
+  Future<List<String>> b
+  Future<int> c
+  Future<List<Map<String, dynamic>>>
+
+
+*/

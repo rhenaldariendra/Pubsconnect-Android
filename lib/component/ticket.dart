@@ -9,11 +9,14 @@ class Ticket extends StatefulWidget {
   final Map<String, dynamic> transportData;
   final String startName;
   final String endName;
-  const Ticket(
-      {super.key,
-      required this.transportData,
-      required this.startName,
-      required this.endName});
+  final bool isHome;
+  const Ticket({
+    super.key,
+    required this.transportData,
+    required this.startName,
+    required this.endName,
+    required this.isHome,
+  });
 
   @override
   State<Ticket> createState() => _TicketState();
@@ -87,12 +90,10 @@ class _TicketState extends State<Ticket> {
     for (var element in widget.transportData['legs'][0]['steps']) {
       if (element['travel_mode'] != 'WALKING') {
         Map<String, dynamic> temp = {
-          // element.con
           'kode': element['transit_details']['line'].containsKey('short_name')
               ? element['transit_details']['line']['short_name']
               : element['transit_details']['line']['name'],
           'provider': element['transit_details']['line']['agencies'][0]['name'],
-          // 'provider': element['transit_details']['line']['vehicle']['name'],
           'color': colorCheck(
               element['transit_details']['line']['agencies'][0]['name']),
         };
@@ -117,10 +118,13 @@ class _TicketState extends State<Ticket> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (builder) => TripDetail(
+              detailRoute: widget.transportData,
+              isSaved: widget.isHome,
               startName: widget.startName,
               endName: widget.endName,
               steps: widget.transportData['legs'][0]['steps'],
-              unixDepart: widget.transportData['legs'][0]['departure_time']['value'],
+              unixDepart: widget.transportData['legs'][0]['departure_time']
+                  ['value'],
             ),
           ),
         );
@@ -128,11 +132,12 @@ class _TicketState extends State<Ticket> {
       child: Container(
         width: double.infinity,
         height: 145.w,
-        // padding: EdgeInsets.only(left: 16.w, right: 16.w),
         margin: EdgeInsets.symmetric(vertical: 10.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20.w)),
-          color: Colors.white,
+          color: widget.isHome
+              ? const Color.fromRGBO(230, 242, 255, 1)
+              : Colors.white,
         ),
         child: Stack(
           children: [
@@ -144,10 +149,9 @@ class _TicketState extends State<Ticket> {
                 height: 1,
                 child: CustomPaint(
                   painter: DashedLinePainter(
-                    isVertical: false,
-                    stroke: 1,
-                    color: const Color.fromRGBO(0, 0, 0, 1)
-                  ),
+                      isVertical: false,
+                      stroke: 1,
+                      color: const Color.fromRGBO(0, 0, 0, 1)),
                 ),
               ),
             ),
@@ -160,7 +164,11 @@ class _TicketState extends State<Ticket> {
                   width: 18.w,
                   height: 18.w,
                   child: CustomPaint(
-                    painter: SemiCirclePainter(),
+                    painter: SemiCirclePainter(
+                      colors: widget.isHome
+                          ? Colors.white
+                          : const Color.fromRGBO(230, 242, 255, 1),
+                    ),
                     // child: ,
                   ),
                 ),
@@ -175,7 +183,11 @@ class _TicketState extends State<Ticket> {
                   width: 18.w,
                   height: 18.w,
                   child: CustomPaint(
-                    painter: SemiCirclePainter(),
+                    painter: SemiCirclePainter(
+                      colors: widget.isHome
+                          ? Colors.white
+                          : const Color.fromRGBO(230, 242, 255, 1),
+                    ),
                     // child: ,
                   ),
                 ),

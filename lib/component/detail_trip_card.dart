@@ -93,7 +93,7 @@ class _DetailTripCardState extends State<DetailTripCard> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: widget.status==1 ? lastHeight + 40 : 90.w,
+      height: widget.status==1 ? lastHeight + 40 : 100.w,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -130,8 +130,6 @@ class _DetailTripCardState extends State<DetailTripCard> {
                                     'Bus'
                                 ? widget.detail['transit_details']['line']
                                     ['short_name']
-                                // : widget.detail['transit_details']['line']['vehicle']
-                                //     ['name'],
                                 : kode,
                             style: TextStyle(
                               fontFamily: 'Nunito',
