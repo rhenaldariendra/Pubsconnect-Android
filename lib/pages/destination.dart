@@ -83,7 +83,6 @@ class _DestinationState extends State<Destination> {
         if(_isRedirect){
           endLat = widget.lat;
           endLon = widget.lon;
-          print('Lat: $endLat, Lon: $endLon');
         }
         else {
           endLat = position.latitude;

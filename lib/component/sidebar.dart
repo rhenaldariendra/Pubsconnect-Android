@@ -71,7 +71,9 @@ class _SidebarrState extends State<Sidebarr> {
                   builder: (context) => DialogConfirmation(
                     yesFunction: logout,
                     imagePath: 'assets/images/exit.png',
+                    messageTitle: 'Oh, no...',
                     message: 'Are you sure to exit',
+                    color: const Color.fromRGBO(236, 55, 55, 1),
                   ),
                 );
               },

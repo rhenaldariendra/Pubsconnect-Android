@@ -4,9 +4,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class DialogConfirmation extends StatelessWidget {
   final VoidCallback yesFunction;
   final String imagePath;
+  final String messageTitle;
   final String message;
+  final Color color;
 
-  const DialogConfirmation({super.key, required this.yesFunction, required this.imagePath, required this.message});
+  const DialogConfirmation(
+      {super.key,
+      required this.yesFunction,
+      required this.imagePath,
+      required this.message,
+      required this.color,
+      required this.messageTitle});
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +35,19 @@ class DialogConfirmation extends StatelessWidget {
               margin: EdgeInsets.only(bottom: 16.w),
               width: 125.w,
               child: Image.asset(imagePath),
+            ),
+            Text(
+              messageTitle,
+              style: TextStyle(
+                fontFamily: 'Nunito',
+                fontWeight: FontWeight.w700,
+                fontSize: 24.sp,
+                color: color,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              height: 8.w,
             ),
             Text(
               message,
@@ -53,10 +74,17 @@ class DialogConfirmation extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(7.w),
                     ),
-                    textStyle: Theme.of(context).textTheme.headlineMedium,
-                    backgroundColor: const Color.fromRGBO(151, 176, 163, 1),
+                    backgroundColor: const Color.fromRGBO(210, 222, 234, 1),
                   ),
-                  child: const Text('No'),
+                  child: Text(
+                    'No',
+                    style: TextStyle(
+                      fontFamily: 'Nunito',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.sp,
+                      color: color,
+                    ),
+                  ),
                 ),
               ),
               SizedBox(width: 8.w),
@@ -71,7 +99,7 @@ class DialogConfirmation extends StatelessWidget {
                       borderRadius: BorderRadius.circular(7.w),
                     ),
                     textStyle: Theme.of(context).textTheme.headlineMedium,
-                    backgroundColor: const Color.fromRGBO(236, 55, 55, 1),
+                    backgroundColor: color,
                   ),
                   child: const Text('Yes'),
                 ),

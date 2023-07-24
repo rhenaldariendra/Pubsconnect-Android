@@ -48,7 +48,6 @@ class _ExploreCitiesState extends State<ExploreCities> {
           if (snapshot.hasData) {
             final data = snapshot.data;
             dynamic dataLen = data['data'].length;
-            print(dataLen);
             List<TrackSize> arrRow = [];
             if (dataLen > 10) dataLen = 10;
             for (var v = 0; v < dataLen; v++) {
@@ -62,7 +61,7 @@ class _ExploreCitiesState extends State<ExploreCities> {
                   1.fr
                 ],
                 rowSizes: arrRow,
-                rowGap: 16.w, // equivalent to mainAxisSpacing
+                rowGap: 16.w,
                 columnGap: 24.w,
                 children: [
                   for (var index = 0; index < data['data'].length; index++)
