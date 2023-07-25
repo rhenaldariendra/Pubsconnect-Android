@@ -111,7 +111,7 @@ class _HomePageState extends State<HomeScreen> {
             SizedBox(
               height: 7.w,
             ),
-            const SearchField(),
+            // const SearchField(),
             SizedBox(
               height: 16.w,
             ),
@@ -133,9 +133,10 @@ class _HomePageState extends State<HomeScreen> {
                     ? const SizedBox()
                     :  Ticket(
                         transportData: ticket!.detailRoute,
-                        startName: 'Velodrome',
-                        endName: 'endName',
+                        startName: ticket!.startName,
+                        endName: ticket!.endName,
                         isHome: true,
+                        isHistory: false,
                       ),
               ],
             ),

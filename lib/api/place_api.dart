@@ -60,4 +60,18 @@ class PlaceAPI {
       throw Exception('Failed to load data');
     }
   }
+
+  static Future<List<Map<String, dynamic>>> getSearchResult(String searchText) async {
+    final url = Uri.parse('${_baseUrlOthers}search?searchQuery=$searchText&key=$_apiKey');
+
+    final response = await http.get(url);
+    if(response.statusCode==200) {
+      final result = jsonDecode(response.body);
+
+      return result;
+    }
+    else {
+      throw Exception('No data');
+    }
+  }
 }

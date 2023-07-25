@@ -148,6 +148,7 @@ class _JourneyState extends State<Journey> {
                       endName: widget.endName,
                       transportData: widget.dataTransport?['routes'][i],
                       isHome: false,
+                      isHistory: false,
                     )
                 ],
               ),

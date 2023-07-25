@@ -95,6 +95,9 @@ flutter:
     - assets/images/dialog_images/dialog_7.png
     - assets/images/dialog_images/dialog_8.png
     - assets/images/dialog_images/dialog_9.png
+    - assets/images/dialog_images/dialog_10.png
+    - assets/images/dialog_images/dialog_11.png
+    - assets/images/dialog_images/dialog_12.png
     - assets/images/background_weather/moon_cloudy.png
     - assets/images/background_weather/moon.png
     - assets/images/background_weather/rain.png

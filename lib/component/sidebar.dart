@@ -7,6 +7,7 @@ import 'package:thesis_pubsconnect/component/dialog_confirmation.dart';
 import 'package:thesis_pubsconnect/model/user_model.dart';
 import 'package:thesis_pubsconnect/pages/destination.dart';
 import 'package:thesis_pubsconnect/pages/explore.dart';
+import 'package:thesis_pubsconnect/pages/history.dart';
 import 'package:thesis_pubsconnect/pages/home.dart';
 import 'package:thesis_pubsconnect/pages/save_place.dart';
 import 'package:thesis_pubsconnect/utils/session_provider.dart';
@@ -240,7 +241,7 @@ class _SidebarrState extends State<Sidebarr> {
             title: Text('History',
                 style: Theme.of(context).textTheme.displaySmall),
             onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: ((context) => const HomeScreen()))),
+                MaterialPageRoute(builder: ((context) => const History()))),
           ),
         ],
       ),

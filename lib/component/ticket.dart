@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:thesis_pubsconnect/component/semi_ciruclar_painter.dart';
 import 'package:thesis_pubsconnect/component/dashed_line_painter.dart';
 import 'package:thesis_pubsconnect/pages/trip_detail.dart';
@@ -10,12 +11,16 @@ class Ticket extends StatefulWidget {
   final String startName;
   final String endName;
   final bool isHome;
+  final bool isHistory;
+  final time;
   const Ticket({
     super.key,
     required this.transportData,
     required this.startName,
     required this.endName,
     required this.isHome,
+    required this.isHistory,
+    this.time,
   });
 
   @override
@@ -107,7 +112,9 @@ class _TicketState extends State<Ticket> {
 
   @override
   void initState() {
-    mappingTransport();
+    if(widget.isHistory == false) {
+      mappingTransport();
+    }
     super.initState();
   }
 
@@ -115,19 +122,22 @@ class _TicketState extends State<Ticket> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (builder) => TripDetail(
-              detailRoute: widget.transportData,
-              isSaved: widget.isHome,
-              startName: widget.startName,
-              endName: widget.endName,
-              steps: widget.transportData['legs'][0]['steps'],
-              unixDepart: widget.transportData['legs'][0]['departure_time']
-                  ['value'],
+        if (widget.isHistory == false) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (builder) => TripDetail(
+                detailRoute: widget.transportData,
+                isSaved: widget.isHome,
+                startName: widget.startName,
+                endName: widget.endName,
+                steps: widget.transportData['legs'][0]['steps'],
+                // unixDepart: widget.transportData['legs'][0]['departure_time']['value'],
+                unixDepart: DateTime.now().millisecondsSinceEpoch ~/
+                    1000, // rounds down
+              ),
             ),
-          ),
-        );
+          );
+        }
       },
       child: Container(
         width: double.infinity,
@@ -166,7 +176,7 @@ class _TicketState extends State<Ticket> {
                   child: CustomPaint(
                     painter: SemiCirclePainter(
                       colors: widget.isHome
-                          ? Colors.white
+                          ? widget.isHistory ? const Color.fromRGBO(252, 251, 252, 1) : Colors.white
                           : const Color.fromRGBO(230, 242, 255, 1),
                     ),
                     // child: ,
@@ -184,8 +194,8 @@ class _TicketState extends State<Ticket> {
                   height: 18.w,
                   child: CustomPaint(
                     painter: SemiCirclePainter(
-                      colors: widget.isHome
-                          ? Colors.white
+                      colors:  widget.isHome
+                          ? widget.isHistory ? const Color.fromRGBO(252, 251, 252, 1) : Colors.white
                           : const Color.fromRGBO(230, 242, 255, 1),
                     ),
                     // child: ,
@@ -272,7 +282,7 @@ class _TicketState extends State<Ticket> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Travel Time: ${widget.transportData['legs'][0]['duration']['text']}',
+                      widget.isHistory ? widget.endName : 'Travel Time: ${widget.transportData['legs'][0]['duration']['text']}',
                       style: TextStyle(
                         fontFamily: 'Nunito',
                         fontWeight: FontWeight.w600,
@@ -282,7 +292,7 @@ class _TicketState extends State<Ticket> {
                       ),
                     ),
                     Text(
-                      widget.transportData.containsKey('fare')
+                      widget.isHistory ? DateFormat('dd MMMM yyyy').format(widget.time.toDate()) : widget.transportData.containsKey('fare')
                           ? widget.transportData['fare']['text']
                           : '-',
                       style: TextStyle(

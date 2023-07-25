@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable, use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -62,7 +63,7 @@ class _TripDetailState extends State<TripDetail> {
   }
 
   int getStatus(check) {
-    if (check == 0) {
+    if (check == 0 && check + 1 != widget.steps.length) {
       return 0;
     }
     if (check + 1 == widget.steps.length) {
@@ -76,6 +77,29 @@ class _TripDetailState extends State<TripDetail> {
     return widget.unixDepart;
   }
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void _finishTrip(int flag) async {
+    SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
+    String uid  = sessionProvider.getUser()!.uid;
+    DateTime date = DateTime.now();
+    DocumentReference newDocRef = await FirebaseFirestore.instance.collection('history').add(
+      {
+        'uid': uid,
+        'destination': widget.endName,
+        'date': date,
+        'detail': widget.detailRoute,
+      }
+    );
+    sessionProvider.clearTicket();
+    if(flag==1) {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomeScreen()));
+    }
+  }
+
   void _savePlace() async {
     setState(() {
       _isLoading = true;
@@ -83,31 +107,46 @@ class _TripDetailState extends State<TripDetail> {
     SessionProvider sessionProvider =
         Provider.of<SessionProvider>(context, listen: false);
     if (sessionProvider.getTicket() == null) {
-      TicketModel ticketModel = TicketModel(detailRoute: widget.detailRoute);
+      TicketModel ticketModel = TicketModel(
+        detailRoute: widget.detailRoute,
+        startName: widget.startName,
+        endName: widget.endName,
+      );
       sessionProvider.setTicket(ticketModel);
+      await Future.delayed(const Duration(seconds: 2));
+      setState(() {
+        _isLoading = false;
+      });
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomeScreen()));
     } else {
-      // showDialog(
-      //   context: context,
-      //   builder: (context) => DialogConfirmation(
-      //     message: 'You still have an ongoing trip, do you want to end it',
-      //     imagePath: ,
-      //   ),
-      // );
+      setState(() {
+        _isLoading = false;
+      });
+      showDialog(
+        context: context,
+        builder: (builder) => DialogConfirmation(
+          yesFunction: _replace,
+          imagePath: 'assets/images/dialog_images/dialog_11.png',
+          color: const Color.fromRGBO(0, 118, 253, 1),
+          messageTitle: 'Are you sure ?',
+          message: 'You still have an ongoing trip, do you want to end it',
+        ),
+      );
     }
+  }
 
-    await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      _isLoading = false;
-    });
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const HomeScreen()));
+  void _replace() {
+    _finishTrip(0);
+    _savePlace();
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomeScreen()));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: SizedBox(
-        // margin: EdgeInsets.only(top: 10.w),
         child: IconButton(
           style: IconButton.styleFrom(
             foregroundColor: Colors.white,
@@ -242,7 +281,7 @@ class _TripDetailState extends State<TripDetail> {
                                       EdgeInsets.only(left: 16.w, right: 16.w),
                                   width: double.infinity,
                                   child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () => _finishTrip(1),
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
