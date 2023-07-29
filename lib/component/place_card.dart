@@ -25,6 +25,7 @@ class PlaceCard extends StatelessWidget {
       },
       child: Container(
         width: 160.w,
+        // height: 280.w,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(8.w)),
@@ -91,7 +92,8 @@ class PlaceCard extends StatelessWidget {
         if (snapshot.hasData) {
           final data = snapshot.data;
           // print(data);
-          if (snapshot.data['data'] != null && snapshot.data['data'].isNotEmpty) {
+          if (snapshot.data['data'] != null &&
+              snapshot.data['data'].isNotEmpty) {
             photos = data;
             // print(photos);
             return SizedBox(
@@ -100,7 +102,9 @@ class PlaceCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(6.w),
                 child: Image.network(
-                  data['data'][0]['images']['original'] != null ? data['data'][0]['images']['original']['url'] : data['data'][0]['images']['small']['url'],
+                  data['data'][0]['images']['original'] != null
+                      ? data['data'][0]['images']['original']['url']
+                      : data['data'][0]['images']['small']['url'],
                   fit: BoxFit.fitHeight,
                 ),
               ),

@@ -9,7 +9,17 @@ class DialogSuccess extends StatelessWidget {
   final String titleMessage;
   final bool redirect;
   final bool isPrimary;
-  const DialogSuccess({super.key, required this.destination, required this.imagePath, required this.message, required this.redirect, required this.isPrimary, required this.buttonMessage, required this.titleMessage});
+
+  const DialogSuccess({
+    super.key,
+    required this.destination,
+    required this.imagePath,
+    required this.message,
+    required this.redirect,
+    required this.isPrimary,
+    required this.buttonMessage,
+    required this.titleMessage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +47,9 @@ class DialogSuccess extends StatelessWidget {
                 fontFamily: 'Nunito',
                 fontWeight: FontWeight.w700,
                 fontSize: 24.sp,
-                color: isPrimary ? const Color.fromRGBO(61, 76, 94, 1) : const Color.fromRGBO(26, 171, 97, 1),
+                color: isPrimary
+                    ? const Color.fromRGBO(61, 76, 94, 1)
+                    : const Color.fromRGBO(26, 171, 97, 1),
               ),
             ),
             SizedBox(
@@ -72,7 +84,9 @@ class DialogSuccess extends StatelessWidget {
                   borderRadius: BorderRadius.circular(23.w),
                 ),
                 textStyle: Theme.of(context).textTheme.headlineMedium,
-                backgroundColor: isPrimary ? const Color.fromRGBO(0, 118, 253, 1) : const Color.fromRGBO(26, 171, 97, 1),
+                backgroundColor: isPrimary
+                    ? const Color.fromRGBO(0, 118, 253, 1)
+                    : const Color.fromRGBO(26, 171, 97, 1),
               ),
               child: const Text('Done'),
             ),

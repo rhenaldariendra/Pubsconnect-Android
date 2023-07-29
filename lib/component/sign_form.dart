@@ -64,36 +64,6 @@ class _SignFormState extends State<SignForm> {
         widget.gender,
         widget.phone,
         widget.password,
-        Row(
-          children: [
-            SizedBox(
-              width: 17.w,
-              height: 17.w,
-              child: Checkbox(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.w),
-                ),
-                value: false,
-                onChanged: null,
-                side: const BorderSide(
-                  color: Color.fromRGBO(182, 182, 182, 1),
-                ),
-              ),
-            ),
-            SizedBox(
-              width: 8.w,
-            ),
-            Text(
-              'I accept the Terms of Use.',
-              style: TextStyle(
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.bold,
-                fontSize: 12.sp,
-                color: const Color.fromRGBO(142, 142, 142, 1),
-              ),
-            )
-          ],
-        ),
         Container(
           width: double.infinity,
           alignment: Alignment.center,

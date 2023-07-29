@@ -8,13 +8,14 @@ class DialogConfirmation extends StatelessWidget {
   final String message;
   final Color color;
 
-  const DialogConfirmation(
-      {super.key,
-      required this.yesFunction,
-      required this.imagePath,
-      required this.message,
-      required this.color,
-      required this.messageTitle});
+  const DialogConfirmation({
+    super.key,
+    required this.yesFunction,
+    required this.imagePath,
+    required this.message,
+    required this.color,
+    required this.messageTitle,
+  });
 
   @override
   Widget build(BuildContext context) {

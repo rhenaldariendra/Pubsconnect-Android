@@ -40,7 +40,6 @@ class _SidebarrState extends State<Sidebarr> {
         Provider.of<SessionProvider>(context, listen: false);
     FirebaseAuth.instance.signOut().then(
           (value) => {
-            // print('Logout'),
             sessionProvider.clearSession(),
             Navigator.pushReplacement(
               context,

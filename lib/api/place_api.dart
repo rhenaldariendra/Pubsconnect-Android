@@ -3,12 +3,15 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
 class PlaceAPI {
-  static const _baseUrlOthers = 'https://api.content.tripadvisor.com/api/v1/location/'; // getdetail, get photo
-  static const _baseUrl = 'https://api.content.tripadvisor.com/api/v1/location/nearby_search?latLong='; // getnearbylocation
+  static const _baseUrlOthers =
+      'https://api.content.tripadvisor.com/api/v1/location/'; // getdetail, get photo
+  static const _baseUrl =
+      'https://api.content.tripadvisor.com/api/v1/location/nearby_search?latLong='; // getnearbylocation
   static const _apiKey = '9F4D5176EBA641A9BE504C30C37E84DD';
 
   static Future<Map<String, dynamic>> getDetail(id) async {
-    final url = Uri.parse('$_baseUrlOthers$id/details?key=$_apiKey&language=en&currency=IDR');
+    final url = Uri.parse(
+        '$_baseUrlOthers$id/details?key=$_apiKey&language=en&currency=IDR');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
@@ -28,9 +31,10 @@ class PlaceAPI {
       throw Exception('Failed to load data');
     }
   }
-  
+
   static Future<Map<String, dynamic>> getLocationbyId(id) async {
-    final url = Uri.parse('$_baseUrlOthers$id/details?key=$_apiKey&language=en&currency=IDR');
+    final url = Uri.parse(
+        '$_baseUrlOthers$id/details?key=$_apiKey&language=en&currency=IDR');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
@@ -47,11 +51,12 @@ class PlaceAPI {
 
     double lat = position.latitude;
     double lon = position.longitude;
-    final url = Uri.parse('$_baseUrl$lat%2C$lon&key=$_apiKey&category=attractions&radiusUnit=5km&language=en');
+    final url = Uri.parse(
+        '$_baseUrl$lat%2C$lon&key=$_apiKey&category=attractions&radiusUnit=5km&language=en');
 
-    final response = await http.get(url, headers: {
-      'Accept': 'application/json'
-    });
+    final response =
+        await http.get(url, headers: {'Accept': 'application/json'});
+    // print(response.statusCode);
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
 
@@ -61,16 +66,16 @@ class PlaceAPI {
     }
   }
 
-  static Future<List<Map<String, dynamic>>> getSearchResult(String searchText) async {
-    final url = Uri.parse('${_baseUrlOthers}search?searchQuery=$searchText&key=$_apiKey');
-
+  static Future<Map<String, dynamic>> getSearchResult(String searchText) async {
+    final url = Uri.parse(
+        '${_baseUrlOthers}search?searchQuery=$searchText&key=$_apiKey&latLong=-6.24448%2C106.82166&radius=35&radiusUnit=km');
     final response = await http.get(url);
-    if(response.statusCode==200) {
+    // print(response.body);
+    if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
-
+      // print(result);
       return result;
-    }
-    else {
+    } else {
       throw Exception('No data');
     }
   }
