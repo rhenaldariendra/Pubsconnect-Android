@@ -28,8 +28,8 @@ class Ticket extends StatefulWidget {
 }
 
 class _TicketState extends State<Ticket> {
-  String imageAsset = 'assets/images/transport/angkutan_tj.png';
-  String imageName = 'Transjakarta';
+  String imageAsset = 'assets/images/transport/walk.png';
+  String imageName = 'Walk';
   Color buttonColor = const Color.fromRGBO(50, 128, 195, 1);
 
   String btnColor = '';
@@ -91,13 +91,34 @@ class _TicketState extends State<Ticket> {
     }
   }
 
+  String checkStringName(str) {
+    String returns = '';
+    if (str['transit_details']['line']['vehicle']['type'] == 'TRAM') {
+      returns = 'LRT';
+    } else if (str['transit_details']['line']['vehicle']['type'] == 'TRAIN') {
+      returns = 'KRL';
+    } else if (str['transit_details']['line']['vehicle']['type'] == 'SUBWAY') {
+      returns = 'Down';
+    }
+    //   else if(widget.detail['transit_details']['line']['agencies'][0]['name'].contains('Transportasi Jakarta')) {
+    //     kode = 'Transjakarta';
+    //   }
+    //   else if(widget.detail['transit_details']['line']['agencies'][0]['name'].contains('Angkot')) {
+    //     kode = 'Mikrotrans - Angkot';
+    //   }
+    // }
+
+    return returns;
+  }
+
   void mappingTransport() {
     for (var element in widget.transportData['legs'][0]['steps']) {
       if (element['travel_mode'] != 'WALKING') {
         Map<String, dynamic> temp = {
           'kode': element['transit_details']['line'].containsKey('short_name')
               ? element['transit_details']['line']['short_name']
-              : element['transit_details']['line']['name'],
+              // : element['transit_details']['line']['name'],
+              : checkStringName(element['transit_details']['line']['name']),
           'provider': element['transit_details']['line']['agencies'][0]['name'],
           'color': colorCheck(
               element['transit_details']['line']['agencies'][0]['name']),
@@ -112,9 +133,10 @@ class _TicketState extends State<Ticket> {
 
   @override
   void initState() {
-    if(widget.isHistory == false) {
+    if (widget.isHistory == false) {
       mappingTransport();
     }
+
     super.initState();
   }
 
@@ -176,7 +198,9 @@ class _TicketState extends State<Ticket> {
                   child: CustomPaint(
                     painter: SemiCirclePainter(
                       colors: widget.isHome
-                          ? widget.isHistory ? const Color.fromRGBO(252, 251, 252, 1) : Colors.white
+                          ? widget.isHistory
+                              ? const Color.fromRGBO(252, 251, 252, 1)
+                              : Colors.white
                           : const Color.fromRGBO(230, 242, 255, 1),
                     ),
                     // child: ,
@@ -194,8 +218,10 @@ class _TicketState extends State<Ticket> {
                   height: 18.w,
                   child: CustomPaint(
                     painter: SemiCirclePainter(
-                      colors:  widget.isHome
-                          ? widget.isHistory ? const Color.fromRGBO(252, 251, 252, 1) : Colors.white
+                      colors: widget.isHome
+                          ? widget.isHistory
+                              ? const Color.fromRGBO(252, 251, 252, 1)
+                              : Colors.white
                           : const Color.fromRGBO(230, 242, 255, 1),
                     ),
                     // child: ,
@@ -282,7 +308,9 @@ class _TicketState extends State<Ticket> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      widget.isHistory ? widget.endName : 'Travel Time: ${widget.transportData['legs'][0]['duration']['text']}',
+                      widget.isHistory
+                          ? widget.endName
+                          : 'Travel Time: ${widget.transportData['legs'][0]['duration']['text']}',
                       style: TextStyle(
                         fontFamily: 'Nunito',
                         fontWeight: FontWeight.w600,
@@ -292,9 +320,12 @@ class _TicketState extends State<Ticket> {
                       ),
                     ),
                     Text(
-                      widget.isHistory ? DateFormat('dd MMMM yyyy').format(widget.time.toDate()) : widget.transportData.containsKey('fare')
-                          ? widget.transportData['fare']['text']
-                          : '-',
+                      widget.isHistory
+                          ? DateFormat('dd MMMM yyyy')
+                              .format(widget.time.toDate())
+                          : widget.transportData.containsKey('fare')
+                              ? widget.transportData['fare']['text']
+                              : '-',
                       style: TextStyle(
                         fontFamily: 'Nunito',
                         fontWeight: FontWeight.w700,

@@ -7,7 +7,8 @@ class PlaceAPI {
       'https://api.content.tripadvisor.com/api/v1/location/'; // getdetail, get photo
   static const _baseUrl =
       'https://api.content.tripadvisor.com/api/v1/location/nearby_search?latLong='; // getnearbylocation
-  static const _apiKey = '9F4D5176EBA641A9BE504C30C37E84DD';
+  static const _apiKey = 'ECF057ABF687401AB500089172E064DA';
+  // static const _apiKey = '9F4D5176EBA641A9BE504C30C37E84DD';
 
   static Future<Map<String, dynamic>> getDetail(id) async {
     final url = Uri.parse(
@@ -68,7 +69,7 @@ class PlaceAPI {
 
   static Future<Map<String, dynamic>> getSearchResult(String searchText) async {
     final url = Uri.parse(
-        '${_baseUrlOthers}search?searchQuery=$searchText&key=$_apiKey&latLong=-6.24448%2C106.82166&radius=35&radiusUnit=km');
+        '${_baseUrlOthers}search?searchQuery=$searchText&key=$_apiKey&category=attractions&latLong=-6.24448%2C106.82166&radius=35&radiusUnit=km');
     final response = await http.get(url);
     // print(response.body);
     if (response.statusCode == 200) {

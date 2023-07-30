@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:thesis_pubsconnect/api/destination_api.dart';
+import 'package:thesis_pubsconnect/component/dialog_alert.dart';
 import 'package:thesis_pubsconnect/component/loading.dart';
 import 'package:thesis_pubsconnect/component/location_list.dart';
 import 'package:thesis_pubsconnect/pages/journey.dart';
@@ -15,7 +16,6 @@ class Destination extends StatefulWidget {
   final dynamic placeName;
 
   const Destination({super.key, this.lat, this.lon, this.placeName});
-
 
   @override
   State<Destination> createState() => _DestinationState();
@@ -39,10 +39,10 @@ class _DestinationState extends State<Destination> {
 
   @override
   void initState() {
-    if(widget.lat != 0 && widget.lon != 0) {
+    if (widget.lat != 0 && widget.lon != 0) {
       currenLocationUsed['start'] = true;
       currenLocationUsed['end'] = true;
-      _isRedirect=true;
+      _isRedirect = true;
       setState(() {
         _startController.text = 'Current Location';
         _endController.text = widget.placeName;
@@ -53,10 +53,13 @@ class _DestinationState extends State<Destination> {
 
   void _onChangedVall(value) async {
     predList = [];
-    AutoCompleteResponse data = await DestinationAPI.getSearchAutocomplete(value);
+    AutoCompleteResponse data =
+        await DestinationAPI.getSearchAutocomplete(value);
     setState(() {
       predList = data.predictions!;
-      _current ? currenLocationUsed['start'] = false : currenLocationUsed['end'] = false;
+      _current
+          ? currenLocationUsed['start'] = false
+          : currenLocationUsed['end'] = false;
     });
   }
 
@@ -64,52 +67,68 @@ class _DestinationState extends State<Destination> {
     setState(() {
       _isLoading = true;
     });
-    Map<String, dynamic> snapshot;
-    dynamic startLat, startLon, endLat, endLon;
-    Position position = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
-    );
 
-    if (_startController.text != '' && _endController.text != '') {
-      if (currenLocationUsed['start'] == true) {
-        startLat = position.latitude;
-        startLon = position.longitude;
-      } else {
-        startLat = _startId;
-        startLon = 0;
-      }
-
-      if (currenLocationUsed['end'] == true) {
-        if(_isRedirect){
-          endLat = widget.lat;
-          endLon = widget.lon;
-        }
-        else {
-          endLat = position.latitude;
-          endLon = position.longitude;
-        }
-      } else {
-        endLat = _endId;
-        endLon = 0;
-      }
-
-      snapshot = await DestinationAPI.getTransportSuggestion(startLat, startLon, endLat, endLon);
-    } else {
-      snapshot = {};
-    }
-    setState(() {
-      _isLoading = false;
-    });
-
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => Journey(
-          dataTransport: snapshot,
-          endName: _endController.text,
-          startName: _startController.text,
+    if (_startController.text.isEmpty || _endController.text.isEmpty) {
+      showDialog(
+        context: context,
+        builder: (builder) => DialogAlert(
+          ctx: context,
+          placeholder: 'Please fill in the location field',
+          imagePath: 'assets/images/dialog_images/dialog_12.png',
+          titleMessage: 'Error',
         ),
-      ),
-    );
+      );
+      setState(() {
+        _isLoading = false;
+      });
+    } else {
+      Map<String, dynamic> snapshot;
+      dynamic startLat, startLon, endLat, endLon;
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+
+      if (_startController.text != '' && _endController.text != '') {
+        if (currenLocationUsed['start'] == true) {
+          startLat = position.latitude;
+          startLon = position.longitude;
+        } else {
+          startLat = _startId;
+          startLon = 0;
+        }
+
+        if (currenLocationUsed['end'] == true) {
+          if (_isRedirect) {
+            endLat = widget.lat;
+            endLon = widget.lon;
+          } else {
+            endLat = position.latitude;
+            endLon = position.longitude;
+          }
+        } else {
+          endLat = _endId;
+          endLon = 0;
+        }
+
+        snapshot = await DestinationAPI.getTransportSuggestion(
+            startLat, startLon, endLat, endLon);
+      } else {
+        snapshot = {};
+      }
+      setState(() {
+        _isLoading = false;
+      });
+
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => Journey(
+            dataTransport: snapshot,
+            endName: _endController.text,
+            startName: _startController.text,
+          ),
+        ),
+      );
+    }
   }
 
   Widget _buildBody() {
@@ -195,15 +214,20 @@ class _DestinationState extends State<Destination> {
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.w),
             child: ElevatedButton(
               onPressed: () {
-                _current ? currenLocationUsed['start'] = true : currenLocationUsed['end'] = true;
+                _current
+                    ? currenLocationUsed['start'] = true
+                    : currenLocationUsed['end'] = true;
                 setState(() {
-                  _current ? _startController.text = 'Current Location' : _endController.text = 'Current Location';
+                  _current
+                      ? _startController.text = 'Current Location'
+                      : _endController.text = 'Current Location';
                   _isSearched = !_isSearched;
                 });
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.fromLTRB(0, 10.w, 0, 10.w),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11.w)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(11.w)),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -228,13 +252,25 @@ class _DestinationState extends State<Destination> {
               itemCount: predList.length,
               itemBuilder: (context, index) => LocationListTile(
                 press: () {
-                  _current ? _startId = predList[index].placeId! : _endId = predList[index].placeId!;
+                  _current
+                      ? _startId = predList[index].placeId!
+                      : _endId = predList[index].placeId!;
                   setState(() {
                     _isSearched = !_isSearched;
                     if (_current == true) {
-                      _startController.text = (predList[index].structuredFormatting?.mainText == '' ? '' : predList[index].structuredFormatting?.mainText)!;
+                      _startController.text =
+                          (predList[index].structuredFormatting?.mainText == ''
+                              ? ''
+                              : predList[index]
+                                  .structuredFormatting
+                                  ?.mainText)!;
                     } else {
-                      _endController.text = (predList[index].structuredFormatting?.mainText == '' ? '' : predList[index].structuredFormatting?.mainText)!;
+                      _endController.text =
+                          (predList[index].structuredFormatting?.mainText == ''
+                              ? ''
+                              : predList[index]
+                                  .structuredFormatting
+                                  ?.mainText)!;
                     }
                     predList = [];
                   });
@@ -279,8 +315,13 @@ class _DestinationState extends State<Destination> {
               child: ListView(
                 children: [
                   Container(
-                    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(18.w), topRight: Radius.circular(18.w))),
-                    padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 28.w, bottom: 30.w),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(18.w),
+                            topRight: Radius.circular(18.w))),
+                    padding: EdgeInsets.only(
+                        left: 25.w, right: 25.w, top: 28.w, bottom: 30.w),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -306,16 +347,24 @@ class _DestinationState extends State<Destination> {
                                       _current = true;
                                     }),
                                     style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11.w)),
-                                      backgroundColor: const Color.fromRGBO(248, 248, 248, 1),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(11.w)),
+                                      backgroundColor: const Color.fromRGBO(
+                                          248, 248, 248, 1),
                                       foregroundColor: Colors.black,
-                                      padding: EdgeInsets.fromLTRB(16.w, 0, 0, 0),
+                                      padding:
+                                          EdgeInsets.fromLTRB(16.w, 0, 0, 0),
                                       elevation: 0,
-                                      textStyle: Theme.of(context).textTheme.labelMedium,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .labelMedium,
                                     ),
                                     child: Align(
                                       alignment: Alignment.centerLeft,
-                                      child: Text(_startController.text == '' ? 'Your Location' : _startController.text),
+                                      child: Text(_startController.text == ''
+                                          ? 'Your Location'
+                                          : _startController.text),
                                     ),
                                   ),
                                 ),
@@ -330,16 +379,24 @@ class _DestinationState extends State<Destination> {
                                       _current = false;
                                     }),
                                     style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11.w)),
-                                      backgroundColor: const Color.fromRGBO(248, 248, 248, 1),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(11.w)),
+                                      backgroundColor: const Color.fromRGBO(
+                                          248, 248, 248, 1),
                                       foregroundColor: Colors.black,
-                                      padding: EdgeInsets.fromLTRB(16.w, 0, 0, 0),
+                                      padding:
+                                          EdgeInsets.fromLTRB(16.w, 0, 0, 0),
                                       elevation: 0,
-                                      textStyle: Theme.of(context).textTheme.labelMedium,
+                                      textStyle: Theme.of(context)
+                                          .textTheme
+                                          .labelMedium,
                                     ),
                                     child: Align(
                                       alignment: Alignment.centerLeft,
-                                      child: Text(_endController.text == '' ? 'Your Destination' : _endController.text),
+                                      child: Text(_endController.text == ''
+                                          ? 'Your Destination'
+                                          : _endController.text),
                                     ),
                                   ),
                                 ),
@@ -358,7 +415,8 @@ class _DestinationState extends State<Destination> {
                         ElevatedButton(
                           onPressed: _submitForm,
                           style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11.w)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(11.w)),
                           ),
                           child: const Text('Find Now'),
                         ),
