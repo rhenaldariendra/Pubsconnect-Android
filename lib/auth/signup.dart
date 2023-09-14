@@ -107,7 +107,7 @@ class _SignUpState extends State<SignUp> {
           'gender': genderText,
           'phone number': phoneText,
         });
-
+        
         // addUserDetail(uid, nameText, emailText, genderText, phoneText);
         SessionProvider sessionProvider = Provider.of<SessionProvider>(context, listen: false);
         UserModel userModels = UserModel(

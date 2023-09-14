@@ -1,0 +1,737 @@
+@startuml
+set namespaceSeparator ::
+
+class "thesis_pubsconnect::api::destination_api.dart::DestinationAPI" {
+  {static} -String _baseUrl
+  {static} -String _apiKey
+  {static} +Future<Map<String, dynamic>> getTransportSuggestion()
+  {static} +Future<AutoCompleteResponse> getSearchAutocomplete()
+}
+
+class "thesis_pubsconnect::api::destination_api.dart::AutoCompleteResponse" {
+  +String? status
+  +List<AutocompletePrediction>? predictions
+}
+
+class "thesis_pubsconnect::api::image_route_api.dart::ImageRouteApi" {
+  {static} +Future<String> getPhoto()
+  {static} +Future<List<Map<String, dynamic>>> getList()
+}
+
+class "thesis_pubsconnect::api::place_api.dart::PlaceAPI" {
+  {static} -String _baseUrlOthers
+  {static} -String _baseUrl
+  {static} -String _apiKey
+  {static} +Future<Map<String, dynamic>> getDetail()
+  {static} +Future<Map<String, dynamic>> getPhoto()
+  {static} +Future<Map<String, dynamic>> getLocationbyId()
+  {static} +Future<Map<String, dynamic>> getLocation()
+  {static} +Future<Map<String, dynamic>> getSearchResult()
+}
+
+class "thesis_pubsconnect::api::weather_api.dart::WeatherApi" {
+  {static} -String _baseUrl
+  {static} -String _locationUrl
+  {static} -String _apiKey
+  +List<dynamic> tests
+  {static} +Future<Map<String, dynamic>> getWeather()
+}
+
+class "thesis_pubsconnect::auth::change_password.dart::ChangePassword" {
+  +State<ChangePassword> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::auth::change_password.dart::ChangePassword"
+
+class "thesis_pubsconnect::auth::change_password.dart::_ChangePasswordState" {
+  +CustomTextFieldLogo curPassword
+  +CustomTextFieldLogo newPassword
+  +CustomTextFieldLogo confPassword
+  -bool _isLoading
+  +void changePassword()
+  +Widget build()
+}
+
+"thesis_pubsconnect::auth::change_password.dart::_ChangePasswordState" o-- "thesis_pubsconnect::component::text_field_with_logo.dart::CustomTextFieldLogo"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::auth::change_password.dart::_ChangePasswordState"
+
+class "thesis_pubsconnect::auth::forgot_password.dart::ForgotPassword" {
+  +State<ForgotPassword> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::auth::forgot_password.dart::ForgotPassword"
+
+class "thesis_pubsconnect::auth::forgot_password.dart::_ForgotPasswordState" {
+  +CustomTextFieldLogo email
+  +Future<dynamic> submitPasswordChange()
+  +Widget build()
+}
+
+"thesis_pubsconnect::auth::forgot_password.dart::_ForgotPasswordState" o-- "thesis_pubsconnect::component::text_field_with_logo.dart::CustomTextFieldLogo"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::auth::forgot_password.dart::_ForgotPasswordState"
+
+class "thesis_pubsconnect::auth::signin.dart::SignIn" {
+  +State<SignIn> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::auth::signin.dart::SignIn"
+
+class "thesis_pubsconnect::auth::signin.dart::_SignInState" {
+  -bool _isLoading
+  +CustomTextField email
+  +CustomTextField password
+  -void _submitDataSignIn()
+  +Widget build()
+}
+
+"thesis_pubsconnect::auth::signin.dart::_SignInState" o-- "thesis_pubsconnect::component::text_field.dart::CustomTextField"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::auth::signin.dart::_SignInState"
+
+class "thesis_pubsconnect::auth::signup.dart::SignUp" {
+  +State<SignUp> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::auth::signup.dart::SignUp"
+
+class "thesis_pubsconnect::auth::signup.dart::_SignUpState" {
+  -bool _isLoading
+  +CustomTextField email
+  +CustomTextField name
+  +CustomTextField password
+  +CustomTextField gender
+  +CustomTextField phone
+  -void _submitDataSignUp()
+  +Widget build()
+}
+
+"thesis_pubsconnect::auth::signup.dart::_SignUpState" o-- "thesis_pubsconnect::component::text_field.dart::CustomTextField"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::auth::signup.dart::_SignUpState"
+
+class "thesis_pubsconnect::boarding::boarding.dart::Boarding" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::boarding::boarding.dart::Boarding"
+
+class "thesis_pubsconnect::component::dashed_line_painter.dart::DashedLinePainter" {
+  +bool isVertical
+  +double stroke
+  +Color color
+  +void paint()
+  +bool shouldRepaint()
+}
+
+"thesis_pubsconnect::component::dashed_line_painter.dart::DashedLinePainter" o-- "dart::ui::Color"
+"flutter::src::rendering::custom_paint.dart::CustomPainter" <|-- "thesis_pubsconnect::component::dashed_line_painter.dart::DashedLinePainter"
+
+class "thesis_pubsconnect::component::detail_trip_card.dart::DetailTripCard" {
+  +bool isWalking
+  +int status
+  +int unixDepart
+  +Color widgetColor
+  +Map<String, dynamic> detail
+  +State<DetailTripCard> createState()
+}
+
+"thesis_pubsconnect::component::detail_trip_card.dart::DetailTripCard" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::component::detail_trip_card.dart::DetailTripCard"
+
+class "thesis_pubsconnect::component::detail_trip_card.dart::_DetailTripCardState" {
+  +String kode
+  +double lastHeight
+  +GlobalKey<State<StatefulWidget>> textKey
+  +void initState()
+  +void calculateTextHeight()
+  +String convertDistance()
+  +String convertDateTime()
+  +Widget build()
+}
+
+"thesis_pubsconnect::component::detail_trip_card.dart::_DetailTripCardState" o-- "flutter::src::widgets::framework.dart::GlobalKey<State<StatefulWidget>>"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::component::detail_trip_card.dart::_DetailTripCardState"
+
+class "thesis_pubsconnect::component::dialog_alert.dart::DialogAlert" {
+  +BuildContext ctx
+  +dynamic placeholder
+  +String imagePath
+  +String titleMessage
+  +Widget build()
+}
+
+"thesis_pubsconnect::component::dialog_alert.dart::DialogAlert" o-- "flutter::src::widgets::framework.dart::BuildContext"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::component::dialog_alert.dart::DialogAlert"
+
+class "thesis_pubsconnect::component::dialog_confirmation.dart::DialogConfirmation" {
+  +void Function() yesFunction
+  +String imagePath
+  +String messageTitle
+  +String message
+  +Color color
+  +Widget build()
+}
+
+"thesis_pubsconnect::component::dialog_confirmation.dart::DialogConfirmation" o-- "dart::ui::void Function()"
+"thesis_pubsconnect::component::dialog_confirmation.dart::DialogConfirmation" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::component::dialog_confirmation.dart::DialogConfirmation"
+
+class "thesis_pubsconnect::component::dialog_success.dart::DialogSuccess" {
+  +Widget destination
+  +String imagePath
+  +String message
+  +String buttonMessage
+  +String titleMessage
+  +bool redirect
+  +bool isPrimary
+  +Widget build()
+}
+
+"thesis_pubsconnect::component::dialog_success.dart::DialogSuccess" o-- "flutter::src::widgets::framework.dart::Widget"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::component::dialog_success.dart::DialogSuccess"
+
+class "thesis_pubsconnect::component::grid_place.dart::GridPlace" {
+  +State<GridPlace> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::component::grid_place.dart::GridPlace"
+
+class "thesis_pubsconnect::component::grid_place.dart::_GridPlaceState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::component::grid_place.dart::_GridPlaceState"
+
+class "thesis_pubsconnect::component::loading.dart::Loading" {
+  +double height
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::component::loading.dart::Loading"
+
+class "thesis_pubsconnect::component::location_list.dart::LocationListTile" {
+  +String location
+  +void Function() press
+  +Widget build()
+}
+
+"thesis_pubsconnect::component::location_list.dart::LocationListTile" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::component::location_list.dart::LocationListTile"
+
+class "thesis_pubsconnect::component::place_card.dart::PlaceCard" {
+  +dynamic data
+  +dynamic photos
+  +Widget build()
+  -Widget _getPhoto()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::component::place_card.dart::PlaceCard"
+
+class "thesis_pubsconnect::component::search_field.dart::SearchField" {
+  +bool isHome
+  +void Function()? localSearch
+  +TextEditingController? searchResController
+  +TextEditingController test
+  +String getText()
+  +Widget build()
+}
+
+"thesis_pubsconnect::component::search_field.dart::SearchField" o-- "dart::ui::void Function()"
+"thesis_pubsconnect::component::search_field.dart::SearchField" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::component::search_field.dart::SearchField"
+
+class "thesis_pubsconnect::component::semi_ciruclar_painter.dart::SemiCirclePainter" {
+  +Color colors
+  +void paint()
+  +bool shouldRepaint()
+}
+
+"thesis_pubsconnect::component::semi_ciruclar_painter.dart::SemiCirclePainter" o-- "dart::ui::Color"
+"flutter::src::rendering::custom_paint.dart::CustomPainter" <|-- "thesis_pubsconnect::component::semi_ciruclar_painter.dart::SemiCirclePainter"
+
+class "thesis_pubsconnect::component::sidebar.dart::Sidebarr" {
+  +State<Sidebarr> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::component::sidebar.dart::Sidebarr"
+
+class "thesis_pubsconnect::component::sidebar.dart::_SidebarrState" {
+  +dynamic user
+  +String userEmail
+  +String userName
+  +String userPhoneNumber
+  +UserModel? users
+  +void initState()
+  +void logout()
+  +Widget build()
+  -Widget _buildHeader()
+  -Widget _buildMenuItems()
+}
+
+"thesis_pubsconnect::component::sidebar.dart::_SidebarrState" o-- "thesis_pubsconnect::model::user_model.dart::UserModel"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::component::sidebar.dart::_SidebarrState"
+
+class "thesis_pubsconnect::component::sign_form.dart::SignForm" {
+  +String checkForm
+  +void Function() formFunction
+  +dynamic email
+  +dynamic name
+  +dynamic password
+  +dynamic gender
+  +dynamic phone
+  +State<SignForm> createState()
+}
+
+"thesis_pubsconnect::component::sign_form.dart::SignForm" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::component::sign_form.dart::SignForm"
+
+class "thesis_pubsconnect::component::sign_form.dart::_SignFormState" {
+  +Widget build()
+  +Future<dynamic> addUserDetail()
+  +Widget signUp()
+  +Widget signIn()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::component::sign_form.dart::_SignFormState"
+
+class "thesis_pubsconnect::component::text_field.dart::CustomTextField" {
+  +String name
+  +String select
+  -TextEditingController _fieldController
+  +State<CustomTextField> createState()
+  +String getText()
+  +String getGender()
+}
+
+"thesis_pubsconnect::component::text_field.dart::CustomTextField" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::component::text_field.dart::CustomTextField"
+
+class "thesis_pubsconnect::component::text_field.dart::_CustomTextFieldState" {
+  +List<dynamic> gender
+  +Row addRadioButton()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::component::text_field.dart::_CustomTextFieldState"
+
+class "thesis_pubsconnect::component::text_field_underlined.dart::CustomTextFieldUnderlined" {
+  -TextEditingController _fieldController
+  +String value
+  +String titles
+  +State<CustomTextFieldUnderlined> createState()
+  +String getText()
+}
+
+"thesis_pubsconnect::component::text_field_underlined.dart::CustomTextFieldUnderlined" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::component::text_field_underlined.dart::CustomTextFieldUnderlined"
+
+class "thesis_pubsconnect::component::text_field_underlined.dart::_CustomTextFieldUnderlinedState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::component::text_field_underlined.dart::_CustomTextFieldUnderlinedState"
+
+class "thesis_pubsconnect::component::text_field_without_label.dart::CustomTextFieldWithoutLabel" {
+  +String hintText
+  -TextEditingController _fieldController
+  +void Function() onChangedValue
+  +State<CustomTextFieldWithoutLabel> createState()
+  +String getText()
+}
+
+"thesis_pubsconnect::component::text_field_without_label.dart::CustomTextFieldWithoutLabel" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"thesis_pubsconnect::component::text_field_without_label.dart::CustomTextFieldWithoutLabel" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::component::text_field_without_label.dart::CustomTextFieldWithoutLabel"
+
+class "thesis_pubsconnect::component::text_field_without_label.dart::_CustomTextFieldWithoutLabelState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::component::text_field_without_label.dart::_CustomTextFieldWithoutLabelState"
+
+class "thesis_pubsconnect::component::text_field_with_logo.dart::CustomTextFieldLogo" {
+  -TextEditingController _fieldController
+  +IconData iconPath
+  +String placeholder
+  +bool isPassword
+  +State<CustomTextFieldLogo> createState()
+  +String getText()
+}
+
+"thesis_pubsconnect::component::text_field_with_logo.dart::CustomTextFieldLogo" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"thesis_pubsconnect::component::text_field_with_logo.dart::CustomTextFieldLogo" o-- "flutter::src::widgets::icon_data.dart::IconData"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::component::text_field_with_logo.dart::CustomTextFieldLogo"
+
+class "thesis_pubsconnect::component::text_field_with_logo.dart::_CustomTextFieldLogoState" {
+  -dynamic _isObscure
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::component::text_field_with_logo.dart::_CustomTextFieldLogoState"
+
+class "thesis_pubsconnect::component::ticket.dart::Ticket" {
+  +Map<String, dynamic> transportData
+  +String startName
+  +String endName
+  +bool isHome
+  +bool isHistory
+  +dynamic time
+  +State<Ticket> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::component::ticket.dart::Ticket"
+
+class "thesis_pubsconnect::component::ticket.dart::_TicketState" {
+  +String imageAsset
+  +String imageName
+  +Color buttonColor
+  +String btnColor
+  +List<Map<String, dynamic>> detailTransit
+  +void checkProvider()
+  +Color colorCheck()
+  +String checkStringName()
+  +void mappingTransport()
+  +void initState()
+  +Widget build()
+}
+
+"thesis_pubsconnect::component::ticket.dart::_TicketState" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::component::ticket.dart::_TicketState"
+
+class "thesis_pubsconnect::component::transport_box.dart::TransportBox" {
+  +String imagePath
+  +String transportName
+  +int id
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::component::transport_box.dart::TransportBox"
+
+class "thesis_pubsconnect::component::weather_card.dart::WeatherCard" {
+  +Map<String, dynamic> data
+  +State<WeatherCard> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::component::weather_card.dart::WeatherCard"
+
+class "thesis_pubsconnect::component::weather_card.dart::_WeatherCardState" {
+  +Map<String, dynamic> weatherData
+  +Map<String, dynamic> locationData
+  +String query
+  +Widget build()
+  -String _getBackgroundName()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::component::weather_card.dart::_WeatherCardState"
+
+class "thesis_pubsconnect::main_app.dart::MainApp" {
+  +User? getCurrentUser()
+  +bool checkLoginStatus()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::main_app.dart::MainApp"
+
+class "thesis_pubsconnect::model::autocomplete_prediction.dart::AutocompletePrediction" {
+  +String? description
+  +StructuredFormatting? structuredFormatting
+  +String? placeId
+  +String? reference
+}
+
+"thesis_pubsconnect::model::autocomplete_prediction.dart::AutocompletePrediction" o-- "thesis_pubsconnect::model::autocomplete_prediction.dart::StructuredFormatting"
+
+class "thesis_pubsconnect::model::autocomplete_prediction.dart::StructuredFormatting" {
+  +String? mainText
+  +String? secondaryText
+}
+
+class "thesis_pubsconnect::model::ticket_model.dart::TicketModel" {
+  +Map<String, dynamic> detailRoute
+  +String startName
+  +String endName
+}
+
+class "thesis_pubsconnect::model::user_model.dart::UserModel" {
+  +String uid
+  +String docId
+  +String name
+  +String email
+  +String gender
+  +String phoneNumber
+}
+
+class "thesis_pubsconnect::pages::destination.dart::Destination" {
+  +dynamic lat
+  +dynamic lon
+  +dynamic placeName
+  +State<Destination> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::destination.dart::Destination"
+
+class "thesis_pubsconnect::pages::destination.dart::_DestinationState" {
+  -TextEditingController _startController
+  -TextEditingController _endController
+  +List<AutocompletePrediction> predList
+  -bool _isRedirect
+  -bool _isLoading
+  -bool _current
+  -bool _isSearched
+  -String _startId
+  -String _endId
+  +Map<String, bool> currenLocationUsed
+  +void initState()
+  -void _onChangedVall()
+  -void _submitForm()
+  -Widget _buildBody()
+  +Widget build()
+}
+
+"thesis_pubsconnect::pages::destination.dart::_DestinationState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::destination.dart::_DestinationState"
+
+class "thesis_pubsconnect::pages::detail_route.dart::DetailRoute" {
+  +int id
+  +String rute
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::pages::detail_route.dart::DetailRoute"
+
+class "thesis_pubsconnect::pages::explore.dart::ExploreCities" {
+  +State<ExploreCities> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::explore.dart::ExploreCities"
+
+class "thesis_pubsconnect::pages::explore.dart::_ExploreCitiesState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::explore.dart::_ExploreCitiesState"
+
+class "thesis_pubsconnect::pages::history.dart::History" {
+  +State<History> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::history.dart::History"
+
+class "thesis_pubsconnect::pages::history.dart::_HistoryState" {
+  +List<Map<String, dynamic>> historyList
+  +Future<List<Map<String, dynamic>>> getHistory()
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::history.dart::_HistoryState"
+
+class "thesis_pubsconnect::pages::home.dart::HomeScreen" {
+  +State<HomeScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::home.dart::HomeScreen"
+
+class "thesis_pubsconnect::pages::home.dart::_HomePageState" {
+  +UserModel? users
+  +TicketModel? ticket
+  -Weather _weather
+  -Transport _transport
+  -Places _place
+  -Future<void> _refreshData()
+  +void initState()
+  +Widget build()
+}
+
+"thesis_pubsconnect::pages::home.dart::_HomePageState" o-- "thesis_pubsconnect::model::user_model.dart::UserModel"
+"thesis_pubsconnect::pages::home.dart::_HomePageState" o-- "thesis_pubsconnect::model::ticket_model.dart::TicketModel"
+"thesis_pubsconnect::pages::home.dart::_HomePageState" o-- "thesis_pubsconnect::view::weather.dart::Weather"
+"thesis_pubsconnect::pages::home.dart::_HomePageState" o-- "thesis_pubsconnect::view::transport.dart::Transport"
+"thesis_pubsconnect::pages::home.dart::_HomePageState" o-- "thesis_pubsconnect::view::places.dart::Places"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::home.dart::_HomePageState"
+
+class "thesis_pubsconnect::pages::home.dart::NavigationDrawer" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::pages::home.dart::NavigationDrawer"
+
+class "thesis_pubsconnect::pages::information_route.dart::InformationRoute" {
+  +int id
+  +Color color
+  +Color colorText
+  +State<InformationRoute> createState()
+}
+
+"thesis_pubsconnect::pages::information_route.dart::InformationRoute" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::information_route.dart::InformationRoute"
+
+class "thesis_pubsconnect::pages::information_route.dart::_InformationRouteState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::information_route.dart::_InformationRouteState"
+
+class "thesis_pubsconnect::pages::journey.dart::Journey" {
+  +Map<String, dynamic>? dataTransport
+  +String startName
+  +String endName
+  +_JourneyState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::journey.dart::Journey"
+
+class "thesis_pubsconnect::pages::journey.dart::_JourneyState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::journey.dart::_JourneyState"
+
+class "thesis_pubsconnect::pages::place_detail.dart::PlaceDetail" {
+  +dynamic detailId
+  +dynamic photo
+  +State<PlaceDetail> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::place_detail.dart::PlaceDetail"
+
+class "thesis_pubsconnect::pages::place_detail.dart::_PlaceDetailState" {
+  -bool _isFavorite
+  -bool _isLoading
+  -void _removeSavePlace()
+  -void _addSavePlace()
+  -void _checkedSavePlace()
+  +void initState()
+  +Widget build()
+  -Widget _buildPlaceDetail()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::place_detail.dart::_PlaceDetailState"
+
+class "thesis_pubsconnect::pages::profile.dart::Profile" {
+  +State<Profile> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::profile.dart::Profile"
+
+class "thesis_pubsconnect::pages::profile.dart::_ProfileState" {
+  +UserModel? users
+  -bool _isLoading
+  +CustomTextFieldUnderlined? name
+  +CustomTextFieldUnderlined? email
+  +CustomTextFieldUnderlined? phone
+  +CustomTextFieldUnderlined? gender
+  +void initState()
+  +void submitChangeData()
+  +Widget build()
+}
+
+"thesis_pubsconnect::pages::profile.dart::_ProfileState" o-- "thesis_pubsconnect::model::user_model.dart::UserModel"
+"thesis_pubsconnect::pages::profile.dart::_ProfileState" o-- "thesis_pubsconnect::component::text_field_underlined.dart::CustomTextFieldUnderlined"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::profile.dart::_ProfileState"
+
+class "thesis_pubsconnect::pages::save_place.dart::SavePlace" {
+  +State<SavePlace> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::save_place.dart::SavePlace"
+
+class "thesis_pubsconnect::pages::save_place.dart::_SavePlaceState" {
+  +List<Map<String, dynamic>> savedPlaces
+  +List<TrackSize> arrRow
+  -Future<List<Map<String, dynamic>>> _getSavedPlace()
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::save_place.dart::_SavePlaceState"
+
+class "thesis_pubsconnect::pages::search_res.dart::SearchResult" {
+  +String searchValue
+  +State<SearchResult> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::search_res.dart::SearchResult"
+
+class "thesis_pubsconnect::pages::search_res.dart::_SearchResultState" {
+  -TextEditingController _controller
+  -bool _isLoading
+  +List<Map<String, dynamic>> placeItem
+  +List<TrackSize> arrRow
+  +void localSearch()
+  +void initState()
+  +Widget build()
+}
+
+"thesis_pubsconnect::pages::search_res.dart::_SearchResultState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::search_res.dart::_SearchResultState"
+
+class "thesis_pubsconnect::pages::trip_detail.dart::TripDetail" {
+  +String startName
+  +String endName
+  +int unixDepart
+  +bool isSaved
+  +List<dynamic> steps
+  +Map<String, dynamic> detailRoute
+  +State<TripDetail> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "thesis_pubsconnect::pages::trip_detail.dart::TripDetail"
+
+class "thesis_pubsconnect::pages::trip_detail.dart::_TripDetailState" {
+  -bool _isLoading
+  +bool checkTransitMode()
+  +Color colorCheck()
+  +int getStatus()
+  +int calcTime()
+  +void initState()
+  -void _finishTrip()
+  -void _savePlace()
+  -void _replace()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "thesis_pubsconnect::pages::trip_detail.dart::_TripDetailState"
+
+class "thesis_pubsconnect::utils::session_provider.dart::SessionProvider" {
+  -UserModel? _user
+  -TicketModel? _ticket
+  +void setUser()
+  +void setTicket()
+  +UserModel? getUser()
+  +TicketModel? getTicket()
+  +void clearSession()
+  +void clearTicket()
+  +Future<void> refreshData()
+}
+
+"thesis_pubsconnect::utils::session_provider.dart::SessionProvider" o-- "thesis_pubsconnect::model::user_model.dart::UserModel"
+"thesis_pubsconnect::utils::session_provider.dart::SessionProvider" o-- "thesis_pubsconnect::model::ticket_model.dart::TicketModel"
+"flutter::src::foundation::change_notifier.dart::ChangeNotifier" <|-- "thesis_pubsconnect::utils::session_provider.dart::SessionProvider"
+
+class "thesis_pubsconnect::view::places.dart::Places" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::view::places.dart::Places"
+
+class "thesis_pubsconnect::view::test.dart::Tests" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::view::test.dart::Tests"
+
+class "thesis_pubsconnect::view::transport.dart::Transport" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::view::transport.dart::Transport"
+
+class "thesis_pubsconnect::view::weather.dart::Weather" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "thesis_pubsconnect::view::weather.dart::Weather"
+
+
+@enduml

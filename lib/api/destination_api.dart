@@ -4,6 +4,7 @@ import 'package:thesis_pubsconnect/model/autocomplete_prediction.dart';
 
 class DestinationAPI {
   static const _baseUrl = 'https://maps.googleapis.com/maps/api';
+  // static const _apiKey = 'AIzaSyBscF7jto3agk8vn5CjvSdNkMigQ2KMnh8';
   static const _apiKey = 'AIzaSyBscF7jto3agk8vn5CjvSdNkMigQ2KMnh8';
 
   static Future<Map<String, dynamic>> getTransportSuggestion(startLat, startLon, endLat, endLon) async {
