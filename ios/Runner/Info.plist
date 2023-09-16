@@ -47,5 +47,10 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<key>NSLocationAlwaysUsageDescription</key>
+    <string>Your location is required for Weather, Destination and Nearby Location services</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Your location is required for Weather, Destination and Nearby Location services</string>
 </dict>
 </plist>
