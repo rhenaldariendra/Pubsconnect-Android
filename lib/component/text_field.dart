@@ -22,6 +22,52 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
+  bool _validate = true;
+  String errorMsg = 'Field is required';
+
+  void validateInputPassword(event) {
+    final alphanumeric = RegExp(r'^.{8}$');
+
+    if (alphanumeric.hasMatch(widget._fieldController.text.trim()) == false) {
+      setState(() {
+        errorMsg = 'Password must be at least 8 characters';
+        _validate = false;
+      });
+    } else {
+      setState(() {
+        _validate = true;
+      });
+    }
+  }
+
+  void validateRequired(event) {
+    if (widget._fieldController.text.isEmpty) {
+      setState(() {
+        _validate = false;
+      });
+    } else {
+      setState(() {
+        _validate = true;
+      });
+    }
+  }
+
+  void validatePhoneNumber(event) {
+    // r'^[0-9]+$'
+    final alphanumeric = RegExp(r'^[0-9]+$');
+
+    if (alphanumeric.hasMatch(widget._fieldController.text.trim()) == false) {
+      setState(() {
+        errorMsg = 'Check number format';
+        _validate = false;
+      });
+    } else {
+      setState(() {
+        _validate = true;
+      });
+    }
+  }
+
   List gender = [
     "Male",
     "Female",
@@ -72,6 +118,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             TextField(
               controller: widget._fieldController,
               obscureText: true,
+              onTapOutside: validateInputPassword,
+              onChanged: validateInputPassword,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 hintText: 'Type something in here',
@@ -97,6 +145,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
           else if (widget.name == 'Phone')
             TextField(
               controller: widget._fieldController,
+              onChanged: validatePhoneNumber,
+              onTapOutside: validatePhoneNumber,
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 hintText: 'Type something in here',
@@ -113,6 +163,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             TextField(
               controller: widget._fieldController,
               keyboardType: TextInputType.emailAddress,
+              onChanged: validateRequired,
+              onTapOutside: validateRequired,
               decoration: InputDecoration(
                 hintText: 'Type something in here',
                 hintStyle: Theme.of(context).textTheme.labelMedium,
@@ -128,6 +180,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
             TextField(
               controller: widget._fieldController,
               keyboardType: TextInputType.text,
+              onChanged: validateRequired,
+              onTapOutside: validateRequired,
+              // on,
               decoration: InputDecoration(
                 hintText: 'Type something in here',
                 hintStyle: Theme.of(context).textTheme.labelMedium,
@@ -139,12 +194,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
               ),
               style: Theme.of(context).textTheme.bodySmall,
             ),
+          _validate
+              ? SizedBox()
+              : Text(
+                  errorMsg,
+                  style: TextStyle(
+                    color: Color.fromRGBO(195, 29, 29, 1),
+                    fontSize: 15.sp,
+                  ),
+                )
         ],
       ),
     );
   }
 
-  
   // Widget radioField(){
   //   return
   // }

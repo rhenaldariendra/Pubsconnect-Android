@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thesis_pubsconnect/pages/search_res.dart';
 
+// ignore: must_be_immutable
 class SearchField extends StatelessWidget {
   final bool isHome;
   VoidCallback? localSearch;
